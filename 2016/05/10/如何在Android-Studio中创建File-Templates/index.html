@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>如何在Android Studio中创建File Templates | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/marxico.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      如何在Android Studio中创建File Templates
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="如何在Android-Studio中创建File-Templates"><a href="#如何在Android-Studio中创建File-Templates" class="headerlink" title="如何在Android Studio中创建File Templates"></a>如何在Android Studio中创建File Templates</h2><p>标签： <code>File Template</code> <code>Android Studio</code></p>
+<blockquote>
+<p>我发现一个可以让写程序变得简单的方法，那就是自定义文件模板(Custom File Templates).那么什么是File Templates呢？说白了，就是一个已经包含一部分代码的源文件</p>
+</blockquote>
+<h3 id="如何创建File-Templates"><a href="#如何创建File-Templates" class="headerlink" title="如何创建File Templates"></a>如何创建File Templates</h3><p>首先，找到创建File Template的位置，依次打开<code>File ==&gt; Setting ==&gt; Editor ==&gt; File and Code Templates</code><br><img src="http://www.bit100.com/.zhongzilu/image/Settings.png" alt="File Templates Settings"></p>
+<p>之后点击 <code>+</code>号添加一个File Template，这里需要填写 File Template的名称和代码。在本次案例中，我们将创建一个实现了部分方法的RecyclerViewAdapter的File Template。因此就取名叫RecyclerViewAdapter<br><img src="http://www.bit100.com/.zhongzilu/image/RecyclerViewAdapter.png" alt="RecyclerViewAdapter"></p>
+<p>之后你就可以在下方的代码区域粘贴或者编写你的模板代码了。这里有几个预置的变量可以使用，当文件被创建的时候，这些预置的变量将会被 将会被对应的值替代，变量如下：</p>
+<ul>
+<li><code>${NAME}</code> 选择的文件的文件名</li>
+<li><code>${PACKAGE_NAME}</code>包名</li>
+<li><code>${DATE}</code> 系统当前的时间<br>当然，你也可以自定义变量，在本案例中，我们需要提供<code>ViewHolder</code>类和集合List的类型，所以自定义变量分别为<code>${VIEWHOLDER_CLASS}</code>和<code>${ITEM_CLASS}</code></li>
+</ul>
+<p>那么现在就来编写用于创建模板的代码，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != &quot;&quot;)package $&#123;PACKAGE_NAME&#125;;#end</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line">import android.support.v7.widget.RecyclerView;</div><div class="line">import android.view.LayoutInflater;</div><div class="line">import android.view.View;</div><div class="line">import android.view.ViewGroup;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">#parse(&quot;File Header.java&quot;)</div><div class="line">public class $&#123;NAME&#125; extends RecyclerView.Adapter&lt;$&#123;VIEWHOLDER_CLASS&#125;&gt; &#123;</div><div class="line">  private final Context context;</div><div class="line">  private List&lt;$&#123;ITEM_CLASS&#125;&gt; items;</div><div class="line"></div><div class="line">  public $&#123;NAME&#125;(List&lt;$&#123;ITEM_CLASS&#125;&gt; items, Context context) &#123;</div><div class="line">    this.items = items;</div><div class="line">    this.context = context;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public $&#123;VIEWHOLDER_CLASS&#125; onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.$&#123;LAYOUT_RES_ID&#125;, parent, false);</div><div class="line">    return new $&#123;VIEWHOLDER_CLASS&#125;(v);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void onBindViewHolder($&#123;VIEWHOLDER_CLASS&#125; holder, int position)&#123;</div><div class="line">    $&#123;ITEM_CLASS&#125; item = items.get(position);</div><div class="line">    //TODO Fill in your logic for binding the view.</div><div class="line">  &#125;</div><div class="line">  @Override</div><div class="line">  public int getItemCount() &#123;</div><div class="line">    if (items == null)&#123;</div><div class="line">      return 0;</div><div class="line">    &#125;</div><div class="line">    return items.size();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当你想要使用这个文件模板时，会提示你提供相关变量的值，比如<code>${VIEWHOLDER_CLASS}</code>和<code>${ITEM_CLASS}</code>,填写的值会自动替换对应的变量，非常的方便。</p>
+<p>要使用已经定义好的File Template，只需要选中要创建位置的文件夹，然后点击鼠标右键，再点“New”，你就可以在列表中看到刚创建的File Template的名字<br><img src="http://www.bit100.com/.zhongzilu/image/Selecting-custom-template.png" alt="Selecting custom template"></p>
+<p>点击RecyclerViewAdapter后填写相关变量的值<br><img src="http://www.bit100.com/.zhongzilu/image/FillInCustomTemplateVariables.png" alt="Fill In Custom Template Variables"></p>
+<p>填写完后点击”OK”，之后你就可以看到自动生成的代码了<br><img src="http://www.bit100.com/.zhongzilu/image/GeneratedClassFromTemplate.png" alt="Generated Class From Template"></p>
+<p>这样，今后我要实现一个RecyclerView的Adapter时，就不用再去写那么多代码了</p>
+<p>如果你有一些比较好的代码模板，也可以分享给我哦 <em>^_^</em></p>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-10T13:09:17.000Z" itemprop="datePublished">2016-05-10</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="如何在Android-Studio中创建File-Templates" data-title="如何在Android Studio中创建File Templates" data-url="http://zhongzilu.github.io/2016/05/10/如何在Android-Studio中创建File-Templates/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>
