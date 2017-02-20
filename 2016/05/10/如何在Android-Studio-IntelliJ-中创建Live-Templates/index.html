@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>如何在Android Studio(IntelliJ)中创建Live Templates | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      如何在Android Studio(IntelliJ)中创建Live Templates
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="如何在Android-Studio-IntelliJ中创建Live-Templates"><a href="#如何在Android-Studio-IntelliJ中创建Live-Templates" class="headerlink" title="如何在Android Studio/IntelliJ中创建Live Templates"></a>如何在Android Studio/IntelliJ中创建Live Templates</h2><p>标签： <code>Android Studio</code> <code>IntelliJ Live</code> <code>Template</code> </p>
+<h3 id="何为Live-Templates"><a href="#何为Live-Templates" class="headerlink" title="何为Live Templates?"></a>何为Live Templates?</h3><blockquote>
+<p>frequently-used or custom code constructs that you can insert into your source code file quickly, efficiently and accurately.<br>快速，高效，准确的将常用或自定义构造代码插入到你的源代码文件中</p>
+</blockquote>
+<p>通俗的讲，就是像快捷键一样，只需要输入几个简写的英文字母就可以快速自动插入一行或多行代码。</p>
+<p>在Android Studio/IntelliJ编辑器中，默认使用<code>Ctrl + J</code>快捷键可以调出Live Templates，可以自动补全所设置的模板的代码，善用它能够很大程度上减少开发时间。</p>
+<p>举个例子，输入<code>psfi</code>，然后按回车键，编辑器将会自动生成代码<code>public static final int</code>，这就节省了19个要输入的字母。</p>
+<p>Android Studio/IntelliJ编辑器中预置了一些常用的Live Templates，大家可以自行去查看，查看位置<code>File ==&gt; Settings ==&gt; Editor ==&gt; Live Templates</code><br><img src="http://www.bit100.com/.zhongzilu/image/1462599293525.png" alt="Live Templates"></p>
+<h3 id="如何创建自定义的Live-Templates？"><a href="#如何创建自定义的Live-Templates？" class="headerlink" title="如何创建自定义的Live Templates？"></a>如何创建自定义的Live Templates？</h3><ul>
+<li><p>找到Live Templates的位置，然后点击右上角的<code>+</code>号，再选择<code>Template Group</code>，写上一个名称<br><img src="http://www.bit100.com/.zhongzilu/image/1462602208553.png" alt="Template Group"><br><img src="http://www.bit100.com/.zhongzilu/image/1462602471454.png" alt="Custom Template Group"></p>
+</li>
+<li><p>接着再点击<code>+</code>号，选择<code>Live Template</code>，之后填写相关的内容<br><img src="http://www.bit100.com/.zhongzilu/image/1462602753037.png" alt=""></p>
+</li>
+</ul>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>我用一个快速插入RecyclerView控件代码的例子来举例，设置如下图：<br><img src="http://www.bit100.com/.zhongzilu/image/1462603188209.png" alt="RecyclerView Live Template"></p>
+<p>填写相关内容完毕之后 ，注意下方的一行红字，此时定义的Live Template还没生效，需要点击<code>Define</code>，然后选择该Live Template要应用到什么样的场景中。因为这里我定义的是安卓的控件代码，所以就归类为XML</p>
+<p><img src="http://www.bit100.com/.zhongzilu/image/1462604207098.png" alt="Define Live Template"></p>
+<p>点击<code>OK</code>按钮生效。注意勾选右下角的<code>Reformat according to style</code>选项</p>
+<p>要想使用刚才定义的Live Template，只需要在android的XML布局文件中输入rcv，然后按回车键就可以了，如下图所示：<br><img src="http://www.bit100.com/.zhongzilu/image/recyclerviewtemplate.gif" alt="Use Live Template"></p>
+<p><strong>以上就是如何在Android Studio/IntelliJ编辑器中创建Live Template的方法，相信富有创意的各位能够创建出更多的更方便的Live Template，这对于今后的代码编写大有裨益</strong></p>
+<p>另外，我在这里推荐一篇博客：<a href="http://blog.csdn.net/DesmondJ/article/details/47017205" target="_blank" rel="external">http://blog.csdn.net/DesmondJ/article/details/47017205</a></p>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-10T12:17:57.000Z" itemprop="datePublished">2016-05-10</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="如何在Android-Studio-IntelliJ-中创建Live-Templates" data-title="如何在Android Studio(IntelliJ)中创建Live Templates" data-url="http://zhongzilu.github.io/2016/05/10/如何在Android-Studio-IntelliJ-中创建Live-Templates/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://oct8d1mqf.bkt.clouddn.com/2016-10-17-15%3A42%3A28.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>

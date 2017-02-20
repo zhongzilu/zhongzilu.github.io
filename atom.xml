@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhongzilu.github.io/"/>
-  <updated>2017-02-20T10:42:02.417Z</updated>
+  <updated>2017-02-20T10:00:33.180Z</updated>
   <id>http://zhongzilu.github.io/</id>
   
   <author>
@@ -14,25 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>【微表情心理学】耳朵的秘密</title>
-    <link href="http://zhongzilu.github.io/2017/02/20/%E3%80%90%E5%BE%AE%E8%A1%A8%E6%83%85%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%91%E8%80%B3%E6%9C%B5%E7%9A%84%E7%A7%98%E5%AF%86/"/>
-    <id>http://zhongzilu.github.io/2017/02/20/【微表情心理学】耳朵的秘密/</id>
-    <published>2017-02-20T10:41:39.000Z</published>
-    <updated>2017-02-20T10:42:02.417Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;如果你仔细观察我们的耳朵，你会发现耳朵就像一个倒置的胎儿。他的头部朝下，臀部朝上。耳朵可以被看做事他人体的缩小版&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;耳朵大小某种程度上体现一个人的生命力和思想深度&quot;&gt;&lt;a href=&quot;#耳朵大小某种
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>Hello from zhongzilu</title>
@@ -60,6 +41,90 @@
     <summary type="html">
     
       &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Android Studio(IntelliJ)中创建Live Templates</title>
+    <link href="http://zhongzilu.github.io/2016/05/10/%E5%A6%82%E4%BD%95%E5%9C%A8Android-Studio-IntelliJ-%E4%B8%AD%E5%88%9B%E5%BB%BALive-Templates/"/>
+    <id>http://zhongzilu.github.io/2016/05/10/如何在Android-Studio-IntelliJ-中创建Live-Templates/</id>
+    <published>2016-05-10T12:17:57.000Z</published>
+    <updated>2017-02-20T12:18:50.338Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何在Android-Studio-IntelliJ中创建Live-Templates&quot;&gt;&lt;a href=&quot;#如何在Android-Studio-IntelliJ中创建Live-Templates&quot; class=&quot;headerlink&quot; title=&quot;如何在And
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Wordpress自定义栏目的使用</title>
+    <link href="http://zhongzilu.github.io/2016/05/10/Wordpress%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%8F%E7%9B%AE%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://zhongzilu.github.io/2016/05/10/Wordpress自定义栏目的使用/</id>
+    <published>2016-05-10T12:08:28.000Z</published>
+    <updated>2017-02-20T12:20:02.474Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;a href=&quot;#WordPress自定义栏目的使用&quot; class=&quot;headerlink&quot; title=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;/a&gt;WordPress自定义栏目的使用&lt;/h2&gt;&lt;blockquote&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MVC&amp;MVP模式有何不同</title>
+    <link href="http://zhongzilu.github.io/2016/05/10/MVC-MVP%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C/"/>
+    <id>http://zhongzilu.github.io/2016/05/10/MVC-MVP模式有何不同/</id>
+    <published>2016-05-10T11:54:32.000Z</published>
+    <updated>2017-02-20T12:20:27.751Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MVC-amp-MVP模式有何不同&quot;&gt;&lt;a href=&quot;#MVC-amp-MVP模式有何不同&quot; class=&quot;headerlink&quot; title=&quot;MVC &amp;amp; MVP模式有何不同&quot;&gt;&lt;/a&gt;MVC &amp;amp; MVP模式有何不同&lt;/h1&gt;&lt;p&gt;标签 :  
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发之MVP初体验</title>
+    <link href="http://zhongzilu.github.io/2016/05/10/Android%E5%BC%80%E5%8F%91%E4%B9%8BMVP%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>http://zhongzilu.github.io/2016/05/10/Android开发之MVP初体验/</id>
+    <published>2016-05-10T11:48:19.000Z</published>
+    <updated>2017-02-20T12:20:53.950Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Android开发-MVP之初体验&quot;&gt;&lt;a href=&quot;#Android开发-MVP之初体验&quot; class=&quot;headerlink&quot; title=&quot;Android开发 MVP之初体验&quot;&gt;&lt;/a&gt;Android开发 MVP之初体验&lt;/h1&gt;&lt;p&gt;标签 ：Androi
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【微表情心理学】耳朵的秘密</title>
+    <link href="http://zhongzilu.github.io/2016/05/10/%E3%80%90%E5%BE%AE%E8%A1%A8%E6%83%85%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%91%E8%80%B3%E6%9C%B5%E7%9A%84%E7%A7%98%E5%AF%86/"/>
+    <id>http://zhongzilu.github.io/2016/05/10/【微表情心理学】耳朵的秘密/</id>
+    <published>2016-05-10T10:41:39.000Z</published>
+    <updated>2017-02-20T12:21:19.465Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;如果你仔细观察我们的耳朵，你会发现耳朵就像一个倒置的胎儿。他的头部朝下，臀部朝上。耳朵可以被看做事他人体的缩小版&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;耳朵大小某种程度上体现一个人的生命力和思想深度&quot;&gt;&lt;a href=&quot;#耳朵大小某种
     
     </summary>
     

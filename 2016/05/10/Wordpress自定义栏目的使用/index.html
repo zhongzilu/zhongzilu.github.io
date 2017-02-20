@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Wordpress自定义栏目的使用 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      Wordpress自定义栏目的使用
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="WordPress自定义栏目的使用"><a href="#WordPress自定义栏目的使用" class="headerlink" title="WordPress自定义栏目的使用"></a>WordPress自定义栏目的使用</h2><blockquote>
+<p><strong>前言</strong></p>
+<p>最近有个任务，要实现在公司官网上点击某个商品的购买按钮，就跳转到对应的淘宝店页面去。由于公司官网用的WordPress平台，我之前只是听说过，并没有实质性使用过，所以一开始就是一头雾水，再加上网站原本是由外包公司做的，交接时没有任何文档，因此我根本不知如何下手，但最后还是硬着头皮去做了。</p>
+</blockquote>
+<p>我思考着要完成这个任务我需要怎么做，由于网站上的内容都是动态从数据库中取的，所以如果我要实现点击购买按钮就跳转到对应网店的功能，就不可能在代码中把跳转的店铺地址写死了，必须要从数据库中去读取，并且还要和商品关联起来才行。</p>
+<p>这其中肯定涉及到把链接地址写入数据库，WordPress提供了一个管理后台，通过管理后台可以把数据写入数据库。</p>
+<p>打开后台，找到文章编辑页面，在右上方有个<code>显示选项</code>，展开后可以显示和隐藏模块。勾选<code>自定义栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460715829974.png" alt="显示选项"></p>
+<p>在页面下方可以看到这个模块，在这里可以新增自定义的数据字段，并给它赋值。<br><img src="http://www.bit100.com/.zhongzilu/image/1460715932310.png" alt="自定义栏目"></p>
+<p>拿我的任务来举例，我点击购买按钮之后跳转到对应的商品淘宝店，所以商品淘宝店的地址就需要写入数据库，所以现在新增一个自定义字段，点击<code>输入新栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460716205273.png" alt="添加自定义栏目"></p>
+<p>输入自定义名称和值，输入完成后点击<code>添加自定义栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460716383075.png" alt="添加自定义栏目"></p>
+<p>添加完之后就是如下图所示<br><img src="http://www.bit100.com/.zhongzilu/image/1460773373270.png" alt="添加自定义栏目成功"></p>
+<p><strong>自定义栏目添加成功了，那么问题来了，我们如何取到自定义栏目的值并显示在页面上呢？</strong></p>
+<p>在WordPress中有个<code>get_post_meta()</code>的函数，官方的解释是：</p>
+<blockquote>
+<p>This function returns the values of the custom fields with the specified key from the specified post.</p>
+</blockquote>
+<p>翻译过来大概的意思是：该函数用于取出用户设置的自定义字段的值。</p>
+<p><strong>用途</strong></p>
+<p>该函数的用处很多，很多主题用来设置文章相应图片的设置，这与将远程图像设置为缩略图有异曲同工之妙，当然自定义字段还可以用于存储许多我们觉得更有用的东西，例如统计信息，等等。</p>
+<p><strong>用法</strong></p>
+<blockquote>
+<p><code>&lt;?php $meta_values = get_post_meta($post_id, $key, $single); ?&gt;</code></p>
+</blockquote>
+<p><strong>参数解释</strong></p>
+<blockquote>
+<p><code>$post_id</code>文章的ID（如果在循环中，你可以用 get_the_ID()来设置）,<br><code>$key</code>自定义字段的名称（键值）,<br><code>$single</code>是否以字符串形式返回，false会返回数组形式。</p>
+</blockquote>
+<p><strong>缺省用法</strong></p>
+<blockquote>
+<p><code>&lt;?php $value = get_post_meta(76, &#39;key&#39;); ?&gt;</code></p>
+</blockquote>
+<p><strong>实例</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (have_posts()) :<span class="comment">//如果有文章</span></div><div class="line"> <span class="keyword">while</span> (have_posts()) : the_post(); <span class="comment">//开启主循环</span></div><div class="line">   $value  = get_post_meta(get_the_ID(),<span class="string">'custom_meta'</span>,<span class="keyword">true</span>);</div><div class="line"> <span class="keyword">endwhile</span>; </div><div class="line"> <span class="keyword">endif</span>;</div></pre></td></tr></table></figure></p>
+<p>上面介绍完<code>get_post_meta()</code>函数，现在我们就来实现我的这个任务。<br>在项目源代码中找到使用的主题的文件夹，我的文件夹位置为：<code>htdocs/wp-content/themes/jitatheme/</code><br>再找到<code>function.php</code>文件并打开，在这里我们将封装成一个获取地址的函数，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*获取淘宝店铺商品的地址</div><div class="line">*/</div><div class="line">function getTB_Url($postID)&#123;</div><div class="line">  $key = &apos;direct_to_tb&apos;;</div><div class="line">  $url = get_post_meta($postID, $key, true);</div><div class="line">  return $url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后找到我们要修改的页面，用一个<code>&lt;a&gt;</code>标签来实现点击跳转。我们在<code>&lt;a&gt;</code>标签的href属性中来调用刚才封装的函数，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a class=&quot;btn&quot; href=&quot;&lt;?php echo getTB_Url(get_the_ID()); ?&gt;&quot; target=&quot;_blank&quot;&gt;点击购买&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>最后在页面上点击测试一下，跳转正确，任务完毕。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<ul>
+<li>了解了如何在WordPress后台管理界面添加自定义栏目</li>
+<li>了解了如何获取自定义栏目的值和<code>get_post_meta()</code>函数的使用</li>
+</ul>
+</blockquote>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-10T12:08:28.000Z" itemprop="datePublished">2016-05-10</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="Wordpress自定义栏目的使用" data-title="Wordpress自定义栏目的使用" data-url="http://zhongzilu.github.io/2016/05/10/Wordpress自定义栏目的使用/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://oct8d1mqf.bkt.clouddn.com/2016-10-17-15%3A42%3A28.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>
