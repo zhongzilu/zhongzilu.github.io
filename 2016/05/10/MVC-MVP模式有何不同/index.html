@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>MVC&amp;MVP模式有何不同 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      MVC&amp;MVP模式有何不同
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h1 id="MVC-amp-MVP模式有何不同"><a href="#MVC-amp-MVP模式有何不同" class="headerlink" title="MVC &amp; MVP模式有何不同"></a>MVC &amp; MVP模式有何不同</h1><p>标签 :  MVP MVC</p>
+<hr>
+<p><strong>本文是翻译国外的一篇文章,英语水平有限,翻译有误的地方希望提出来,以方便修改,谢谢</strong></p>
+<blockquote>
+<p>原文传送门: <a href="http://www.infragistics.com/community/blogs/todd_snyder/archive/2007/10/17/mvc-or-mvp-pattern-whats-the-difference.aspx" target="_blank" rel="external">http://www.infragistics.com/community/blogs/todd_snyder/archive/2007/10/17/mvc-or-mvp-pattern-whats-the-difference.aspx</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Over the years I have mentored many developers on using design patterns and best practices.<br>多年来我有辅导过很多开发者使用设计模式和最佳实践</p>
+<p>One question that keeps coming up over and over again is:What are the differences between the Model View Controller (MVC) and Model View Presenter (MVP) patterns?<br>一遍又一遍出现的一个问题是: 模型 视图 控制器(MVC模式)和模型 视图 主持人(MVP模式)之间有哪些不同?</p>
+<p>Surprisingly the answer is more complex than what you would suspect.<br>令人惊讶的是答案比你想象中的更复杂</p>
+<p>Part of reasons I think many developers shy away from using either pattern is the confusion over the differences.<br>我认为一部分原因是因为许多开发者回避使用两种模式带来的混乱</p>
+<p>Before we dig into the differences let’s examine how the patterns work and the key benefits to using either one.<br>在我们深入研究两种模式如何工作和使用其中一种带来的关键利益之前</p>
+<p>Both (MVC &amp; MVP) patterns have been use for several years and address a key OO principal namely separation of concerns between the UI and the business layers.<br>这两种模式(MVC &amp; MVP)已经使用了好几年,并且处理面向对象的关键就是分离界面UI层和业务层.</p>
+<p>There are a number of frameworks is use today that based on these patterns including: JAVA Struts, ROR, Microsoft Smart Client Software Factory (CAB), Microsoft Web Client Software Factory, and the recently announced ASP.Net MVC framework.<br>这里有一些如今正在被使用的,基于这些模式的框架,包括:Java Struts, ROR, Microsoft Smart Client Software Factory (CAB), Microsoft Web Client Software Factory,还有最近发布的ASP.Net MVC框架</p>
+<p><strong>Model View Controller (MVC) Pattern</strong><br><img src="http://www.bit100.com/.zhongzilu/image/MVC_View.jpg" alt="MVC"></p>
+<p>The MVC pattern is a UI presentation pattern that focuses on separating the UI (View) from its business layer (Model).<br>MVC模式是一个着重于从业务层(Model)分离UI(View)的UI表示模型</p>
+<p>The pattern separates responsibilities across three components: the view is responsible for rending UI elements, the controller is responsible for responding to UI actions, and the model is responsible for business behaviors and state management.<br>模型分离的重任横跨三个组件: 视图层负责渲染UI元素, 控制器负责响应UI操作, 模型层负责业务逻辑和状态管理.</p>
+<p>In most implementation all three components can directly interact with each other and in some implementations the controller is responsible for determining which view to display (<a href="https://msdn.microsoft.com/en-us/library/ms978723.aspx" target="_blank" rel="external">Front Controller Pattern</a>),<br>多数的实现方法，可以使这三个组件互相直接作用影响，有一些实现的方法里，控制器负责确定哪些试图的显示（<a href="https://msdn.microsoft.com/en-us/library/ms978723.aspx" target="_blank" rel="external">Front Controller Pattern</a>)</p>
+<p><strong>Model View Presenter (MVP) Pattern</strong><br><img src="http://www.bit100.com/.zhongzilu/image/MVP_View.jpg" alt="MVP"></p>
+<p>The MVP pattern is a UI presentation pattern based on the concepts of the MVC pattern.<br>MVP模型是基于MVC模型的UI表示模型。</p>
+<p>The pattern separates responsibilities across four components: the view is responsible for rending UI elements, the view interface is used to loosely couple the presenter from its view, the presenter is responsible for interacting between the view/model, and the model is responsible for business behaviors and state management.<br>模型分离的重任横跨四个组件:视图层负责渲染UI元素， 视图层接口被用于把中介者（Presenter)从视图中解耦，中介者负责视图（View)和模型(Model)之间的交互,模型层负责业务逻辑和状态管理.</p>
+<p>In some implementations the presenter interacts with a service (controller) layer to retrieve/persist the model.<br>在某些实现方法中，中介者会和服务层/控制器层交互来获取或持有model。</p>
+<p>The view interface and service layer are commonly used to make writing unit tests for the presenter and the model easier.<br>视图接口和服务层通常被用来编写中介者和模型之间的单元测试。</p>
+</blockquote>
+<h2 id="关键优势"><a href="#关键优势" class="headerlink" title="关键优势"></a>关键优势</h2><blockquote>
+<p>Before using any pattern a developers needs to consider the pros and cons of using it.<br>在使用任何开发模式之前，开发人员需要考虑使用它的优点和缺点。</p>
+<p>There are a number of key benefits to using either the MVC or MVP pattern (See list below).<br>这里有一些使用MVC和MVP模型的关键好处（请看下面的列表）。</p>
+<p>But, there also a few drawbacks to consider. The biggest drawbacks are additional complexity and learning curve.<br>但是，这里也有一些缺点需要考虑。最大的缺点就是它的复杂性和需要付出额外的学习成本。</p>
+<p>While the patterns may not be appropriate for simple solutions; advance solutions can greatly benefit from using the pattern.<br>这种模型可能不太适合一般的解决方案；好的解决方案可以从中获得更大的利益。</p>
+<p>I’m my experience a have seen a few solutions eliminate a large amount of complexity but being re-factored to use either pattern.<br>在我的经历中，我见过使用这些模式来重构项目，解决了不少的复杂的问题。</p>
+<ul>
+<li><p>Loose coupling – The presenter/controller are an intermediary between the UI code and the model. This allows the view and the model to evolve independently of each other.<br>松散耦合 - presenter或控制器在UI代码和模型之间充当着中间媒介的角色，这就使得视图和控制器之间互相独立。</p>
+</li>
+<li><p>Clear separation of concerns/responsibility<br>清晰分离关注点和职责（关于concerns的翻译请自行有道）<br>– UI (Form or Page) – Responsible for rending UI elements<br>UI(表单或页面） - 负责渲染UI元素<br> – Presenter/controller – Responsible for reacting to UI events and interacts with the model<br>中介者/控制器 - 负责对UI事件与模型进行交互<br> – Model – Responsible for business behaviors and state management<br>模型 - 负责业务逻辑和状态管理.</p>
+</li>
+<li><p>Test Driven – By isolating each major component (UI, Presenter/controller, and model) it is easier to write unit tests. This is especially true when using the MVP pattern which only interacts with the view using an interface.<br>测试驱动 - 通过分离每个主要组件（UI,Presenter/controller, model)更容易编写单元测试，当使用MVP模型且只通过接口来和视图层交互时，就更应该这样做。</p>
+</li>
+<li><p>Code Reuse – By using a separation of concerns/responsible design approach you will increase code reuse. This is especially true when using a full blown domain model and keeping all the business/state management logic where it belongs.<br>代码复用 - 通过使用分离关注点和职责的设计可以增加你的代码复用。在使用全面的域模型和保持所属业务和状态管理的逻辑时，就更应该这样做。</p>
+</li>
+<li><p>Hide Data Access – Using these patterns forces you to put the data access code where it belongs in a data access layer. There a number of other patterns that typical works with the MVP/MVC pattern for data access. Two of the most common ones are repository and unit of work. (See Martin Fowler – Patterns of Enterprise Application Architecture for more details)<br>隐藏数据访问 - 使用这种模式会强迫你使用数据接入层中的数据接入代码。这里有一些其他典型的使用MVP/MVC模型来进行数据访问的模型，最常见的两个就是库和工作单元。（想看更多细节请看Martin Fowler的企业应用架构模式【Martin Fowler - Patterns of Enterprise Application Architecture】)</p>
+</li>
+<li><p>Flexibility/Adaptable – By isolating most of your code into the presenter/controller and model components your code base is more adaptable to change. For example consider how much UI and data access technologies have changed over the years and the number of choices we have available today. A properly design solution using MVC or MVP can support multi UI and data access technologies at the same time.<br>灵活/适用 - 通过分离Presenter/controller和model组件可以使你的代码更灵活适用.举个例子,这些年来有许多UI技术和数据接入技术都有所改变,如今我们有许多的选择.恰当的使用MVC或者MVP模式来设计解决方案,可以同时支持多种UI技术和数据接入技术.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="关键区别"><a href="#关键区别" class="headerlink" title="关键区别"></a>关键区别</h2><blockquote>
+<p>So what really are the differences between the MVC and MVP pattern.<br>Actually there are not a whole lot of differences between them.<br>因此,MVC和MVP模式之间真正的区别.其实是没有太多区别.</p>
+<p>Both patterns focus on separating responsibility across multi components and promote loosely coupling the UI (View) from the business layer (Model).<br>这两者都是专注跨组件分离职责,促进UI层从业务层中解耦.</p>
+<p>The major differences are how the pattern is implemented and in some advanced scenarios you need both presenters and controllers.<br>主要的区别在于如何实现,在某些高级的应用场景中需要同时有Presenter和Controler</p>
+<p>Here are the key differences between the patterns:<br>这里有些这两种模式之间的关键区别:</p>
+<ul>
+<li><p>MVP模式<br>– View is more loosely coupled to the model. The presenter is responsible for binding the model to the view.<br>视图和模型之间耦合更加松散.中介者负责把model绑定到视图层.<br>– Easier to unit test because interaction with the view is through an interface<br>更加容易编写单元测试,因为都是通过接口和视图交互的.<br>– Usually view to presenter map one to one. Complex views may have multi presenters.<br>通常情况下,视图和中介者是一一对应的.复杂的视图可能会有多个中介者.</p>
+</li>
+<li><p>MVC模式<br>– Controller are based on behaviors and can be shared across views<br>控制器是建立在行为上的,并且可以跨视图共享<br>– Can be responsible for determining which view to display<br>能够负责决定要显示哪个视图</p>
+</li>
+</ul>
+<p>Hopefully you found this post interesting and it helped clarify the differences between the MVC and MVP pattern.<br>希望你会觉得这篇文章是有趣的,这篇文章会帮助你理清MVC和MVP模式之间的区别.</p>
+<p>If not, do not be discouraged patterns are powerful tools that can be hard to use sometimes.<br>如果没理清,请不要泄气,模型是一个强大的工具,以至于有时在使用时会觉得很困难</p>
+<p>One thing to remember is that a pattern is a blue print and not an out of the box solutions.<br>你只需要记住,模型只是一个蓝图,并不是快速的解决方案.</p>
+<p>Developers should use them as a guide and modify the implementation according to their problem domain.<br>开发者应该把它们作为指导手册,并根据遇到的问题修正实现方案.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>作者</strong> :<a href="http://www.bit100.com" target="_blank" rel="external">zhongzilu</a></p>
+</blockquote>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-10T11:54:32.000Z" itemprop="datePublished">2016-05-10</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="MVC-MVP模式有何不同" data-title="MVC&amp;MVP模式有何不同" data-url="http://zhongzilu.github.io/2016/05/10/MVC-MVP模式有何不同/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://oct8d1mqf.bkt.clouddn.com/2016-10-17-15%3A42%3A28.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>

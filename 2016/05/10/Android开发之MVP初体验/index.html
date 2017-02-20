@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Android开发之MVP初体验 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      Android开发之MVP初体验
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h1 id="Android开发-MVP之初体验"><a href="#Android开发-MVP之初体验" class="headerlink" title="Android开发 MVP之初体验"></a>Android开发 MVP之初体验</h1><p>标签 ：Android MVP MVC</p>
+<hr>
+<p>熟悉安卓开发的童鞋应该都熟悉MVC架构模式, MVC开发模式即:</p>
+<blockquote>
+<p>Model(模型) – View(视图) – Control(控制器)</p>
+</blockquote>
+<p>逻辑图如下:<br><img src="http://www.bit100.com/.zhongzilu/image/MVC.png" alt="MVC"></p>
+<p>而这种开发模式有个缺点,就是在项目越来越大时,文件会越来越多,查找起来很不方便,而且Activity或者Fragment里面的代码会越来越臃肿,看起来很凌乱,要修改更是让人头疼,于是就提出了一种MVP的开发模式,MVP开发模式即:</p>
+<blockquote>
+<p>Model(模型) – View(视图) – Presente(任命者/中介)</p>
+</blockquote>
+<p>逻辑图如下:<br><img src="http://www.bit100.com/.zhongzilu/image/mvp.png" alt="MVP"></p>
+<p>网上有很多讲解MVP的文章和教程,我这里就不详细介绍了,但还有很多人看过教程之后依然不知如何实现MVP,今天主要通过实际代码的方式来体验MVP开发</p>
+<p>本次使用的代码为Github上的一个开源项目,名为<a href="https://github.com/antoniolg/androidmvp" target="_blank" rel="external">androidmvp</a></p>
+<blockquote>
+<p>传送门 <a href="https://github.com/antoniolg/androidmvp" target="_blank" rel="external">https://github.com/antoniolg/androidmvp</a></p>
+</blockquote>
+<h2 id="先看看界面"><a href="#先看看界面" class="headerlink" title="先看看界面"></a>先看看界面</h2><p>界面很简单,就是一个登录界面和一个ListView填充的主界面,登录之后跳转到主界面,主界面上显示一个列表<br><img src="http://www.bit100.com/.zhongzilu/image/loginScreenShot.png" alt="登录界面"><img src="http://www.bit100.com/.zhongzilu/image/mainScreenShot.png" alt="主界面"></p>
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>用Android Studio打开项目之后可以看到如下的项目结构<br><img src="http://www.bit100.com/.zhongzilu/image/structure.png" alt="项目结构"></p>
+<p>通过截图可以看出,该项目是根据<strong>界面来分类的</strong>,Login文件夹下放的是所有与登录界面有关的文件,main文件夹下放的是所有与主界面有关的文件</p>
+<p>其中, Login文件夹下共有6个文件, 3个类文件, 3个接口文件</p>
+<p>类文件:</p>
+<blockquote>
+<ul>
+<li>LoginActivity</li>
+<li>LoginInteratorImpl</li>
+<li>LoginPresenterImpl</li>
+</ul>
+</blockquote>
+<p>接口文件:</p>
+<blockquote>
+<ul>
+<li>LoginView</li>
+<li>LoginInteractor</li>
+<li>LoginPresenter</li>
+</ul>
+</blockquote>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>打开<strong>LoginActivity.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class LoginActivity extends Activity implements LoginView, View.OnClickListener &#123;</div><div class="line"></div><div class="line">    private ProgressBar progressBar;</div><div class="line">    private EditText username;</div><div class="line">    private EditText password;</div><div class="line">    private LoginPresenter presenter;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_login);</div><div class="line"></div><div class="line">        //实例化控件</div><div class="line">        ...</div><div class="line"></div><div class="line">        presenter = new LoginPresenterImpl(this);</div><div class="line">    &#125;</div><div class="line">    ...</div></pre></td></tr></table></figure></p>
+<p>从上面代码可以看出,该Activity实现了LoginView的接口和View的点击事件, 并且实例化了一个LoginPresenterImpl对象</p>
+<p>现在打开<strong>LoginView.java</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public interface LoginView &#123;</div><div class="line">    void showProgress();</div><div class="line"></div><div class="line">    void hideProgress();</div><div class="line"></div><div class="line">    void setUsernameError();</div><div class="line"></div><div class="line">    void setPasswordError();</div><div class="line"></div><div class="line">    void navigateToHome();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到LoginView文件中定义了几个接口, 通过名称可以很容易知道每个接口是用来干什么的<br>返回LoginActivity也很容易发现是如何实现这几个接口的,如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.VISIBLE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.GONE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsernameError</span><span class="params">()</span> </span>&#123;</div><div class="line">    username.setError(getString(R.string.username_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPasswordError</span><span class="params">()</span> </span>&#123;</div><div class="line">    password.setError(getString(R.string.password_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">navigateToHome</span><span class="params">()</span> </span>&#123;</div><div class="line">    startActivity(<span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class));</div><div class="line">    finish();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>打开<strong>LoginPresenter.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LoginPresenter</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">validateCredentials</span><span class="params">(String username, String password)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看到定义了两个接口,其中validateCredentials接口是用来验证用户名和密码是否通过验证的<br>在LoginActivity中也有实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override public void onClick(View v) &#123;</div><div class="line">    presenter.validateCredentials(username.getText().toString(), </div><div class="line">        password.getText().toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>看到这里, 我们可以总结出LoginActivity没有做任何逻辑相关的事情,而是在做界面显示相关和界面跳转的事情, 就连验证帐号的逻辑都是交给LoginPresenterImpl类的</strong></p>
+<p>那么现在顺藤摸瓜,打开LoginPresenterImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class LoginPresenterImpl implements LoginPresenter, </div><div class="line">        LoginInteractor.OnLoginFinishedListener &#123;</div><div class="line"></div><div class="line">    private LoginView loginView;</div><div class="line">    private LoginInteractor loginInteractor;</div><div class="line"></div><div class="line">    public LoginPresenterImpl(LoginView loginView) &#123;</div><div class="line">        this.loginView = loginView;</div><div class="line">        this.loginInteractor = new LoginInteractorImpl();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //其他方法的实现</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们可以看到该类实现了LoginPresenter和LoginInteractor.OnLoginFinishedListener的接口,  并且在构造方法的参数为LoginView, 那么问题来了, <strong>为什么要传递LoginView类型的参数呢?</strong></p>
+<p>我们刚才也看到了,在LoginView中定义了几个接口, 而在LoginActivity中有对这几个接口的实现, 所以传递这个参数, 是有利于LoginPresenterImpl类调用LoginActivity的实现方法, 用于界面上的显示, 这就达到了逻辑代码和显示代码的分离</p>
+<p>好了,现在来看看是怎么实现LoginPresenter中的validateCredentials接口的吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override public void validateCredentials(String username, String password) &#123;</div><div class="line"></div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.showProgress();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    loginInteractor.login(username, password, this);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看到这里,有同学该有疑问了,<strong>为什么在这个方法里我没看到实现帐号验证的具体逻辑呢?</strong></p>
+<p>没错,这里不应该有帐号验证的具体逻辑代码,因为LoginPresenterImpl类充当的是任命者或者称中介者的身份, 中介者只负责联系<strong>界面类</strong>和<strong>具体实现逻辑代码的类</strong>,如果还不能理解,就想想房地产中介吧, 他们只负责联系买房者和卖房者, 其他的事都不管(抱歉, 我没有鄙视或看不起房地产中介人员的意思, 这里只是做个举例, 在此说声对不起).</p>
+<p>我们看到代码中, 把接收到的username和password参数传递给了一个login方法, 该方法在LoginInteractor文件中, 我们再打开<strong>LoginInteractor.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface LoginInteractor &#123;</div><div class="line"></div><div class="line">    interface OnLoginFinishedListener &#123;</div><div class="line">        void onUsernameError();</div><div class="line"></div><div class="line">        void onPasswordError();</div><div class="line"></div><div class="line">        void onSuccess();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void login(String username, String password, OnLoginFinishedListener listener);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以定义了一个login接口和一个OnLoginFinishedListener接口类, 返回LoginPresenterImpl.java文件可以很容易看到OnLoginFinishedListener接口类中接口的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@Override public void onUsernameError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setUsernameError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onPasswordError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setPasswordError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onSuccess() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.navigateToHome();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这些接口的实现中同样只是调用LoginView中的接口,并没有具体的逻辑操作代码</p>
+<p>在该类的构造方法中我们会发现, 这里实例化了一个<strong>LoginInteractorImpl</strong>对象, 我们现在打开LoginInteractorImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class LoginInteractorImpl implements LoginInteractor &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void login(final String username, final String password, final OnLoginFinishedListener listener) &#123;</div><div class="line">    </div><div class="line">        // Mock login. I&apos;m creating a handler to delay the answer a couple of seconds</div><div class="line">        new Handler().postDelayed(new Runnable() &#123;</div><div class="line">        </div><div class="line">            @Override public void run() &#123;</div><div class="line">            </div><div class="line">                boolean error = false;</div><div class="line">                if (TextUtils.isEmpty(username))&#123;</div><div class="line">                    listener.onUsernameError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (TextUtils.isEmpty(password))&#123;</div><div class="line">                    listener.onPasswordError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (!error)&#123;</div><div class="line">                    listener.onSuccess();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;, 2000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们可以看到该类实现了LoginInteractor中的login接口, 并且在login方法中进行了具体的逻辑处理, 如果验证通过, 调用onSuccess接口</p>
+<p><strong>好了,整个登录流程讲完了,最后我们再来梳理一下整个流程:</strong></p>
+<blockquote>
+<ol>
+<li>在LoginActivity中,通过LoginPresenter接口类中的validateCredentials接口,把username和password传递给LoginPresenter的实现类LoginPresenterImpl</li>
+<li>LoginPresenterImpl类再通过LoginInteractor接口类中的login接口, 把username和password传递给LoginInteractor的实现类LoginInteractorImpl</li>
+<li>在LoginInteractorImpl类中进行具体的逻辑处理, 如果验证通过,则调用LoginInteractor.OnLoginFinishedListener接口类中的onSuccess接口, 即调用了LoginPresenterImpl类中实现的onSuccess接口</li>
+<li>LoginPresenterImpl类中实现的onSuccess接口中,调用了LoginView接口类中的navigateToHome接口,即调用了LoginActivity类中实现的navigateToHome接口</li>
+<li>最后在navigateToHome接口中实现Activity的跳转,跳转到MainActivity</li>
+</ol>
+</blockquote>
+<p><strong>流程图如下:</strong><br><img src="http://www.bit100.com/.zhongzilu/image/flow_chart.png" alt="Alt text"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在MVP开发模式中, Activity只负责界面的显示和跳转相关的操作, 具体的逻辑处理通过调用接口来传递给Presenter(中介者) 既不做界面显示的操作,也不做具体的逻辑处理操作, 具体的逻辑处理通过调用接口,让Interactor即交互类来完成</p>
+<p>交互类的逻辑处理结果,通过调用Presenter中实现的接口, 再由Presenter要实现的接口中调用Activity中实现的接口来进行UI的显示或界面跳转</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>好了,<code>安卓开发 MVP之初体验</code>讲完了,写了那么多,希望大家能够看懂了,如果还有什么问题,可以问我<a href="http://ask.android-studio.org/?/people/zhongzilu" target="_blank" rel="external">Follow Me</a></p>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-10T11:48:19.000Z" itemprop="datePublished">2016-05-10</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="Android开发之MVP初体验" data-title="Android开发之MVP初体验" data-url="http://zhongzilu.github.io/2016/05/10/Android开发之MVP初体验/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://oct8d1mqf.bkt.clouddn.com/2016-10-17-15%3A42%3A28.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>
