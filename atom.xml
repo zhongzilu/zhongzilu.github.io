@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhongzilu.github.io/"/>
-  <updated>2017-02-20T05:28:16.899Z</updated>
+  <updated>2017-02-20T09:10:39.462Z</updated>
   <id>http://zhongzilu.github.io/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello from zhongzilu</title>
+    <link href="http://zhongzilu.github.io/2017/02/20/Hello-from-zhongzilu/"/>
+    <id>http://zhongzilu.github.io/2017/02/20/Hello-from-zhongzilu/</id>
+    <published>2017-02-20T09:09:38.000Z</published>
+    <updated>2017-02-20T09:10:39.462Z</updated>
+    
+    <content type="html"><![CDATA[<p>###Hello from zhongzilu.</p>
+<p>This is a test page.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###Hello from zhongzilu.&lt;/p&gt;
+&lt;p&gt;This is a test page.&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
