@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Android Canvas绘制图形-拾音器之动画篇 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      Android Canvas绘制图形-拾音器之动画篇
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="Android-Canvas绘制图形-拾音器之动画篇"><a href="#Android-Canvas绘制图形-拾音器之动画篇" class="headerlink" title="Android Canvas绘制图形 拾音器之动画篇"></a>Android Canvas绘制图形 拾音器之动画篇</h2><p>标签 <code>Android Canvas</code> <code>View Animation</code> <code>ValueAnimator</code> <code>View动画</code> <code>属性动画</code></p>
+<p>前几天我写过一篇文章，叫<a href="">Android Canvas 绘制图形 – 拾音器</a>，那篇文章旨在讲解如何使用Canvas来绘制图形，并没有实现指针的偏转动画实现，那么，今天我们就来看看指针的偏转动画如何实现。</p>
+<h3 id="知识准备"><a href="#知识准备" class="headerlink" title="知识准备"></a>知识准备</h3><p>安卓上实现动画的方式分为两种，一种是View动画，包名：<code>android.view.animation</code>，另一种是属性动画，包名：<code>android.animation</code>。</p>
+<p>View动画从字面上理解就是作用对象只能是View的派生类，其他的就只能心有余而力不足了。</p>
+<p>属性动画的作用对象就不只是针对View的派生类了，他能操作很多属性，比如改变一个控件的宽高值；一个数值平滑过渡到另一个数值等，总之，View动画能做的他能做，View动画不能做的他也能做。对，你没看错，就是这么屌！</p>
+<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>View动画，包括以下几种类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AlphaAnimation</td>
+<td style="text-align:center">渐变透明度</td>
+</tr>
+<tr>
+<td style="text-align:center">RotateAnimation</td>
+<td style="text-align:center">画面旋转</td>
+</tr>
+<tr>
+<td style="text-align:center">ScaleAnimation</td>
+<td style="text-align:center">尺寸缩放</td>
+</tr>
+<tr>
+<td style="text-align:center">TranslateAnimation</td>
+<td style="text-align:center">位置移动</td>
+</tr>
+</tbody>
+</table>
+<p>属性动画(Property Animation)，包括以下几种类型：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ObjectAnimator</td>
+<td style="text-align:center">动画执行类，对对象进行操作</td>
+</tr>
+<tr>
+<td style="text-align:center">ValueAnimator</td>
+<td style="text-align:center">动画执行类，对数值进行操作</td>
+</tr>
+</tbody>
+</table>
+<p>今天我们将使用到的是<code>ValueAnimation</code>类，接下来对动画进行分析，看看要实现指针偏转的动画需要用到什么方法。</p>
+<ol>
+<li>指针偏转是通过旋转角度来实现的，如果我们要使偏转产生动画，就需要动态的改变旋转的角度。</li>
+<li>旋转的角度参数类型是float，在ValueAnimator类中的ofFloat()方法正好是动态改变float数值的，所以我们要用到它。</li>
+<li>数值每改变一次，我们都要把变化后的数值赋给rotate()方法，使指针旋转相应角度，所以这里需要对数值变化进行监听，因此会用到addUpdateListener()方法</li>
+<li>赋值给rotate()方法后，需要对视图进行重绘，因此我们需要用到视图绘制过程中的invalidate()方法</li>
+</ol>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这里我们用<code>mValue</code>表示指向数值，用变量<code>mAngle</code>表示通过计算后的偏转角度</p>
+<p>通常的做法，我们都是在Activity或者Fragment里通过调用一个方法，将指针要指向的数值(<code>mValue</code>)数的方式传递过去，这样的话，我们就有两种思路。</p>
+<p>一：使用<code>ofFloat()</code>方法动态改变指针指向的数值，即传递过来的参数mValue</p>
+<p>二：将传递过来的参数进行计算成指针偏转的角度(<code>mAngle</code>)，然后使用<code>ofFloat()</code>方法动态改变角度数值</p>
+<p>这两种方法都是可取的，具体情况具体分析，由于在界面上我们要动态显示指针指向的数值，如果采用第二种的话，那么我们要计算两次，一次是将指向mValue计算为mAngle，数值动态变化后还要将mAngle计算为mValue，这样比较麻烦，所以我们采用第一种思路。</p>
+<p>因此，要实现指针的偏转动画，代码可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">private int mMaxValue = 50;  //分值区间的最大值</div><div class="line">private int mMinValue = -50; //分值区间的最小值</div><div class="line">/**输入值，通过输入值来计算指针的旋转角度，即&#123;@mAngle&#125;的值,</div><div class="line"> * 最终在界面上呈现的效果是指针指向输入值的刻度上*/</div><div class="line">private String mValue = &quot;- -&quot;;</div><div class="line">/**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/</div><div class="line">private float mArc = 180f;</div><div class="line">/**指针旋转角度值*/</div><div class="line">private float mAngle = 0f;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">/**</div><div class="line"> * 设置指针指向数值，并产生旋转动画</div><div class="line"> * 这里我们动态改变指向数值</div><div class="line"> * @param value 指向数值</div><div class="line"> */</div><div class="line">public void setValue(float value)&#123;</div><div class="line">    //&#123;@param value&#125;为指针将要指向的数值，即界面上看到的数值</div><div class="line">    ValueAnimator startAnimator = ValueAnimator.ofFloat(0, value);</div><div class="line"></div><div class="line">    startAnimator.addUpdateListener(</div><div class="line">       new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            //通过getAnimatedValue()取变化后的值</div><div class="line">            float md = (float) animation.getAnimatedValue();</div><div class="line">            //计算指针当前应该偏转的角度</div><div class="line">            mAngle = md * (mArc / (float) (mMaxValue - mMinValue));</div><div class="line">            //界面上显示当前指针显示的数值</div><div class="line">            mValue = String.valueOf((int)md);</div><div class="line">            //调用重绘方法</div><div class="line">            invalidate();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    startAnimator.setDuration(1000);</div><div class="line">    startAnimator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在<code>setValue()</code>方法里我们动态的改变了指针指向的数值和指针偏转的角度，并把这两个数值分别存放在全局变量<code>mValue</code>和<code>mAngle</code>，这样一来，我们只需要在<code>onDraw()</code>方法中，对指针进行旋转和但前指向数值的显示就可以了，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 注意：</div><div class="line"> * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的</div><div class="line"> * @param canvas</div><div class="line"> */</div><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);</div><div class="line">    canvas.rotate(mAngle, xc, yc);</div><div class="line"></div><div class="line">    //画指针</div><div class="line">    /**</div><div class="line">     * xc * 0.101449 = 深色刻度线条的长度</div><div class="line">     * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40</div><div class="line">     * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙</div><div class="line">     */</div><div class="line">    canvas.drawLine(xc, yc,</div><div class="line">            xc - radius + (xc * 0.101449f + mWidth * 0.064412f),</div><div class="line">            yc + 3, paintCursor);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    //值</div><div class="line">    pitchValuePaint.setAntiAlias(true);</div><div class="line">    pitchValuePaint.setTextSize((mWidth * 0.080515f));</div><div class="line">    pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line"></div><div class="line">    canvas.drawText(mValue,</div><div class="line">            xc - pitchValuePaint.measureText(mValue) / 2,</div><div class="line">            yc + (xc * 0.481481f + mWidth * 0.209339f),</div><div class="line">            pitchValuePaint);</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<p><img src="http://www.bit100.com/.zhongzilu/image/TunerView.gif" alt=""></p>
+<p>详细的代码，请移步到我的GitHub：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a></p>
+<p>我是钟子路，Thanks for watching!</p>
+
+	</div>
+	<div class="meta split">
+		<time class="post-date" datetime="2016-05-31T13:48:18.000Z" itemprop="datePublished">2016-05-31</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="Android-Canvas绘制图形-拾音器之动画篇" data-title="Android Canvas绘制图形-拾音器之动画篇" data-url="http://zhongzilu.github.io/2016/05/31/Android-Canvas绘制图形-拾音器之动画篇/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	</body>
+</html>
