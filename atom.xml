@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhongzilu.github.io/"/>
-  <updated>2017-02-20T09:57:10.458Z</updated>
+  <updated>2017-02-20T10:00:33.180Z</updated>
   <id>http://zhongzilu.github.io/</id>
   
   <author>
@@ -20,12 +20,11 @@
     <link href="http://zhongzilu.github.io/2017/02/20/Hello-from-zhongzilu/"/>
     <id>http://zhongzilu.github.io/2017/02/20/Hello-from-zhongzilu/</id>
     <published>2017-02-20T09:09:38.000Z</published>
-    <updated>2017-02-20T09:57:10.458Z</updated>
+    <updated>2017-02-20T10:00:33.180Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;##Hello from Zhongzilu&lt;/p&gt;
-&lt;p&gt;Welcome to BIT100.I’m zilu Zhong,an Android developer.Here is my blog website.I will post some blog articel
+      &lt;h2 id=&quot;Hello-from-Zhongzilu&quot;&gt;&lt;a href=&quot;#Hello-from-Zhongzilu&quot; class=&quot;headerlink&quot; title=&quot;Hello from Zhongzilu&quot;&gt;&lt;/a&gt;Hello from Zhongzilu&lt;/h2&gt;&lt;
     
     </summary>
     
