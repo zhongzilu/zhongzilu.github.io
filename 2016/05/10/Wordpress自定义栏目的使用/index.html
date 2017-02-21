@@ -110,11 +110,25 @@
 <blockquote>
 <p><code>&lt;?php $value = get_post_meta(76, &#39;key&#39;); ?&gt;</code></p>
 </blockquote>
-<p><strong>实例</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (have_posts()) :<span class="comment">//如果有文章</span></div><div class="line"> <span class="keyword">while</span> (have_posts()) : the_post(); <span class="comment">//开启主循环</span></div><div class="line">   $value  = get_post_meta(get_the_ID(),<span class="string">'custom_meta'</span>,<span class="keyword">true</span>);</div><div class="line"> <span class="keyword">endwhile</span>; </div><div class="line"> <span class="keyword">endif</span>;</div></pre></td></tr></table></figure></p>
+<p><strong>实例</strong></p>
+<pre><code class="php">if (have_posts()) ://如果有文章
+ while (have_posts()) : the_post(); //开启主循环
+   $value  = get_post_meta(get_the_ID(),&#39;custom_meta&#39;,true);
+ endwhile; 
+ endif;
+</code></pre>
 <p>上面介绍完<code>get_post_meta()</code>函数，现在我们就来实现我的这个任务。<br>在项目源代码中找到使用的主题的文件夹，我的文件夹位置为：<code>htdocs/wp-content/themes/jitatheme/</code><br>再找到<code>function.php</code>文件并打开，在这里我们将封装成一个获取地址的函数，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*获取淘宝店铺商品的地址</div><div class="line">*/</div><div class="line">function getTB_Url($postID)&#123;</div><div class="line">  $key = &apos;direct_to_tb&apos;;</div><div class="line">  $url = get_post_meta($postID, $key, true);</div><div class="line">  return $url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后找到我们要修改的页面，用一个<code>&lt;a&gt;</code>标签来实现点击跳转。我们在<code>&lt;a&gt;</code>标签的href属性中来调用刚才封装的函数，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a class=&quot;btn&quot; href=&quot;&lt;?php echo getTB_Url(get_the_ID()); ?&gt;&quot; target=&quot;_blank&quot;&gt;点击购买&lt;/a&gt;</div></pre></td></tr></table></figure></p>
-<p>最后在页面上点击测试一下，跳转正确，任务完毕。</p>
+<pre><code>/**
+*获取淘宝店铺商品的地址
+*/
+function getTB_Url($postID){
+  $key = &#39;direct_to_tb&#39;;
+  $url = get_post_meta($postID, $key, true);
+  return $url;
+}
+</code></pre><p>然后找到我们要修改的页面，用一个<code>&lt;a&gt;</code>标签来实现点击跳转。我们在<code>&lt;a&gt;</code>标签的href属性中来调用刚才封装的函数，代码如下：</p>
+<pre><code>&lt;a class=&quot;btn&quot; href=&quot;&lt;?php echo getTB_Url(get_the_ID()); ?&gt;&quot; target=&quot;_blank&quot;&gt;点击购买&lt;/a&gt;
+</code></pre><p>最后在页面上点击测试一下，跳转正确，任务完毕。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
 <ul>
 <li>了解了如何在WordPress后台管理界面添加自定义栏目</li>

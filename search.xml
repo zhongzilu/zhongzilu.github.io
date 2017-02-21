@@ -18,13 +18,17 @@
       <title><![CDATA[Hello World]]></title>
       <url>http://zhongzilu.github.io/2017/02/20/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
       
@@ -109,8 +113,78 @@
 <p>好了，废话不多说，今天主要讲讲对于这个问题的解决方案。</p>
 <h3 id="魅族官方社区的回复截图"><a href="#魅族官方社区的回复截图" class="headerlink" title="魅族官方社区的回复截图"></a>魅族官方社区的回复截图</h3><p><img src="http://www.bit100.com/.zhongzilu/image/meizu_Bug_solution_Screenshot.png" alt="Bug solution screenshot"><br>根据回复，我们可以得知，魅族在系统层就处理了 我们经常遇到的 因裁剪图片过大可能会导致内存溢出的问题，这一点还是挺人性化的，再次为魅族系统开发者点赞。</p>
 <p>回复中共提供了三种解决方案，通过对比，我们把这三种方案进行结合。</p>
-<p>解决方案代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 对选择的图片进行裁剪</div><div class="line"> * <span class="doctag">@param</span> uri 图片uri</div><div class="line"> * <span class="doctag">@param</span> outputX 输出图片宽度</div><div class="line"> * <span class="doctag">@param</span> outputY 输出图片高度</div><div class="line"> * <span class="doctag">@param</span> requestCode 请求码</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cropImage</span><span class="params">(Uri uri, <span class="keyword">int</span> outputX, <span class="keyword">int</span> outputY, <span class="keyword">int</span> requestCode)</span> </span>&#123;</div><div class="line">    Intent intent = </div><div class="line">	    <span class="keyword">new</span> Intent(<span class="string">"com.android.camera.action.CROP"</span>);</div><div class="line">    intent.setDataAndType(uri, <span class="string">"image/*"</span>);</div><div class="line">    intent.putExtra(<span class="string">"crop"</span>, <span class="string">"true"</span>);</div><div class="line">    intent.putExtra(<span class="string">"aspectX"</span>, <span class="number">1</span>);</div><div class="line">    intent.putExtra(<span class="string">"aspectY"</span>, <span class="number">1</span>);</div><div class="line">    intent.putExtra(<span class="string">"outputX"</span>, outputX);</div><div class="line">    intent.putExtra(<span class="string">"outputY"</span>, outputY);</div><div class="line">    intent.putExtra(<span class="string">"noFaceDetection"</span>, <span class="keyword">true</span>);</div><div class="line">    intent.putExtra(<span class="string">"return-data"</span>, <span class="keyword">true</span>);</div><div class="line">    <span class="comment">//这里增加第三种方案的代码</span></div><div class="line">    intent.putExtra(<span class="string">"return-path-if-too-large"</span>, <span class="keyword">true</span>);</div><div class="line">    intent.putExtra(<span class="string">"scale"</span>, <span class="keyword">true</span>);</div><div class="line">    <span class="comment">//这里生成裁剪过后的图片的保存路径</span></div><div class="line">	File file = <span class="keyword">new</span> File(</div><div class="line">		getApplicationContext().getExternalCacheDir(),</div><div class="line">		UUID.randomUUID().toString());</div><div class="line">		</div><div class="line">	intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));</div><div class="line">    intent.putExtra(<span class="string">"outputFormat"</span>, </div><div class="line">	    Bitmap.CompressFormat.JPEG.toString()); <span class="comment">//输入文件格式</span></div><div class="line">    startActivityForResult(intent, requestCode);</div><div class="line">    </div><div class="line">    <span class="comment">//把自定义的保存路径保存到全局变量中，方便其他地方调用</span></div><div class="line">	<span class="keyword">this</span>.mCropImageUri = Uri.fromFile(file);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>覆写的onActivityResult代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">    </div><div class="line">	    <span class="comment">//裁剪图片之后的处理</span></div><div class="line">        <span class="keyword">case</span> REQUEST_CROP_CODE:</div><div class="line">            <span class="keyword">if</span> (resultCode == RESULT_OK &amp;&amp; data != <span class="keyword">null</span>)&#123;</div><div class="line">                Uri uri = data.getData();</div><div class="line">                <span class="keyword">if</span> (uri != <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">this</span>.mImageRealPath = uri.getPath();</div><div class="line">                    LogUtil.d(<span class="string">"ImageRealPath==&gt;"</span>, mImageRealPath);</div><div class="line">                    <span class="comment">//更换视频封面</span></div><div class="line">                    img_video_mask.setImageURI(uri);</div><div class="line"></div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">	                <span class="comment">//在其他机型上裁剪过后的图片uri会包含在data中，</span></div><div class="line">	                <span class="comment">//通过data.getData()可以获取到裁剪过后的图片uri</span></div><div class="line">	                <span class="comment">//但在魅族机型上，data.getData获取的uri为null</span></div><div class="line">	                <span class="comment">//因此需要使用我们在调用裁剪时生成的保存路径</span></div><div class="line">                    <span class="keyword">this</span>.mImageRealPath = </div><div class="line">	                    mCropImageUri.getPath();</div><div class="line">                    LogUtil.d(TAG, </div><div class="line">	                    <span class="string">"onActivityResult: ImageRealPath==&gt;"</span> </div><div class="line">	                    + mImageRealPath);</div><div class="line"></div><div class="line">                    img_video_mask.setImageURI(mCropImageUri);</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">     </div><div class="line">     <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>解决方案代码如下：</p>
+<pre><code class="java">/**
+ * 对选择的图片进行裁剪
+ * @param uri 图片uri
+ * @param outputX 输出图片宽度
+ * @param outputY 输出图片高度
+ * @param requestCode 请求码
+ */
+public void cropImage(Uri uri, int outputX, int outputY, int requestCode) {
+    Intent intent = 
+        new Intent(&quot;com.android.camera.action.CROP&quot;);
+    intent.setDataAndType(uri, &quot;image/*&quot;);
+    intent.putExtra(&quot;crop&quot;, &quot;true&quot;);
+    intent.putExtra(&quot;aspectX&quot;, 1);
+    intent.putExtra(&quot;aspectY&quot;, 1);
+    intent.putExtra(&quot;outputX&quot;, outputX);
+    intent.putExtra(&quot;outputY&quot;, outputY);
+    intent.putExtra(&quot;noFaceDetection&quot;, true);
+    intent.putExtra(&quot;return-data&quot;, true);
+    //这里增加第三种方案的代码
+    intent.putExtra(&quot;return-path-if-too-large&quot;, true);
+    intent.putExtra(&quot;scale&quot;, true);
+    //这里生成裁剪过后的图片的保存路径
+    File file = new File(
+        getApplicationContext().getExternalCacheDir(),
+        UUID.randomUUID().toString());
+
+    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+    intent.putExtra(&quot;outputFormat&quot;, 
+        Bitmap.CompressFormat.JPEG.toString()); //输入文件格式
+    startActivityForResult(intent, requestCode);
+
+    //把自定义的保存路径保存到全局变量中，方便其他地方调用
+    this.mCropImageUri = Uri.fromFile(file);
+}
+</code></pre>
+<p>覆写的onActivityResult代码如下：</p>
+<pre><code class="java">@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    switch (requestCode) {
+
+        //裁剪图片之后的处理
+        case REQUEST_CROP_CODE:
+            if (resultCode == RESULT_OK &amp;&amp; data != null){
+                Uri uri = data.getData();
+                if (uri != null) {
+                    this.mImageRealPath = uri.getPath();
+                    LogUtil.d(&quot;ImageRealPath==&gt;&quot;, mImageRealPath);
+                    //更换视频封面
+                    img_video_mask.setImageURI(uri);
+
+                } else {
+                    //在其他机型上裁剪过后的图片uri会包含在data中，
+                    //通过data.getData()可以获取到裁剪过后的图片uri
+                    //但在魅族机型上，data.getData获取的uri为null
+                    //因此需要使用我们在调用裁剪时生成的保存路径
+                    this.mImageRealPath = 
+                        mCropImageUri.getPath();
+                    LogUtil.d(TAG, 
+                        &quot;onActivityResult: ImageRealPath==&gt;&quot; 
+                        + mImageRealPath);
+
+                    img_video_mask.setImageURI(mCropImageUri);
+
+                }
+            }
+            break;
+
+     super.onActivityResult(requestCode, resultCode, data);
+ }
+</code></pre>
 <p><strong>作者</strong>：zhongzilu<br><strong>原文地址</strong>: <a href="http://www.bit100.com/%EF%BC%88%E5%B7%B2%E8%A7%A3%E5%86%B3%EF%BC%89%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9F%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/" target="_blank" rel="external">http://www.bit100.com/（已解决）程序调用魅族系统裁剪之后直接闪退/</a></p>
 ]]></content>
       
@@ -122,14 +196,116 @@
       <url>http://zhongzilu.github.io/2016/08/30/%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9Fj%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/</url>
       <content type="html"><![CDATA[<h2 id="程序调用系统裁剪之后直接闪退"><a href="#程序调用系统裁剪之后直接闪退" class="headerlink" title="程序调用系统裁剪之后直接闪退"></a>程序调用系统裁剪之后直接闪退</h2><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>我原本是想实现更换头像的功能，程序调用系统相册选取图片，选取图片后直接进行裁剪，我在<code>Activity</code>里覆写了<code>onActivityResult</code>方法，然后在该方法里获取返回的图片数据，结果要么是根本没执行到<code>onActivityResult</code>方法里，要么是获取不到数据，在其他手机上没出现这个问题，唯独在魅族的手机上会有这个问题，我想请问一下魅族的开发者大佬们，这个问题该怎么解决呢？</p>
 <h3 id="具体描述"><a href="#具体描述" class="headerlink" title="具体描述"></a>具体描述</h3><p>有两种情况，第一种没执行到<code>onActivityResult</code></p>
-<p>裁剪请求代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">  * 对选择的图片进行裁剪</div><div class="line">  * <span class="doctag">@param</span> uri 图片uri</div><div class="line">  * <span class="doctag">@param</span> outputX 输出图片宽度</div><div class="line">  * <span class="doctag">@param</span> outputY 输出图片高度</div><div class="line">  * <span class="doctag">@param</span> requestCode 请求码</div><div class="line">  */</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cropImage</span><span class="params">(Uri uri, <span class="keyword">int</span> outputX, <span class="keyword">int</span> outputY,</span></span></div><div class="line">  <span class="keyword">int</span> requestCode) &#123;</div><div class="line">     Intent intent = </div><div class="line">         <span class="keyword">new</span> Intent(<span class="string">"com.android.camera.action.CROP"</span>);</div><div class="line">     intent.setDataAndType(uri, <span class="string">"image/*"</span>);</div><div class="line">     intent.putExtra(<span class="string">"crop"</span>, <span class="string">"true"</span>);</div><div class="line">     intent.putExtra(<span class="string">"aspectX"</span>, <span class="number">1</span>);</div><div class="line">     intent.putExtra(<span class="string">"aspectY"</span>, <span class="number">1</span>);</div><div class="line">     intent.putExtra(<span class="string">"outputX"</span>, outputX);</div><div class="line">     intent.putExtra(<span class="string">"outputY"</span>, outputY);</div><div class="line">     intent.putExtra(<span class="string">"noFaceDetection"</span>, <span class="keyword">true</span>);</div><div class="line">     intent.putExtra(<span class="string">"return-data"</span>, <span class="keyword">true</span>);</div><div class="line">     intent.putExtra(<span class="string">"scale"</span>, <span class="keyword">true</span>);</div><div class="line">     </div><div class="line">	 File file = <span class="keyword">new</span> File(</div><div class="line">			 getApplicationContext().getExternalCacheDir(),</div><div class="line">			 UUID.randomUUID().toString()</div><div class="line">	 );</div><div class="line">	 </div><div class="line">	 intent.putExtra(MediaStore.EXTRA_OUTPUT, </div><div class="line">		 Uri.fromFile(file));</div><div class="line">     intent.putExtra(<span class="string">"outputFormat"</span>, </div><div class="line">	     Bitmap.CompressFormat.JPEG.toString()); </div><div class="line">     startActivityForResult(intent, requestCode);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>覆写的onActivityResult代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">switch</span> (requestCode) &#123;</div><div class="line">    </div><div class="line">	     <span class="comment">//裁剪图片之后的处理</span></div><div class="line">        <span class="keyword">case</span> REQUEST_CROP_CODE:</div><div class="line">            <span class="keyword">if</span> (resultCode == RESULT_OK &amp;&amp; data != <span class="keyword">null</span>)&#123;</div><div class="line">                Uri uri = data.getData();</div><div class="line">                <span class="keyword">if</span> (uri != <span class="keyword">null</span>) &#123;</div><div class="line">                    <span class="keyword">this</span>.mImageRealPath = uri.getPath();</div><div class="line">                    LogUtil.d(<span class="string">"ImageRealPath==&gt;"</span>, mImageRealPath);</div><div class="line">                    <span class="comment">//更换图片</span></div><div class="line">                    img_video_mask.setImageURI(uri);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">     &#125;</div><div class="line">     </div><div class="line">     <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>裁剪请求代码如下：</p>
+<pre><code class="java">/**
+  * 对选择的图片进行裁剪
+  * @param uri 图片uri
+  * @param outputX 输出图片宽度
+  * @param outputY 输出图片高度
+  * @param requestCode 请求码
+  */
+ public void cropImage(Uri uri, int outputX, int outputY,
+  int requestCode) {
+     Intent intent = 
+         new Intent(&quot;com.android.camera.action.CROP&quot;);
+     intent.setDataAndType(uri, &quot;image/*&quot;);
+     intent.putExtra(&quot;crop&quot;, &quot;true&quot;);
+     intent.putExtra(&quot;aspectX&quot;, 1);
+     intent.putExtra(&quot;aspectY&quot;, 1);
+     intent.putExtra(&quot;outputX&quot;, outputX);
+     intent.putExtra(&quot;outputY&quot;, outputY);
+     intent.putExtra(&quot;noFaceDetection&quot;, true);
+     intent.putExtra(&quot;return-data&quot;, true);
+     intent.putExtra(&quot;scale&quot;, true);
+
+     File file = new File(
+             getApplicationContext().getExternalCacheDir(),
+             UUID.randomUUID().toString()
+     );
+
+     intent.putExtra(MediaStore.EXTRA_OUTPUT, 
+         Uri.fromFile(file));
+     intent.putExtra(&quot;outputFormat&quot;, 
+         Bitmap.CompressFormat.JPEG.toString()); 
+     startActivityForResult(intent, requestCode);
+ }
+</code></pre>
+<p>覆写的onActivityResult代码如下：</p>
+<pre><code class="java">@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    switch (requestCode) {
+
+         //裁剪图片之后的处理
+        case REQUEST_CROP_CODE:
+            if (resultCode == RESULT_OK &amp;&amp; data != null){
+                Uri uri = data.getData();
+                if (uri != null) {
+                    this.mImageRealPath = uri.getPath();
+                    LogUtil.d(&quot;ImageRealPath==&gt;&quot;, mImageRealPath);
+                    //更换图片
+                    img_video_mask.setImageURI(uri);
+                }
+            }
+            break;
+     }
+
+     super.onActivityResult(requestCode, resultCode, data);
+ }
+</code></pre>
 <blockquote>
 <p>这种情况就是没法运行到<code>onActivityResult</code>方法里，裁剪图片之后，点击确定按钮，就直接闪退了，在debug模式下都没办法</p>
 </blockquote>
 <p>第二种情况是能运行到<code>onActivityResult</code>里，但获取不了返回数据</p>
-<p>裁剪请求代码稍微有点区别，具体如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 对选择的图片进行裁剪</div><div class="line"> * <span class="doctag">@param</span> uri 图片uri</div><div class="line"> * <span class="doctag">@param</span> outputX 输出图片宽度</div><div class="line"> * <span class="doctag">@param</span> outputY 输出图片高度</div><div class="line"> * <span class="doctag">@param</span> requestCode 请求码</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cropImage</span><span class="params">(Uri uri, <span class="keyword">int</span> outputX, <span class="keyword">int</span> outputY, <span class="keyword">int</span> requestCode)</span> </span>&#123;</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(<span class="string">"com.android.camera.action.CROP"</span>);</div><div class="line">    intent.setDataAndType(uri, <span class="string">"image/*"</span>);</div><div class="line">    intent.putExtra(<span class="string">"crop"</span>, <span class="string">"true"</span>);</div><div class="line">    intent.putExtra(<span class="string">"aspectX"</span>, <span class="number">1</span>);</div><div class="line">    intent.putExtra(<span class="string">"aspectY"</span>, <span class="number">1</span>);</div><div class="line">    intent.putExtra(<span class="string">"outputX"</span>, outputX);</div><div class="line">    intent.putExtra(<span class="string">"outputY"</span>, outputY);</div><div class="line">    intent.putExtra(<span class="string">"noFaceDetection"</span>, <span class="keyword">true</span>);</div><div class="line">    intent.putExtra(<span class="string">"return-data"</span>, <span class="keyword">true</span>);</div><div class="line">    intent.putExtra(<span class="string">"scale"</span>, <span class="keyword">true</span>);</div><div class="line"><span class="comment">// File file = new File(getApplicationContext().getExternalCacheDir(),UUID.randomUUID().toString());</span></div><div class="line"><span class="comment">// intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));</span></div><div class="line">    intent.putExtra(<span class="string">"outputFormat"</span>, Bitmap.CompressFormat.JPEG.toString()); <span class="comment">//输入文件格式</span></div><div class="line">    startActivityForResult(intent, requestCode);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>覆写的<code>onActivityResult</code>也稍微有点变化，具体代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//裁剪图片之后的处理</span></div><div class="line"><span class="keyword">case</span> REQUEST_CROP_CODE:</div><div class="line">   <span class="keyword">if</span> (resultCode == RESULT_OK &amp;&amp; data != <span class="keyword">null</span>)&#123;</div><div class="line">       Uri uri = data.getData();</div><div class="line">       <span class="keyword">if</span> (uri != <span class="keyword">null</span>) &#123;</div><div class="line">           <span class="keyword">this</span>.mImageRealPath = uri.getPath();</div><div class="line">           LogUtil.d(<span class="string">"ImageRealPath==&gt;"</span>, mImageRealPath);</div><div class="line">           <span class="comment">//更换图片</span></div><div class="line">           img_video_mask.setImageURI(uri);</div><div class="line"></div><div class="line">       &#125; <span class="keyword">else</span> &#123;</div><div class="line">           Bundle bundle = data.getExtras();</div><div class="line">           <span class="keyword">if</span> (bundle != <span class="keyword">null</span>) &#123;</div><div class="line">               String filePath = bundle.getString(<span class="string">"filePath"</span>);</div><div class="line">               <span class="keyword">if</span> (!TextUtils.isEmpty(filePath))&#123;</div><div class="line">                   img_video_mask.setImageURI(</div><div class="line">	                   Uri.parse(filePath));</div><div class="line">               &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
+<p>裁剪请求代码稍微有点区别，具体如下：</p>
+<pre><code class="java">/**
+ * 对选择的图片进行裁剪
+ * @param uri 图片uri
+ * @param outputX 输出图片宽度
+ * @param outputY 输出图片高度
+ * @param requestCode 请求码
+ */
+public void cropImage(Uri uri, int outputX, int outputY, int requestCode) {
+    Intent intent = new Intent(&quot;com.android.camera.action.CROP&quot;);
+    intent.setDataAndType(uri, &quot;image/*&quot;);
+    intent.putExtra(&quot;crop&quot;, &quot;true&quot;);
+    intent.putExtra(&quot;aspectX&quot;, 1);
+    intent.putExtra(&quot;aspectY&quot;, 1);
+    intent.putExtra(&quot;outputX&quot;, outputX);
+    intent.putExtra(&quot;outputY&quot;, outputY);
+    intent.putExtra(&quot;noFaceDetection&quot;, true);
+    intent.putExtra(&quot;return-data&quot;, true);
+    intent.putExtra(&quot;scale&quot;, true);
+// File file = new File(getApplicationContext().getExternalCacheDir(),UUID.randomUUID().toString());
+// intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
+    intent.putExtra(&quot;outputFormat&quot;, Bitmap.CompressFormat.JPEG.toString()); //输入文件格式
+    startActivityForResult(intent, requestCode);
+}
+</code></pre>
+<p>覆写的<code>onActivityResult</code>也稍微有点变化，具体代码如下：</p>
+<pre><code class="java">//裁剪图片之后的处理
+case REQUEST_CROP_CODE:
+   if (resultCode == RESULT_OK &amp;&amp; data != null){
+       Uri uri = data.getData();
+       if (uri != null) {
+           this.mImageRealPath = uri.getPath();
+           LogUtil.d(&quot;ImageRealPath==&gt;&quot;, mImageRealPath);
+           //更换图片
+           img_video_mask.setImageURI(uri);
+
+       } else {
+           Bundle bundle = data.getExtras();
+           if (bundle != null) {
+               String filePath = bundle.getString(&quot;filePath&quot;);
+               if (!TextUtils.isEmpty(filePath)){
+                   img_video_mask.setImageURI(
+                       Uri.parse(filePath));
+               }
+            }
+        }
+    }
+    break;
+</code></pre>
 <p><code>之所以改成这样的写法，是因为我在网上找到一篇文章在说这个问题，并给出一个解决方案，我根据他的解决方案，依然没有解决问题。地址：http://www.cnblogs.com/over140/archive/2012/12/17/2821874.html</code></p>
 <p>在Debug模式下，截图如下<br><img src="http://www.bit100.com/wp-content/uploads/2016/08/Debug-Screenshot.png" alt="Debug Screenshot"></p>
 <p>通过截图可以看到<code>uri</code>和<code>filePath</code>都为<code>null</code>，实在没办法，所以来请教一下魅族的开发大佬们，希望能尽快收到你们的回复，小弟在此表示万分感谢！</p>
@@ -269,9 +445,85 @@
 <p>一：使用<code>ofFloat()</code>方法动态改变指针指向的数值，即传递过来的参数mValue</p>
 <p>二：将传递过来的参数进行计算成指针偏转的角度(<code>mAngle</code>)，然后使用<code>ofFloat()</code>方法动态改变角度数值</p>
 <p>这两种方法都是可取的，具体情况具体分析，由于在界面上我们要动态显示指针指向的数值，如果采用第二种的话，那么我们要计算两次，一次是将指向mValue计算为mAngle，数值动态变化后还要将mAngle计算为mValue，这样比较麻烦，所以我们采用第一种思路。</p>
-<p>因此，要实现指针的偏转动画，代码可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">private int mMaxValue = 50;  //分值区间的最大值</div><div class="line">private int mMinValue = -50; //分值区间的最小值</div><div class="line">/**输入值，通过输入值来计算指针的旋转角度，即&#123;@mAngle&#125;的值,</div><div class="line"> * 最终在界面上呈现的效果是指针指向输入值的刻度上*/</div><div class="line">private String mValue = &quot;- -&quot;;</div><div class="line">/**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/</div><div class="line">private float mArc = 180f;</div><div class="line">/**指针旋转角度值*/</div><div class="line">private float mAngle = 0f;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">/**</div><div class="line"> * 设置指针指向数值，并产生旋转动画</div><div class="line"> * 这里我们动态改变指向数值</div><div class="line"> * @param value 指向数值</div><div class="line"> */</div><div class="line">public void setValue(float value)&#123;</div><div class="line">    //&#123;@param value&#125;为指针将要指向的数值，即界面上看到的数值</div><div class="line">    ValueAnimator startAnimator = ValueAnimator.ofFloat(0, value);</div><div class="line"></div><div class="line">    startAnimator.addUpdateListener(</div><div class="line">       new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            //通过getAnimatedValue()取变化后的值</div><div class="line">            float md = (float) animation.getAnimatedValue();</div><div class="line">            //计算指针当前应该偏转的角度</div><div class="line">            mAngle = md * (mArc / (float) (mMaxValue - mMinValue));</div><div class="line">            //界面上显示当前指针显示的数值</div><div class="line">            mValue = String.valueOf((int)md);</div><div class="line">            //调用重绘方法</div><div class="line">            invalidate();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    startAnimator.setDuration(1000);</div><div class="line">    startAnimator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在<code>setValue()</code>方法里我们动态的改变了指针指向的数值和指针偏转的角度，并把这两个数值分别存放在全局变量<code>mValue</code>和<code>mAngle</code>，这样一来，我们只需要在<code>onDraw()</code>方法中，对指针进行旋转和但前指向数值的显示就可以了，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 注意：</div><div class="line"> * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的</div><div class="line"> * @param canvas</div><div class="line"> */</div><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);</div><div class="line">    canvas.rotate(mAngle, xc, yc);</div><div class="line"></div><div class="line">    //画指针</div><div class="line">    /**</div><div class="line">     * xc * 0.101449 = 深色刻度线条的长度</div><div class="line">     * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40</div><div class="line">     * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙</div><div class="line">     */</div><div class="line">    canvas.drawLine(xc, yc,</div><div class="line">            xc - radius + (xc * 0.101449f + mWidth * 0.064412f),</div><div class="line">            yc + 3, paintCursor);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    //值</div><div class="line">    pitchValuePaint.setAntiAlias(true);</div><div class="line">    pitchValuePaint.setTextSize((mWidth * 0.080515f));</div><div class="line">    pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line"></div><div class="line">    canvas.drawText(mValue,</div><div class="line">            xc - pitchValuePaint.measureText(mValue) / 2,</div><div class="line">            yc + (xc * 0.481481f + mWidth * 0.209339f),</div><div class="line">            pitchValuePaint);</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>效果如下：</p>
+<p>因此，要实现指针的偏转动画，代码可以这么写：</p>
+<pre><code>private int mMaxValue = 50;  //分值区间的最大值
+private int mMinValue = -50; //分值区间的最小值
+/**输入值，通过输入值来计算指针的旋转角度，即{@mAngle}的值,
+ * 最终在界面上呈现的效果是指针指向输入值的刻度上*/
+private String mValue = &quot;- -&quot;;
+/**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/
+private float mArc = 180f;
+/**指针旋转角度值*/
+private float mAngle = 0f;
+
+...
+
+/**
+ * 设置指针指向数值，并产生旋转动画
+ * 这里我们动态改变指向数值
+ * @param value 指向数值
+ */
+public void setValue(float value){
+    //{@param value}为指针将要指向的数值，即界面上看到的数值
+    ValueAnimator startAnimator = ValueAnimator.ofFloat(0, value);
+
+    startAnimator.addUpdateListener(
+       new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            //通过getAnimatedValue()取变化后的值
+            float md = (float) animation.getAnimatedValue();
+            //计算指针当前应该偏转的角度
+            mAngle = md * (mArc / (float) (mMaxValue - mMinValue));
+            //界面上显示当前指针显示的数值
+            mValue = String.valueOf((int)md);
+            //调用重绘方法
+            invalidate();
+
+        }
+    });
+    startAnimator.setDuration(1000);
+    startAnimator.start();
+}
+</code></pre><p>在<code>setValue()</code>方法里我们动态的改变了指针指向的数值和指针偏转的角度，并把这两个数值分别存放在全局变量<code>mValue</code>和<code>mAngle</code>，这样一来，我们只需要在<code>onDraw()</code>方法中，对指针进行旋转和但前指向数值的显示就可以了，代码如下：</p>
+<pre><code>/**
+ * 注意：
+ * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的
+ * @param canvas
+ */
+@Override
+protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+
+    ...
+
+    System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);
+    canvas.rotate(mAngle, xc, yc);
+
+    //画指针
+    /**
+     * xc * 0.101449 = 深色刻度线条的长度
+     * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40
+     * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙
+     */
+    canvas.drawLine(xc, yc,
+            xc - radius + (xc * 0.101449f + mWidth * 0.064412f),
+            yc + 3, paintCursor);
+
+    ...
+
+    //值
+    pitchValuePaint.setAntiAlias(true);
+    pitchValuePaint.setTextSize((mWidth * 0.080515f));
+    pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));
+
+    canvas.drawText(mValue,
+            xc - pitchValuePaint.measureText(mValue) / 2,
+            yc + (xc * 0.481481f + mWidth * 0.209339f),
+            pitchValuePaint);
+    ...
+}
+</code></pre><p>效果如下：</p>
 <p><img src="http://www.bit100.com/.zhongzilu/image/TunerView.gif" alt=""></p>
 <p>详细的代码，请移步到我的GitHub：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a></p>
 <p>我是钟子路，Thanks for watching!</p>
@@ -317,14 +569,104 @@
 <li>指针</li>
 </ol>
 </blockquote>
-<p>新建一个类，继承View<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class TunerView extends View &#123;</div><div class="line">    private int mWidth;</div><div class="line">    private int mHeight;</div><div class="line"></div><div class="line">    public TunerView(Context context)&#123;</div><div class="line">        super(context);</div><div class="line">        //获取屏幕的宽高</div><div class="line">        WindowManager windowManager = </div><div class="line">            (WindowManager) getContext().Context.WINDOW_SERVICE);</div><div class="line"></div><div class="line">        mWidth = windowManager.getDefaultDisplay().getWidth();</div><div class="line">        mHeight = windowManager.getDefaultDisplay().getHeight();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>第一步(Step 1)：画刻度盘</strong></p>
+<p>新建一个类，继承View</p>
+<pre><code>public class TunerView extends View {
+    private int mWidth;
+    private int mHeight;
+
+    public TunerView(Context context){
+        super(context);
+        //获取屏幕的宽高
+        WindowManager windowManager = 
+            (WindowManager) getContext().Context.WINDOW_SERVICE);
+
+        mWidth = windowManager.getDefaultDisplay().getWidth();
+        mHeight = windowManager.getDefaultDisplay().getHeight();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        ...
+    }
+}
+</code></pre><p><strong>第一步(Step 1)：画刻度盘</strong></p>
 <p>由于画布一开始绘制文字时，文字是垂直的，而在设计图中刻度盘是从左往右，文字是水平的，所以需要先对画布坐标系进行旋转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    int xc = mWidth / 2;    //屏幕中心X坐标</div><div class="line">    int yc = mHeight / 2;   //屏幕中心Y坐标</div><div class="line">    int radius = xc - 30;   //圆半径</div><div class="line">    /**</div><div class="line">     * 正常情况下，一开始写文字，都是垂直的，但我们的仪表盘</div><div class="line">     * 要求从左边开始画，文字是水平的，所以需要先对画布坐标系进行逆时针旋转90°</div><div class="line">     */</div><div class="line">    canvas.rotate(-90, xc, yc);</div><div class="line"></div><div class="line">    //画刻度盘</div><div class="line">    Paint paintDegree = new Paint();</div><div class="line">    paintDegree.setStrokeWidth(3);</div><div class="line">    //画刻度线条</div><div class="line">    for (int i = -50; i &lt;= 50; i++)&#123;</div><div class="line">        //区别整点和非整点的线条样式</div><div class="line">        if (i % 10 == 0)&#123;</div><div class="line">            paintDegree.setStrokeWidth(5);</div><div class="line">            paintDegree.setTextSize(30);</div><div class="line">            paintDegree.setAntiAlias(true);</div><div class="line">            paintDegree.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">            //这里画线的坐标计算，需要自行去理解，这里我就不多加解释了</div><div class="line">            canvas.drawLine(xc, yc - radius, xc, yc - radius + 40, paintDegree);</div><div class="line">            String degree = String.valueOf(i);</div><div class="line">            canvas.drawText(degree,</div><div class="line">                    //这里使用了Paint对象的measureText()方法,</div><div class="line">                    //该方法是传入一个String类型的参数，经过计算之后返回该String对象中</div><div class="line">                    //文字所占用的宽度</div><div class="line">                    xc - paintDegree.measureText(degree) / 2,</div><div class="line">                    yc - radius + 70,</div><div class="line">                    paintDegree);</div><div class="line">            /**</div><div class="line">             * 由于本案中两个整点之间只被分为了5分，所以每份的间隔就是2</div><div class="line">             */</div><div class="line">        &#125; else if (i % 2 == 0)&#123;</div><div class="line">            paintDegree.setStrokeWidth(3);</div><div class="line">            paintDegree.setTextSize(15);</div><div class="line">            paintDegree.setAntiAlias(true);</div><div class="line">            paintDegree.setColor(getResources().getColor(R.color.grey));</div><div class="line">            canvas.drawLine(xc, yc - radius + 10, xc, yc - radius + 30, paintDegree);</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //每画完一条刻度线条，就需要对画布坐标系进行旋转，通过旋转简化坐标运算</div><div class="line">        //旋转角度为：总度数 / 总份数</div><div class="line">        //本案例中，总度数为180°, 分值区间为(-50 ~ 50),所以总份数为100份</div><div class="line">        canvas.rotate((float)(180 / 100), xc, yc);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //画圆形底盘</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_1.png" alt="完成刻度盘"></p>
+<pre><code>@Override
+protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+
+    int xc = mWidth / 2;    //屏幕中心X坐标
+    int yc = mHeight / 2;   //屏幕中心Y坐标
+    int radius = xc - 30;   //圆半径
+    /**
+     * 正常情况下，一开始写文字，都是垂直的，但我们的仪表盘
+     * 要求从左边开始画，文字是水平的，所以需要先对画布坐标系进行逆时针旋转90°
+     */
+    canvas.rotate(-90, xc, yc);
+
+    //画刻度盘
+    Paint paintDegree = new Paint();
+    paintDegree.setStrokeWidth(3);
+    //画刻度线条
+    for (int i = -50; i &lt;= 50; i++){
+        //区别整点和非整点的线条样式
+        if (i % 10 == 0){
+            paintDegree.setStrokeWidth(5);
+            paintDegree.setTextSize(30);
+            paintDegree.setAntiAlias(true);
+            paintDegree.setColor(getResources().getColor(R.color.colorAccent));
+            //这里画线的坐标计算，需要自行去理解，这里我就不多加解释了
+            canvas.drawLine(xc, yc - radius, xc, yc - radius + 40, paintDegree);
+            String degree = String.valueOf(i);
+            canvas.drawText(degree,
+                    //这里使用了Paint对象的measureText()方法,
+                    //该方法是传入一个String类型的参数，经过计算之后返回该String对象中
+                    //文字所占用的宽度
+                    xc - paintDegree.measureText(degree) / 2,
+                    yc - radius + 70,
+                    paintDegree);
+            /**
+             * 由于本案中两个整点之间只被分为了5分，所以每份的间隔就是2
+             */
+        } else if (i % 2 == 0){
+            paintDegree.setStrokeWidth(3);
+            paintDegree.setTextSize(15);
+            paintDegree.setAntiAlias(true);
+            paintDegree.setColor(getResources().getColor(R.color.grey));
+            canvas.drawLine(xc, yc - radius + 10, xc, yc - radius + 30, paintDegree);
+
+        }
+
+        //每画完一条刻度线条，就需要对画布坐标系进行旋转，通过旋转简化坐标运算
+        //旋转角度为：总度数 / 总份数
+        //本案例中，总度数为180°, 分值区间为(-50 ~ 50),所以总份数为100份
+        canvas.rotate((float)(180 / 100), xc, yc);
+    }
+
+    //画圆形底盘
+    ...
+}
+</code></pre><p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_1.png" alt="完成刻度盘"></p>
 <p><strong>第二步(Step 2)：画园形底盘</strong></p>
-<p>画实心圆形底盘，通过调用<code>paint.setColor()</code>来设置颜色，调用<code>paint.drawCircle()</code>方法来画出圆形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//画大圆盘</div><div class="line">Paint bigCircle = new Paint();</div><div class="line">bigCircle.setColor(getResources().getColor(R.color.colorPrimary));</div><div class="line">bigCircle.setAntiAlias(true);</div><div class="line">canvas.drawCircle(xc, yc, xc - 180, bigCircle);</div><div class="line">//画中等圆盘</div><div class="line">Paint midCircle = new Paint();</div><div class="line">midCircle.setColor(getResources().getColor(R.color.colorPrimaryDark));</div><div class="line">midCircle.setAntiAlias(true);</div><div class="line">canvas.drawCircle(xc, yc, xc - 280, midCircle);</div><div class="line">//画小圆盘</div><div class="line">Paint smallCircle = new Paint();</div><div class="line">smallCircle.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">smallCircle.setAntiAlias(true);</div><div class="line">canvas.drawCircle(xc, yc, xc - 320, smallCircle);</div></pre></td></tr></table></figure></p>
-<p><code>drawCircle()</code>方法有四个参数，</p>
+<p>画实心圆形底盘，通过调用<code>paint.setColor()</code>来设置颜色，调用<code>paint.drawCircle()</code>方法来画出圆形</p>
+<pre><code>//画大圆盘
+Paint bigCircle = new Paint();
+bigCircle.setColor(getResources().getColor(R.color.colorPrimary));
+bigCircle.setAntiAlias(true);
+canvas.drawCircle(xc, yc, xc - 180, bigCircle);
+//画中等圆盘
+Paint midCircle = new Paint();
+midCircle.setColor(getResources().getColor(R.color.colorPrimaryDark));
+midCircle.setAntiAlias(true);
+canvas.drawCircle(xc, yc, xc - 280, midCircle);
+//画小圆盘
+Paint smallCircle = new Paint();
+smallCircle.setColor(getResources().getColor(R.color.colorAccent));
+smallCircle.setAntiAlias(true);
+canvas.drawCircle(xc, yc, xc - 320, smallCircle);
+</code></pre><p><code>drawCircle()</code>方法有四个参数，</p>
 <ul>
 <li>cx：圆心的x坐标，float类型</li>
 <li>cy：圆心的y坐标，float类型</li>
@@ -332,8 +674,14 @@
 <li>paint：画笔对象，Paint类型</li>
 </ul>
 <p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_2.png" alt="画三个圆形底盘"></p>
-<p><strong>第三步(Step 3)：画指针</strong><br>画指针其实和画线是一个道理，所以我们直接调用<code>drawLine()</code>方法就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//画指针</div><div class="line">Paint paintCursor = new Paint();</div><div class="line">paintCursor.setStrokeWidth(3);</div><div class="line">paintCursor.setAntiAlias(true);</div><div class="line">paintCursor.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">canvas.drawLine(xc, yc, xc - radius + 80, yc + 10, paintCursor);</div></pre></td></tr></table></figure></p>
-<p><code>drawLine()</code>方法有5个参数</p>
+<p><strong>第三步(Step 3)：画指针</strong><br>画指针其实和画线是一个道理，所以我们直接调用<code>drawLine()</code>方法就可以了</p>
+<pre><code>//画指针
+Paint paintCursor = new Paint();
+paintCursor.setStrokeWidth(3);
+paintCursor.setAntiAlias(true);
+paintCursor.setColor(getResources().getColor(R.color.colorAccent));
+canvas.drawLine(xc, yc, xc - radius + 80, yc + 10, paintCursor);
+</code></pre><p><code>drawLine()</code>方法有5个参数</p>
 <ul>
 <li>startX：线条的起始点x坐标，类型float</li>
 <li>startY：线条的起始点y坐标，类型float</li>
@@ -344,12 +692,207 @@
 <p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_3.png" alt="指针绘制"></p>
 <p><strong>这里注意一下，由于我们的指针使用的颜色和最小的那个圆形的颜色是一样的，所以运行效果里看不出问题，如果换一个颜色，就会发现，指针在最小的圆形上面，而设计图上的指针是在最小的圆形下面，那么这要怎么解决呢？不要方，只需要把绘制最小那个圆的<code>canvas.drawCircle()</code>方法放到绘制指针的<code>drawLine()</code>方法之后就可以了</strong></p>
 <p><strong>第四步(Step 4)：画正下方的文字</strong></p>
-<p>画正下方的文字，只需要调用<code>canvas.drawText()</code>方法就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Paint pitchPaint = new Paint();</div><div class="line">pitchPaint.setAntiAlias(true);  //设置抗锯齿</div><div class="line">pitchPaint.setTextSize(40); </div><div class="line">pitchPaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">String pitch = &quot;Pitch&quot;;</div><div class="line">canvas.drawText(pitch,</div><div class="line">        xc - pitchPaint.measureText(pitch) / 2,</div><div class="line">        //这里加上180，是因为要加上最外面那个大的圆形的半径</div><div class="line">        //再加上80，是为了让文字和最大的那个圆产生间隙</div><div class="line">        yc + 180 + 80,</div><div class="line">        pitchPaint);</div></pre></td></tr></table></figure></p>
-<p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4.png" alt="绘制正下方的文字"></p>
-<p>可以看到文字的方向不对，<strong>为什么文字的方向不对呢？</strong>这是因为我们在绘制刻度盘的时候，我们对画布坐标系进行了旋转，画完刻度盘之后，坐标系被旋转了180°，但由于在绘制刻度盘之前，我们对整个画布坐标系进行逆时针旋转了90°，所以实际上只旋转了90°，因此，我们看到绘制的文字不是在正下方，而是在左边，被旋转了90°，<strong>那么这要怎么解决呢？</strong>最简单的方法当然是在绘制文字之前，把画布坐标系旋转回来。所以需要添加一行代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas.rotate(-90, xc, yc);</div></pre></td></tr></table></figure></p>
-<p>运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4_1.png" alt="最终效果"></p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>由于上面的案例代码里用到了很多写死的数字代码(Hard Code)，这不利于代码的灵活性，而且，既然有指针，就应该让指针根据一个提供的输入值，来让指针指向对应的数值位置，所以，我对代码进行了改良，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by zhongzilu on 2016/5/25 0025.</div><div class="line"> */</div><div class="line">public class DialView extends View &#123;</div><div class="line"></div><div class="line">    private float mWidth;</div><div class="line">    private float mHeight;</div><div class="line">    private float mAngle = 0;   //指针旋转角度，值为0时指针垂直显示</div><div class="line">    private static int mMaxValue = 50;  //分值区间的最大值</div><div class="line">    private static int mMinValue = -50; //分值区间的最小值</div><div class="line">    /**输入值，通过输入值来计算指针的旋转角度，即&#123;@mAngle&#125;的值,</div><div class="line">     * 最终在界面上呈现的效果是指针指向输入值的刻度上*/</div><div class="line">    private float mValue = 0;</div><div class="line">    /**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/</div><div class="line">    private float mArc = 180;</div><div class="line"></div><div class="line">    public DialView(Context context, AttributeSet attrs) &#123;</div><div class="line">        super(context, attrs);</div><div class="line"></div><div class="line">        //获取屏幕的宽高</div><div class="line">        WindowManager windowManager = (WindowManager) getContext().getSystemService(</div><div class="line">                Context.WINDOW_SERVICE);</div><div class="line">        mWidth = windowManager.getDefaultDisplay().getWidth();</div><div class="line">        mHeight = windowManager.getDefaultDisplay().getHeight();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 注意：</div><div class="line">     * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的</div><div class="line">     * @param canvas</div><div class="line">     */</div><div class="line">    @Override</div><div class="line">    protected void onDraw(Canvas canvas) &#123;</div><div class="line">        super.onDraw(canvas);</div><div class="line"></div><div class="line">        float xc = mWidth / 2;    //圆中心X坐标</div><div class="line">        float yc = mHeight / 2;   //圆中心Y坐标</div><div class="line">        float radius = (float)(xc - xc * 0.05314);   //圆半径</div><div class="line"></div><div class="line">        //画刻度盘</div><div class="line">        Paint paintDegree = new Paint();</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 正常情况下，一开始画线或写文字，都是垂直的，但我们的仪表盘</div><div class="line">         * 要求从左边开始画，文字是水平的，所以需要先进行画布旋转90°</div><div class="line">         */</div><div class="line">        canvas.rotate((-mArc / 2), xc, yc);</div><div class="line">        System.out.println(&quot;before rotate==&gt;&quot; + (-mArc / 2));</div><div class="line">        /**</div><div class="line">         * 本案例中，设置的分值区间为（-50 ~ 50)</div><div class="line">         */</div><div class="line">        for (int i = mMinValue; i &lt;= mMaxValue; i++)&#123;</div><div class="line">            //区别整点和非整点</div><div class="line">            if (i % 10 == 0)&#123;</div><div class="line">                //在屏幕宽度为621下，大小为5</div><div class="line">                paintDegree.setStrokeWidth((float)(mWidth * 0.008051));</div><div class="line">                //刻度字体大小是依据是：在屏幕宽度为621的分辨率下，刚好为30</div><div class="line">                paintDegree.setTextSize((float)(mWidth * 0.048309));</div><div class="line">                paintDegree.setAntiAlias(true);</div><div class="line">                paintDegree.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">                canvas.drawLine(xc, yc - radius, xc, (float)(yc - radius + xc * 0.101449), paintDegree);</div><div class="line">                String degree = String.valueOf(i);</div><div class="line">                canvas.drawText(degree,</div><div class="line">                        //这里使用了Paint对象的measureText()方法,</div><div class="line">                        //该方法是传入一个String类型的参数，经过计算之后返回该String对象中</div><div class="line">                        //文字所占用的宽度</div><div class="line">                        xc - paintDegree.measureText(degree) / 2,</div><div class="line"></div><div class="line">                        //下方mWidth * 0.048309 = 在屏幕宽度为621下，长度为30</div><div class="line">                        yc - radius + (float)(xc * 0.101449 + mWidth * 0.048309),</div><div class="line">                        paintDegree);</div><div class="line">                /**</div><div class="line">                 * 由于两个整点之间只被分为了5分，所以每份的间隔就是2</div><div class="line">                 */</div><div class="line">            &#125; else if (i % 2 == 0)&#123;</div><div class="line">                paintDegree.setStrokeWidth((float)(mWidth * 0.004830));</div><div class="line">                //在屏幕宽度为621下，字体大小为15</div><div class="line">                paintDegree.setTextSize((float)(mWidth * 0.024154));</div><div class="line">                paintDegree.setAntiAlias(true);</div><div class="line">                paintDegree.setColor(getResources().getColor(R.color.grey));</div><div class="line">                /**</div><div class="line">                 * 画灰色短横线，坐标计算依据是灰色短横向长度为深色长横线的一半，</div><div class="line">                 * 并且，两种刻度线的中点在同一个圆的圆弧上</div><div class="line">                 * 由于深色刻度线的长度 = 正中深色小圆的半径 = 屏幕宽度一半的0.101449倍</div><div class="line">                 */</div><div class="line">                canvas.drawLine(xc, </div><div class="line">                        (float)(yc - radius + xc * 0.101449 / 4), </div><div class="line">                        xc, </div><div class="line">                        (float)(yc - radius + xc * 0.101449 / 4 * 3), </div><div class="line">                        paintDegree);</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">            //通过旋转画布简化坐标运算</div><div class="line">            canvas.rotate(mArc / (float)(mMaxValue - mMinValue), xc, yc);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 三个圆盘的半径和屏幕宽度的一半的比例为</div><div class="line">         * 屏幕宽度一半 ：大圆 ：中圆 ：小圆 =</div><div class="line">         * 1 ：0.481481 ：0.201288 ：0.101449</div><div class="line">         */</div><div class="line">        //画大圆盘</div><div class="line">        Paint bigCircle = new Paint();</div><div class="line">        bigCircle.setColor(getResources().getColor(R.color.colorPrimary));</div><div class="line">        bigCircle.setAntiAlias(true);</div><div class="line">        canvas.drawCircle(xc, yc, (float)(xc * 0.481481), bigCircle);</div><div class="line">        //画中等圆盘</div><div class="line">        Paint midCircle = new Paint();</div><div class="line">        midCircle.setColor(getResources().getColor(R.color.colorPrimaryDark));</div><div class="line">        midCircle.setAntiAlias(true);</div><div class="line">        canvas.drawCircle(xc, yc, (float)(xc * 0.201288), midCircle);</div><div class="line">        //画小圆盘</div><div class="line">        Paint smallCircle = new Paint();</div><div class="line">        smallCircle.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">        smallCircle.setAntiAlias(true);</div><div class="line">        canvas.drawCircle(xc, yc, (float)(xc * 0.101449), smallCircle);</div><div class="line">        canvas.save();</div><div class="line"></div><div class="line">        //画指针</div><div class="line">        Paint paintCursor = new Paint();</div><div class="line">        //在屏幕宽度为621下，大小为3</div><div class="line">        paintCursor.setStrokeWidth((float)(mWidth * 0.004830));</div><div class="line">        paintCursor.setAntiAlias(true);</div><div class="line">        paintCursor.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">        /**</div><div class="line">         * 思路：要想让指针以圆心为中心旋转一定角度，要么旋转画布，要么根据坐标来画，</div><div class="line">         * 由于旋转角度比根据坐标更简单，所以就用旋转角度的方式来实现</div><div class="line">         *</div><div class="line">         * 指针具体旋转多少度，得根据算法来计算</div><div class="line">         *</div><div class="line">         * 算法：角度 = 输入值 * （ 总弧度 / 分值总数）</div><div class="line">         *</div><div class="line">         * 举例：本案例中给出的分值区间为（-50 ~ 50）,所以分值总数为100</div><div class="line">         * 假设现在输入值为30，那么角度就为54°</div><div class="line">         */</div><div class="line">        mAngle = mValue * (mArc / (float) (mMaxValue - mMinValue));</div><div class="line">        System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);</div><div class="line">        canvas.rotate(mAngle, xc, yc);</div><div class="line">        /**</div><div class="line">         * xc * 0.101449 = 深色刻度线条的长度</div><div class="line">         * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40</div><div class="line">         * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙</div><div class="line">         */</div><div class="line">        canvas.drawLine(xc, yc,</div><div class="line">                xc - radius + (float)(xc * 0.101449 + mWidth * 0.064412),</div><div class="line">                yc + 3, paintCursor);</div><div class="line"></div><div class="line">        //覆盖在指针上的圆</div><div class="line">        /**</div><div class="line">         * 由于之前的坐标系已经发生了旋转，所以要在正下方写上文字，就需要旋转回来</div><div class="line">         * 当然也可以通过去计算坐标来显示在正下方，但旋转画布的方式更加简单和更容易理解</div><div class="line">         */</div><div class="line">        canvas.rotate(-(mAngle + mArc / 2), xc, yc);</div><div class="line"></div><div class="line">        Paint pitchPaint = new Paint();</div><div class="line">        pitchPaint.setAntiAlias(true);</div><div class="line">        //在屏幕宽度为621下，字体大小为40</div><div class="line">        pitchPaint.setTextSize((float)(mWidth * 0.048309));</div><div class="line">        pitchPaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">        String pitch = &quot;Pitch&quot;;</div><div class="line">        canvas.drawText(pitch,</div><div class="line">                xc - pitchPaint.measureText(pitch) / 2,</div><div class="line">                //这里加上180，是因为要加上最外面那个大的圆形的半径</div><div class="line">                //再加上(mWidth * 0.123188)，是为了让文字和最大的那个圆产生间隙</div><div class="line">                //在屏幕宽度为621下，间隙为80</div><div class="line">                yc + (float)(xc * 0.481481 + mWidth * 0.123188),</div><div class="line">                pitchPaint);</div><div class="line"></div><div class="line">        //值</div><div class="line">        Paint pitchValuePaint = new Paint();</div><div class="line">        pitchValuePaint.setAntiAlias(true);</div><div class="line">        pitchValuePaint.setTextSize((float)(mWidth * 0.080515));</div><div class="line">        pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line">        String value = &quot;- -&quot;;</div><div class="line">        canvas.drawText(value,</div><div class="line">                xc - pitchValuePaint.measureText(value) / 2,</div><div class="line">                yc + (float)(xc * 0.481481 + mWidth * 0.209339),</div><div class="line">                pitchValuePaint);</div><div class="line"></div><div class="line">        canvas.restore();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>经过修改过后，只需要修改全局变量<code>mValue</code>的值，就可以使指针指向界面上对应的值了，比如<code>mValue = 30</code>，运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_5.png" alt="指针旋转测试"></p>
+<p>画正下方的文字，只需要调用<code>canvas.drawText()</code>方法就可以了</p>
+<pre><code>Paint pitchPaint = new Paint();
+pitchPaint.setAntiAlias(true);  //设置抗锯齿
+pitchPaint.setTextSize(40); 
+pitchPaint.setColor(getResources().getColor(R.color.colorAccent));
+String pitch = &quot;Pitch&quot;;
+canvas.drawText(pitch,
+        xc - pitchPaint.measureText(pitch) / 2,
+        //这里加上180，是因为要加上最外面那个大的圆形的半径
+        //再加上80，是为了让文字和最大的那个圆产生间隙
+        yc + 180 + 80,
+        pitchPaint);
+</code></pre><p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4.png" alt="绘制正下方的文字"></p>
+<p>可以看到文字的方向不对，<strong>为什么文字的方向不对呢？</strong>这是因为我们在绘制刻度盘的时候，我们对画布坐标系进行了旋转，画完刻度盘之后，坐标系被旋转了180°，但由于在绘制刻度盘之前，我们对整个画布坐标系进行逆时针旋转了90°，所以实际上只旋转了90°，因此，我们看到绘制的文字不是在正下方，而是在左边，被旋转了90°，<strong>那么这要怎么解决呢？</strong>最简单的方法当然是在绘制文字之前，把画布坐标系旋转回来。所以需要添加一行代码：</p>
+<pre><code>canvas.rotate(-90, xc, yc);
+</code></pre><p>运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4_1.png" alt="最终效果"></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>由于上面的案例代码里用到了很多写死的数字代码(Hard Code)，这不利于代码的灵活性，而且，既然有指针，就应该让指针根据一个提供的输入值，来让指针指向对应的数值位置，所以，我对代码进行了改良，代码如下：</p>
+<pre><code>/**
+ * Created by zhongzilu on 2016/5/25 0025.
+ */
+public class DialView extends View {
+
+    private float mWidth;
+    private float mHeight;
+    private float mAngle = 0;   //指针旋转角度，值为0时指针垂直显示
+    private static int mMaxValue = 50;  //分值区间的最大值
+    private static int mMinValue = -50; //分值区间的最小值
+    /**输入值，通过输入值来计算指针的旋转角度，即{@mAngle}的值,
+     * 最终在界面上呈现的效果是指针指向输入值的刻度上*/
+    private float mValue = 0;
+    /**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/
+    private float mArc = 180;
+
+    public DialView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+        //获取屏幕的宽高
+        WindowManager windowManager = (WindowManager) getContext().getSystemService(
+                Context.WINDOW_SERVICE);
+        mWidth = windowManager.getDefaultDisplay().getWidth();
+        mHeight = windowManager.getDefaultDisplay().getHeight();
+    }
+
+    /**
+     * 注意：
+     * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的
+     * @param canvas
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        float xc = mWidth / 2;    //圆中心X坐标
+        float yc = mHeight / 2;   //圆中心Y坐标
+        float radius = (float)(xc - xc * 0.05314);   //圆半径
+
+        //画刻度盘
+        Paint paintDegree = new Paint();
+
+        /**
+         * 正常情况下，一开始画线或写文字，都是垂直的，但我们的仪表盘
+         * 要求从左边开始画，文字是水平的，所以需要先进行画布旋转90°
+         */
+        canvas.rotate((-mArc / 2), xc, yc);
+        System.out.println(&quot;before rotate==&gt;&quot; + (-mArc / 2));
+        /**
+         * 本案例中，设置的分值区间为（-50 ~ 50)
+         */
+        for (int i = mMinValue; i &lt;= mMaxValue; i++){
+            //区别整点和非整点
+            if (i % 10 == 0){
+                //在屏幕宽度为621下，大小为5
+                paintDegree.setStrokeWidth((float)(mWidth * 0.008051));
+                //刻度字体大小是依据是：在屏幕宽度为621的分辨率下，刚好为30
+                paintDegree.setTextSize((float)(mWidth * 0.048309));
+                paintDegree.setAntiAlias(true);
+                paintDegree.setColor(getResources().getColor(R.color.colorAccent));
+                canvas.drawLine(xc, yc - radius, xc, (float)(yc - radius + xc * 0.101449), paintDegree);
+                String degree = String.valueOf(i);
+                canvas.drawText(degree,
+                        //这里使用了Paint对象的measureText()方法,
+                        //该方法是传入一个String类型的参数，经过计算之后返回该String对象中
+                        //文字所占用的宽度
+                        xc - paintDegree.measureText(degree) / 2,
+
+                        //下方mWidth * 0.048309 = 在屏幕宽度为621下，长度为30
+                        yc - radius + (float)(xc * 0.101449 + mWidth * 0.048309),
+                        paintDegree);
+                /**
+                 * 由于两个整点之间只被分为了5分，所以每份的间隔就是2
+                 */
+            } else if (i % 2 == 0){
+                paintDegree.setStrokeWidth((float)(mWidth * 0.004830));
+                //在屏幕宽度为621下，字体大小为15
+                paintDegree.setTextSize((float)(mWidth * 0.024154));
+                paintDegree.setAntiAlias(true);
+                paintDegree.setColor(getResources().getColor(R.color.grey));
+                /**
+                 * 画灰色短横线，坐标计算依据是灰色短横向长度为深色长横线的一半，
+                 * 并且，两种刻度线的中点在同一个圆的圆弧上
+                 * 由于深色刻度线的长度 = 正中深色小圆的半径 = 屏幕宽度一半的0.101449倍
+                 */
+                canvas.drawLine(xc, 
+                        (float)(yc - radius + xc * 0.101449 / 4), 
+                        xc, 
+                        (float)(yc - radius + xc * 0.101449 / 4 * 3), 
+                        paintDegree);
+
+            }
+
+            //通过旋转画布简化坐标运算
+            canvas.rotate(mArc / (float)(mMaxValue - mMinValue), xc, yc);
+        }
+
+        /**
+         * 三个圆盘的半径和屏幕宽度的一半的比例为
+         * 屏幕宽度一半 ：大圆 ：中圆 ：小圆 =
+         * 1 ：0.481481 ：0.201288 ：0.101449
+         */
+        //画大圆盘
+        Paint bigCircle = new Paint();
+        bigCircle.setColor(getResources().getColor(R.color.colorPrimary));
+        bigCircle.setAntiAlias(true);
+        canvas.drawCircle(xc, yc, (float)(xc * 0.481481), bigCircle);
+        //画中等圆盘
+        Paint midCircle = new Paint();
+        midCircle.setColor(getResources().getColor(R.color.colorPrimaryDark));
+        midCircle.setAntiAlias(true);
+        canvas.drawCircle(xc, yc, (float)(xc * 0.201288), midCircle);
+        //画小圆盘
+        Paint smallCircle = new Paint();
+        smallCircle.setColor(getResources().getColor(R.color.colorAccent));
+        smallCircle.setAntiAlias(true);
+        canvas.drawCircle(xc, yc, (float)(xc * 0.101449), smallCircle);
+        canvas.save();
+
+        //画指针
+        Paint paintCursor = new Paint();
+        //在屏幕宽度为621下，大小为3
+        paintCursor.setStrokeWidth((float)(mWidth * 0.004830));
+        paintCursor.setAntiAlias(true);
+        paintCursor.setColor(getResources().getColor(R.color.colorAccent));
+        /**
+         * 思路：要想让指针以圆心为中心旋转一定角度，要么旋转画布，要么根据坐标来画，
+         * 由于旋转角度比根据坐标更简单，所以就用旋转角度的方式来实现
+         *
+         * 指针具体旋转多少度，得根据算法来计算
+         *
+         * 算法：角度 = 输入值 * （ 总弧度 / 分值总数）
+         *
+         * 举例：本案例中给出的分值区间为（-50 ~ 50）,所以分值总数为100
+         * 假设现在输入值为30，那么角度就为54°
+         */
+        mAngle = mValue * (mArc / (float) (mMaxValue - mMinValue));
+        System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);
+        canvas.rotate(mAngle, xc, yc);
+        /**
+         * xc * 0.101449 = 深色刻度线条的长度
+         * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40
+         * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙
+         */
+        canvas.drawLine(xc, yc,
+                xc - radius + (float)(xc * 0.101449 + mWidth * 0.064412),
+                yc + 3, paintCursor);
+
+        //覆盖在指针上的圆
+        /**
+         * 由于之前的坐标系已经发生了旋转，所以要在正下方写上文字，就需要旋转回来
+         * 当然也可以通过去计算坐标来显示在正下方，但旋转画布的方式更加简单和更容易理解
+         */
+        canvas.rotate(-(mAngle + mArc / 2), xc, yc);
+
+        Paint pitchPaint = new Paint();
+        pitchPaint.setAntiAlias(true);
+        //在屏幕宽度为621下，字体大小为40
+        pitchPaint.setTextSize((float)(mWidth * 0.048309));
+        pitchPaint.setColor(getResources().getColor(R.color.colorAccent));
+        String pitch = &quot;Pitch&quot;;
+        canvas.drawText(pitch,
+                xc - pitchPaint.measureText(pitch) / 2,
+                //这里加上180，是因为要加上最外面那个大的圆形的半径
+                //再加上(mWidth * 0.123188)，是为了让文字和最大的那个圆产生间隙
+                //在屏幕宽度为621下，间隙为80
+                yc + (float)(xc * 0.481481 + mWidth * 0.123188),
+                pitchPaint);
+
+        //值
+        Paint pitchValuePaint = new Paint();
+        pitchValuePaint.setAntiAlias(true);
+        pitchValuePaint.setTextSize((float)(mWidth * 0.080515));
+        pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));
+        String value = &quot;- -&quot;;
+        canvas.drawText(value,
+                xc - pitchValuePaint.measureText(value) / 2,
+                yc + (float)(xc * 0.481481 + mWidth * 0.209339),
+                pitchValuePaint);
+
+        canvas.restore();
+    }
+}
+</code></pre><p>经过修改过后，只需要修改全局变量<code>mValue</code>的值，就可以使指针指向界面上对应的值了，比如<code>mValue = 30</code>，运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_5.png" alt="指针旋转测试"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总的来说，没什么难度，关键点在于绘图时的坐标计算，以及对旋转画布的理解，旋转画布是旋转的画布坐标系。在本案例中，我没有对指针的旋转做动画处理，是因为本文重在讲解Canvas画图，各位也可以自行加上指针旋转动画代码。好了，以上就是今天的内容，各位可以发挥自己的想象力，绘制出更多更有趣的图形。我是钟子路，Thanks for watching!</p>
 <blockquote>
 <p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">zhongzilu</a><br><strong>源码</strong>：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a> </p>
@@ -415,8 +958,46 @@
 <li><code>${PACKAGE_NAME}</code>包名</li>
 <li><code>${DATE}</code> 系统当前的时间<br>当然，你也可以自定义变量，在本案例中，我们需要提供<code>ViewHolder</code>类和集合List的类型，所以自定义变量分别为<code>${VIEWHOLDER_CLASS}</code>和<code>${ITEM_CLASS}</code></li>
 </ul>
-<p>那么现在就来编写用于创建模板的代码，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != &quot;&quot;)package $&#123;PACKAGE_NAME&#125;;#end</div><div class="line"></div><div class="line">import android.content.Context;</div><div class="line">import android.support.v7.widget.RecyclerView;</div><div class="line">import android.view.LayoutInflater;</div><div class="line">import android.view.View;</div><div class="line">import android.view.ViewGroup;</div><div class="line">import java.util.List;</div><div class="line"></div><div class="line">#parse(&quot;File Header.java&quot;)</div><div class="line">public class $&#123;NAME&#125; extends RecyclerView.Adapter&lt;$&#123;VIEWHOLDER_CLASS&#125;&gt; &#123;</div><div class="line">  private final Context context;</div><div class="line">  private List&lt;$&#123;ITEM_CLASS&#125;&gt; items;</div><div class="line"></div><div class="line">  public $&#123;NAME&#125;(List&lt;$&#123;ITEM_CLASS&#125;&gt; items, Context context) &#123;</div><div class="line">    this.items = items;</div><div class="line">    this.context = context;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public $&#123;VIEWHOLDER_CLASS&#125; onCreateViewHolder(ViewGroup parent, int viewType) &#123;</div><div class="line">    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.$&#123;LAYOUT_RES_ID&#125;, parent, false);</div><div class="line">    return new $&#123;VIEWHOLDER_CLASS&#125;(v);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void onBindViewHolder($&#123;VIEWHOLDER_CLASS&#125; holder, int position)&#123;</div><div class="line">    $&#123;ITEM_CLASS&#125; item = items.get(position);</div><div class="line">    //TODO Fill in your logic for binding the view.</div><div class="line">  &#125;</div><div class="line">  @Override</div><div class="line">  public int getItemCount() &#123;</div><div class="line">    if (items == null)&#123;</div><div class="line">      return 0;</div><div class="line">    &#125;</div><div class="line">    return items.size();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>当你想要使用这个文件模板时，会提示你提供相关变量的值，比如<code>${VIEWHOLDER_CLASS}</code>和<code>${ITEM_CLASS}</code>,填写的值会自动替换对应的变量，非常的方便。</p>
+<p>那么现在就来编写用于创建模板的代码，代码如下：</p>
+<pre><code>#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.List;
+
+#parse(&quot;File Header.java&quot;)
+public class ${NAME} extends RecyclerView.Adapter&lt;${VIEWHOLDER_CLASS}&gt; {
+  private final Context context;
+  private List&lt;${ITEM_CLASS}&gt; items;
+
+  public ${NAME}(List&lt;${ITEM_CLASS}&gt; items, Context context) {
+    this.items = items;
+    this.context = context;
+  }
+
+  @Override
+  public ${VIEWHOLDER_CLASS} onCreateViewHolder(ViewGroup parent, int viewType) {
+    View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.${LAYOUT_RES_ID}, parent, false);
+    return new ${VIEWHOLDER_CLASS}(v);
+  }
+
+  @Override
+  public void onBindViewHolder(${VIEWHOLDER_CLASS} holder, int position){
+    ${ITEM_CLASS} item = items.get(position);
+    //TODO Fill in your logic for binding the view.
+  }
+  @Override
+  public int getItemCount() {
+    if (items == null){
+      return 0;
+    }
+    return items.size();
+  }
+}
+</code></pre><p>当你想要使用这个文件模板时，会提示你提供相关变量的值，比如<code>${VIEWHOLDER_CLASS}</code>和<code>${ITEM_CLASS}</code>,填写的值会自动替换对应的变量，非常的方便。</p>
 <p>要使用已经定义好的File Template，只需要选中要创建位置的文件夹，然后点击鼠标右键，再点“New”，你就可以在列表中看到刚创建的File Template的名字<br><img src="http://www.bit100.com/.zhongzilu/image/Selecting-custom-template.png" alt="Selecting custom template"></p>
 <p>点击RecyclerViewAdapter后填写相关变量的值<br><img src="http://www.bit100.com/.zhongzilu/image/FillInCustomTemplateVariables.png" alt="Fill In Custom Template Variables"></p>
 <p>填写完后点击”OK”，之后你就可以看到自动生成的代码了<br><img src="http://www.bit100.com/.zhongzilu/image/GeneratedClassFromTemplate.png" alt="Generated Class From Template"></p>
@@ -492,11 +1073,25 @@
 <blockquote>
 <p><code>&lt;?php $value = get_post_meta(76, &#39;key&#39;); ?&gt;</code></p>
 </blockquote>
-<p><strong>实例</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (have_posts()) :<span class="comment">//如果有文章</span></div><div class="line"> <span class="keyword">while</span> (have_posts()) : the_post(); <span class="comment">//开启主循环</span></div><div class="line">   $value  = get_post_meta(get_the_ID(),<span class="string">'custom_meta'</span>,<span class="keyword">true</span>);</div><div class="line"> <span class="keyword">endwhile</span>; </div><div class="line"> <span class="keyword">endif</span>;</div></pre></td></tr></table></figure></p>
+<p><strong>实例</strong></p>
+<pre><code class="php">if (have_posts()) ://如果有文章
+ while (have_posts()) : the_post(); //开启主循环
+   $value  = get_post_meta(get_the_ID(),&#39;custom_meta&#39;,true);
+ endwhile; 
+ endif;
+</code></pre>
 <p>上面介绍完<code>get_post_meta()</code>函数，现在我们就来实现我的这个任务。<br>在项目源代码中找到使用的主题的文件夹，我的文件夹位置为：<code>htdocs/wp-content/themes/jitatheme/</code><br>再找到<code>function.php</code>文件并打开，在这里我们将封装成一个获取地址的函数，代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">*获取淘宝店铺商品的地址</div><div class="line">*/</div><div class="line">function getTB_Url($postID)&#123;</div><div class="line">  $key = &apos;direct_to_tb&apos;;</div><div class="line">  $url = get_post_meta($postID, $key, true);</div><div class="line">  return $url;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后找到我们要修改的页面，用一个<code>&lt;a&gt;</code>标签来实现点击跳转。我们在<code>&lt;a&gt;</code>标签的href属性中来调用刚才封装的函数，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a class=&quot;btn&quot; href=&quot;&lt;?php echo getTB_Url(get_the_ID()); ?&gt;&quot; target=&quot;_blank&quot;&gt;点击购买&lt;/a&gt;</div></pre></td></tr></table></figure></p>
-<p>最后在页面上点击测试一下，跳转正确，任务完毕。</p>
+<pre><code>/**
+*获取淘宝店铺商品的地址
+*/
+function getTB_Url($postID){
+  $key = &#39;direct_to_tb&#39;;
+  $url = get_post_meta($postID, $key, true);
+  return $url;
+}
+</code></pre><p>然后找到我们要修改的页面，用一个<code>&lt;a&gt;</code>标签来实现点击跳转。我们在<code>&lt;a&gt;</code>标签的href属性中来调用刚才封装的函数，代码如下：</p>
+<pre><code>&lt;a class=&quot;btn&quot; href=&quot;&lt;?php echo getTB_Url(get_the_ID()); ?&gt;&quot; target=&quot;_blank&quot;&gt;点击购买&lt;/a&gt;
+</code></pre><p>最后在页面上点击测试一下，跳转正确，任务完毕。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
 <ul>
 <li>了解了如何在WordPress后台管理界面添加自定义栏目</li>
@@ -622,25 +1217,164 @@
 <li>LoginPresenter</li>
 </ul>
 </blockquote>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>打开<strong>LoginActivity.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class LoginActivity extends Activity implements LoginView, View.OnClickListener &#123;</div><div class="line"></div><div class="line">    private ProgressBar progressBar;</div><div class="line">    private EditText username;</div><div class="line">    private EditText password;</div><div class="line">    private LoginPresenter presenter;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_login);</div><div class="line"></div><div class="line">        //实例化控件</div><div class="line">        ...</div><div class="line"></div><div class="line">        presenter = new LoginPresenterImpl(this);</div><div class="line">    &#125;</div><div class="line">    ...</div></pre></td></tr></table></figure></p>
-<p>从上面代码可以看出,该Activity实现了LoginView的接口和View的点击事件, 并且实例化了一个LoginPresenterImpl对象</p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>打开<strong>LoginActivity.java</strong>文件</p>
+<pre><code>public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
+
+    private ProgressBar progressBar;
+    private EditText username;
+    private EditText password;
+    private LoginPresenter presenter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        //实例化控件
+        ...
+
+        presenter = new LoginPresenterImpl(this);
+    }
+    ...
+</code></pre><p>从上面代码可以看出,该Activity实现了LoginView的接口和View的点击事件, 并且实例化了一个LoginPresenterImpl对象</p>
 <p>现在打开<strong>LoginView.java</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public interface LoginView &#123;</div><div class="line">    void showProgress();</div><div class="line"></div><div class="line">    void hideProgress();</div><div class="line"></div><div class="line">    void setUsernameError();</div><div class="line"></div><div class="line">    void setPasswordError();</div><div class="line"></div><div class="line">    void navigateToHome();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看到LoginView文件中定义了几个接口, 通过名称可以很容易知道每个接口是用来干什么的<br>返回LoginActivity也很容易发现是如何实现这几个接口的,如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.VISIBLE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.GONE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsernameError</span><span class="params">()</span> </span>&#123;</div><div class="line">    username.setError(getString(R.string.username_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPasswordError</span><span class="params">()</span> </span>&#123;</div><div class="line">    password.setError(getString(R.string.password_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">navigateToHome</span><span class="params">()</span> </span>&#123;</div><div class="line">    startActivity(<span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class));</div><div class="line">    finish();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>打开<strong>LoginPresenter.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LoginPresenter</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">validateCredentials</span><span class="params">(String username, String password)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以看到定义了两个接口,其中validateCredentials接口是用来验证用户名和密码是否通过验证的<br>在LoginActivity中也有实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override public void onClick(View v) &#123;</div><div class="line">    presenter.validateCredentials(username.getText().toString(), </div><div class="line">        password.getText().toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>看到这里, 我们可以总结出LoginActivity没有做任何逻辑相关的事情,而是在做界面显示相关和界面跳转的事情, 就连验证帐号的逻辑都是交给LoginPresenterImpl类的</strong></p>
-<p>那么现在顺藤摸瓜,打开LoginPresenterImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class LoginPresenterImpl implements LoginPresenter, </div><div class="line">        LoginInteractor.OnLoginFinishedListener &#123;</div><div class="line"></div><div class="line">    private LoginView loginView;</div><div class="line">    private LoginInteractor loginInteractor;</div><div class="line"></div><div class="line">    public LoginPresenterImpl(LoginView loginView) &#123;</div><div class="line">        this.loginView = loginView;</div><div class="line">        this.loginInteractor = new LoginInteractorImpl();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //其他方法的实现</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们可以看到该类实现了LoginPresenter和LoginInteractor.OnLoginFinishedListener的接口,  并且在构造方法的参数为LoginView, 那么问题来了, <strong>为什么要传递LoginView类型的参数呢?</strong></p>
+<pre><code>public interface LoginView {
+    void showProgress();
+
+    void hideProgress();
+
+    void setUsernameError();
+
+    void setPasswordError();
+
+    void navigateToHome();
+}
+</code></pre><p>可以看到LoginView文件中定义了几个接口, 通过名称可以很容易知道每个接口是用来干什么的<br>返回LoginActivity也很容易发现是如何实现这几个接口的,如下:</p>
+<pre><code class="java">Override public void showProgress() {
+    progressBar.setVisibility(View.VISIBLE);
+}
+
+Override public void hideProgress() {
+    progressBar.setVisibility(View.GONE);
+}
+
+Override public void setUsernameError() {
+    username.setError(getString(R.string.username_error));
+}
+
+Override public void setPasswordError() {
+    password.setError(getString(R.string.password_error));
+}
+
+@Override public void navigateToHome() {
+    startActivity(new Intent(this, MainActivity.class));
+    finish();
+}
+</code></pre>
+<p>打开<strong>LoginPresenter.java</strong></p>
+<pre><code class="java">public interface LoginPresenter {
+    void validateCredentials(String username, String password);
+
+    void onDestroy();
+}
+</code></pre>
+<p>可以看到定义了两个接口,其中validateCredentials接口是用来验证用户名和密码是否通过验证的<br>在LoginActivity中也有实现</p>
+<pre><code>@Override public void onClick(View v) {
+    presenter.validateCredentials(username.getText().toString(), 
+        password.getText().toString());
+}
+</code></pre><p><strong>看到这里, 我们可以总结出LoginActivity没有做任何逻辑相关的事情,而是在做界面显示相关和界面跳转的事情, 就连验证帐号的逻辑都是交给LoginPresenterImpl类的</strong></p>
+<p>那么现在顺藤摸瓜,打开LoginPresenterImpl.java文件</p>
+<pre><code>public class LoginPresenterImpl implements LoginPresenter, 
+        LoginInteractor.OnLoginFinishedListener {
+
+    private LoginView loginView;
+    private LoginInteractor loginInteractor;
+
+    public LoginPresenterImpl(LoginView loginView) {
+        this.loginView = loginView;
+        this.loginInteractor = new LoginInteractorImpl();
+    }
+
+    //其他方法的实现
+    ...
+}
+</code></pre><p>我们可以看到该类实现了LoginPresenter和LoginInteractor.OnLoginFinishedListener的接口,  并且在构造方法的参数为LoginView, 那么问题来了, <strong>为什么要传递LoginView类型的参数呢?</strong></p>
 <p>我们刚才也看到了,在LoginView中定义了几个接口, 而在LoginActivity中有对这几个接口的实现, 所以传递这个参数, 是有利于LoginPresenterImpl类调用LoginActivity的实现方法, 用于界面上的显示, 这就达到了逻辑代码和显示代码的分离</p>
-<p>好了,现在来看看是怎么实现LoginPresenter中的validateCredentials接口的吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override public void validateCredentials(String username, String password) &#123;</div><div class="line"></div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.showProgress();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    loginInteractor.login(username, password, this);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>看到这里,有同学该有疑问了,<strong>为什么在这个方法里我没看到实现帐号验证的具体逻辑呢?</strong></p>
+<p>好了,现在来看看是怎么实现LoginPresenter中的validateCredentials接口的吧</p>
+<pre><code>@Override public void validateCredentials(String username, String password) {
+
+    if (loginView != null) {
+        loginView.showProgress();
+    }
+
+    loginInteractor.login(username, password, this);
+}
+</code></pre><p>看到这里,有同学该有疑问了,<strong>为什么在这个方法里我没看到实现帐号验证的具体逻辑呢?</strong></p>
 <p>没错,这里不应该有帐号验证的具体逻辑代码,因为LoginPresenterImpl类充当的是任命者或者称中介者的身份, 中介者只负责联系<strong>界面类</strong>和<strong>具体实现逻辑代码的类</strong>,如果还不能理解,就想想房地产中介吧, 他们只负责联系买房者和卖房者, 其他的事都不管(抱歉, 我没有鄙视或看不起房地产中介人员的意思, 这里只是做个举例, 在此说声对不起).</p>
-<p>我们看到代码中, 把接收到的username和password参数传递给了一个login方法, 该方法在LoginInteractor文件中, 我们再打开<strong>LoginInteractor.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface LoginInteractor &#123;</div><div class="line"></div><div class="line">    interface OnLoginFinishedListener &#123;</div><div class="line">        void onUsernameError();</div><div class="line"></div><div class="line">        void onPasswordError();</div><div class="line"></div><div class="line">        void onSuccess();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void login(String username, String password, OnLoginFinishedListener listener);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以定义了一个login接口和一个OnLoginFinishedListener接口类, 返回LoginPresenterImpl.java文件可以很容易看到OnLoginFinishedListener接口类中接口的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@Override public void onUsernameError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setUsernameError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onPasswordError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setPasswordError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onSuccess() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.navigateToHome();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在这些接口的实现中同样只是调用LoginView中的接口,并没有具体的逻辑操作代码</p>
-<p>在该类的构造方法中我们会发现, 这里实例化了一个<strong>LoginInteractorImpl</strong>对象, 我们现在打开LoginInteractorImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class LoginInteractorImpl implements LoginInteractor &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void login(final String username, final String password, final OnLoginFinishedListener listener) &#123;</div><div class="line">    </div><div class="line">        // Mock login. I&apos;m creating a handler to delay the answer a couple of seconds</div><div class="line">        new Handler().postDelayed(new Runnable() &#123;</div><div class="line">        </div><div class="line">            @Override public void run() &#123;</div><div class="line">            </div><div class="line">                boolean error = false;</div><div class="line">                if (TextUtils.isEmpty(username))&#123;</div><div class="line">                    listener.onUsernameError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (TextUtils.isEmpty(password))&#123;</div><div class="line">                    listener.onPasswordError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (!error)&#123;</div><div class="line">                    listener.onSuccess();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;, 2000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们可以看到该类实现了LoginInteractor中的login接口, 并且在login方法中进行了具体的逻辑处理, 如果验证通过, 调用onSuccess接口</p>
+<p>我们看到代码中, 把接收到的username和password参数传递给了一个login方法, 该方法在LoginInteractor文件中, 我们再打开<strong>LoginInteractor.java</strong>文件</p>
+<pre><code>public interface LoginInteractor {
+
+    interface OnLoginFinishedListener {
+        void onUsernameError();
+
+        void onPasswordError();
+
+        void onSuccess();
+    }
+
+    void login(String username, String password, OnLoginFinishedListener listener);
+
+}
+</code></pre><p>可以定义了一个login接口和一个OnLoginFinishedListener接口类, 返回LoginPresenterImpl.java文件可以很容易看到OnLoginFinishedListener接口类中接口的实现</p>
+<pre><code>@Override public void onUsernameError() {
+    if (loginView != null) {
+        loginView.setUsernameError();
+        loginView.hideProgress();
+    }
+}
+
+@Override public void onPasswordError() {
+    if (loginView != null) {
+        loginView.setPasswordError();
+        loginView.hideProgress();
+    }
+}
+
+@Override public void onSuccess() {
+    if (loginView != null) {
+        loginView.navigateToHome();
+    }
+}
+</code></pre><p>在这些接口的实现中同样只是调用LoginView中的接口,并没有具体的逻辑操作代码</p>
+<p>在该类的构造方法中我们会发现, 这里实例化了一个<strong>LoginInteractorImpl</strong>对象, 我们现在打开LoginInteractorImpl.java文件</p>
+<pre><code>public class LoginInteractorImpl implements LoginInteractor {
+
+    @Override
+    public void login(final String username, final String password, final OnLoginFinishedListener listener) {
+
+        // Mock login. I&#39;m creating a handler to delay the answer a couple of seconds
+        new Handler().postDelayed(new Runnable() {
+
+            @Override public void run() {
+
+                boolean error = false;
+                if (TextUtils.isEmpty(username)){
+                    listener.onUsernameError();
+                    error = true;
+                }
+                if (TextUtils.isEmpty(password)){
+                    listener.onPasswordError();
+                    error = true;
+                }
+                if (!error){
+                    listener.onSuccess();
+                }
+            }
+        }, 2000);
+    }
+}
+</code></pre><p>我们可以看到该类实现了LoginInteractor中的login接口, 并且在login方法中进行了具体的逻辑处理, 如果验证通过, 调用onSuccess接口</p>
 <p><strong>好了,整个登录流程讲完了,最后我们再来梳理一下整个流程:</strong></p>
 <blockquote>
 <ol>
