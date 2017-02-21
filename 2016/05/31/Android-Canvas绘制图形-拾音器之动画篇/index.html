@@ -142,9 +142,85 @@
 <p>一：使用<code>ofFloat()</code>方法动态改变指针指向的数值，即传递过来的参数mValue</p>
 <p>二：将传递过来的参数进行计算成指针偏转的角度(<code>mAngle</code>)，然后使用<code>ofFloat()</code>方法动态改变角度数值</p>
 <p>这两种方法都是可取的，具体情况具体分析，由于在界面上我们要动态显示指针指向的数值，如果采用第二种的话，那么我们要计算两次，一次是将指向mValue计算为mAngle，数值动态变化后还要将mAngle计算为mValue，这样比较麻烦，所以我们采用第一种思路。</p>
-<p>因此，要实现指针的偏转动画，代码可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">private int mMaxValue = 50;  //分值区间的最大值</div><div class="line">private int mMinValue = -50; //分值区间的最小值</div><div class="line">/**输入值，通过输入值来计算指针的旋转角度，即&#123;@mAngle&#125;的值,</div><div class="line"> * 最终在界面上呈现的效果是指针指向输入值的刻度上*/</div><div class="line">private String mValue = &quot;- -&quot;;</div><div class="line">/**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/</div><div class="line">private float mArc = 180f;</div><div class="line">/**指针旋转角度值*/</div><div class="line">private float mAngle = 0f;</div><div class="line"></div><div class="line">...</div><div class="line"></div><div class="line">/**</div><div class="line"> * 设置指针指向数值，并产生旋转动画</div><div class="line"> * 这里我们动态改变指向数值</div><div class="line"> * @param value 指向数值</div><div class="line"> */</div><div class="line">public void setValue(float value)&#123;</div><div class="line">    //&#123;@param value&#125;为指针将要指向的数值，即界面上看到的数值</div><div class="line">    ValueAnimator startAnimator = ValueAnimator.ofFloat(0, value);</div><div class="line"></div><div class="line">    startAnimator.addUpdateListener(</div><div class="line">       new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">        @Override</div><div class="line">        public void onAnimationUpdate(ValueAnimator animation) &#123;</div><div class="line">            //通过getAnimatedValue()取变化后的值</div><div class="line">            float md = (float) animation.getAnimatedValue();</div><div class="line">            //计算指针当前应该偏转的角度</div><div class="line">            mAngle = md * (mArc / (float) (mMaxValue - mMinValue));</div><div class="line">            //界面上显示当前指针显示的数值</div><div class="line">            mValue = String.valueOf((int)md);</div><div class="line">            //调用重绘方法</div><div class="line">            invalidate();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    startAnimator.setDuration(1000);</div><div class="line">    startAnimator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在<code>setValue()</code>方法里我们动态的改变了指针指向的数值和指针偏转的角度，并把这两个数值分别存放在全局变量<code>mValue</code>和<code>mAngle</code>，这样一来，我们只需要在<code>onDraw()</code>方法中，对指针进行旋转和但前指向数值的显示就可以了，代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 注意：</div><div class="line"> * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的</div><div class="line"> * @param canvas</div><div class="line"> */</div><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">    super.onDraw(canvas);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);</div><div class="line">    canvas.rotate(mAngle, xc, yc);</div><div class="line"></div><div class="line">    //画指针</div><div class="line">    /**</div><div class="line">     * xc * 0.101449 = 深色刻度线条的长度</div><div class="line">     * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40</div><div class="line">     * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙</div><div class="line">     */</div><div class="line">    canvas.drawLine(xc, yc,</div><div class="line">            xc - radius + (xc * 0.101449f + mWidth * 0.064412f),</div><div class="line">            yc + 3, paintCursor);</div><div class="line"></div><div class="line">    ...</div><div class="line"></div><div class="line">    //值</div><div class="line">    pitchValuePaint.setAntiAlias(true);</div><div class="line">    pitchValuePaint.setTextSize((mWidth * 0.080515f));</div><div class="line">    pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));</div><div class="line"></div><div class="line">    canvas.drawText(mValue,</div><div class="line">            xc - pitchValuePaint.measureText(mValue) / 2,</div><div class="line">            yc + (xc * 0.481481f + mWidth * 0.209339f),</div><div class="line">            pitchValuePaint);</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>效果如下：</p>
+<p>因此，要实现指针的偏转动画，代码可以这么写：</p>
+<pre><code>private int mMaxValue = 50;  //分值区间的最大值
+private int mMinValue = -50; //分值区间的最小值
+/**输入值，通过输入值来计算指针的旋转角度，即{@mAngle}的值,
+ * 最终在界面上呈现的效果是指针指向输入值的刻度上*/
+private String mValue = &quot;- -&quot;;
+/**刻度盘呈现的总弧度，本案例中总弧度为180，呈半圆形*/
+private float mArc = 180f;
+/**指针旋转角度值*/
+private float mAngle = 0f;
+
+...
+
+/**
+ * 设置指针指向数值，并产生旋转动画
+ * 这里我们动态改变指向数值
+ * @param value 指向数值
+ */
+public void setValue(float value){
+    //{@param value}为指针将要指向的数值，即界面上看到的数值
+    ValueAnimator startAnimator = ValueAnimator.ofFloat(0, value);
+
+    startAnimator.addUpdateListener(
+       new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            //通过getAnimatedValue()取变化后的值
+            float md = (float) animation.getAnimatedValue();
+            //计算指针当前应该偏转的角度
+            mAngle = md * (mArc / (float) (mMaxValue - mMinValue));
+            //界面上显示当前指针显示的数值
+            mValue = String.valueOf((int)md);
+            //调用重绘方法
+            invalidate();
+
+        }
+    });
+    startAnimator.setDuration(1000);
+    startAnimator.start();
+}
+</code></pre><p>在<code>setValue()</code>方法里我们动态的改变了指针指向的数值和指针偏转的角度，并把这两个数值分别存放在全局变量<code>mValue</code>和<code>mAngle</code>，这样一来，我们只需要在<code>onDraw()</code>方法中，对指针进行旋转和但前指向数值的显示就可以了，代码如下：</p>
+<pre><code>/**
+ * 注意：
+ * 下方的所以坐标计算和长度计算都是依据在屏幕宽度为621px情况下的
+ * @param canvas
+ */
+@Override
+protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+
+    ...
+
+    System.out.println(&quot;mAngle ==&gt;&quot; + mAngle);
+    canvas.rotate(mAngle, xc, yc);
+
+    //画指针
+    /**
+     * xc * 0.101449 = 深色刻度线条的长度
+     * mWidth * 0.064412 = 在屏幕宽度为621下，长度为40
+     * 所以下面第三个参数的值可以理解为距离深色刻度线下方有40倍数的间隙
+     */
+    canvas.drawLine(xc, yc,
+            xc - radius + (xc * 0.101449f + mWidth * 0.064412f),
+            yc + 3, paintCursor);
+
+    ...
+
+    //值
+    pitchValuePaint.setAntiAlias(true);
+    pitchValuePaint.setTextSize((mWidth * 0.080515f));
+    pitchValuePaint.setColor(getResources().getColor(R.color.colorAccent));
+
+    canvas.drawText(mValue,
+            xc - pitchValuePaint.measureText(mValue) / 2,
+            yc + (xc * 0.481481f + mWidth * 0.209339f),
+            pitchValuePaint);
+    ...
+}
+</code></pre><p>效果如下：</p>
 <p><img src="http://www.bit100.com/.zhongzilu/image/TunerView.gif" alt=""></p>
 <p>详细的代码，请移步到我的GitHub：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a></p>
 <p>我是钟子路，Thanks for watching!</p>

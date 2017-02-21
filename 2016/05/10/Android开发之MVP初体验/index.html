@@ -116,25 +116,164 @@
 <li>LoginPresenter</li>
 </ul>
 </blockquote>
-<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>打开<strong>LoginActivity.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class LoginActivity extends Activity implements LoginView, View.OnClickListener &#123;</div><div class="line"></div><div class="line">    private ProgressBar progressBar;</div><div class="line">    private EditText username;</div><div class="line">    private EditText password;</div><div class="line">    private LoginPresenter presenter;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_login);</div><div class="line"></div><div class="line">        //实例化控件</div><div class="line">        ...</div><div class="line"></div><div class="line">        presenter = new LoginPresenterImpl(this);</div><div class="line">    &#125;</div><div class="line">    ...</div></pre></td></tr></table></figure></p>
-<p>从上面代码可以看出,该Activity实现了LoginView的接口和View的点击事件, 并且实例化了一个LoginPresenterImpl对象</p>
+<h2 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h2><p>打开<strong>LoginActivity.java</strong>文件</p>
+<pre><code>public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
+
+    private ProgressBar progressBar;
+    private EditText username;
+    private EditText password;
+    private LoginPresenter presenter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        //实例化控件
+        ...
+
+        presenter = new LoginPresenterImpl(this);
+    }
+    ...
+</code></pre><p>从上面代码可以看出,该Activity实现了LoginView的接口和View的点击事件, 并且实例化了一个LoginPresenterImpl对象</p>
 <p>现在打开<strong>LoginView.java</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public interface LoginView &#123;</div><div class="line">    void showProgress();</div><div class="line"></div><div class="line">    void hideProgress();</div><div class="line"></div><div class="line">    void setUsernameError();</div><div class="line"></div><div class="line">    void setPasswordError();</div><div class="line"></div><div class="line">    void navigateToHome();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看到LoginView文件中定义了几个接口, 通过名称可以很容易知道每个接口是用来干什么的<br>返回LoginActivity也很容易发现是如何实现这几个接口的,如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.VISIBLE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideProgress</span><span class="params">()</span> </span>&#123;</div><div class="line">    progressBar.setVisibility(View.GONE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsernameError</span><span class="params">()</span> </span>&#123;</div><div class="line">    username.setError(getString(R.string.username_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">Override <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPasswordError</span><span class="params">()</span> </span>&#123;</div><div class="line">    password.setError(getString(R.string.password_error));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">navigateToHome</span><span class="params">()</span> </span>&#123;</div><div class="line">    startActivity(<span class="keyword">new</span> Intent(<span class="keyword">this</span>, MainActivity.class));</div><div class="line">    finish();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>打开<strong>LoginPresenter.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">LoginPresenter</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">validateCredentials</span><span class="params">(String username, String password)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以看到定义了两个接口,其中validateCredentials接口是用来验证用户名和密码是否通过验证的<br>在LoginActivity中也有实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override public void onClick(View v) &#123;</div><div class="line">    presenter.validateCredentials(username.getText().toString(), </div><div class="line">        password.getText().toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>看到这里, 我们可以总结出LoginActivity没有做任何逻辑相关的事情,而是在做界面显示相关和界面跳转的事情, 就连验证帐号的逻辑都是交给LoginPresenterImpl类的</strong></p>
-<p>那么现在顺藤摸瓜,打开LoginPresenterImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class LoginPresenterImpl implements LoginPresenter, </div><div class="line">        LoginInteractor.OnLoginFinishedListener &#123;</div><div class="line"></div><div class="line">    private LoginView loginView;</div><div class="line">    private LoginInteractor loginInteractor;</div><div class="line"></div><div class="line">    public LoginPresenterImpl(LoginView loginView) &#123;</div><div class="line">        this.loginView = loginView;</div><div class="line">        this.loginInteractor = new LoginInteractorImpl();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //其他方法的实现</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们可以看到该类实现了LoginPresenter和LoginInteractor.OnLoginFinishedListener的接口,  并且在构造方法的参数为LoginView, 那么问题来了, <strong>为什么要传递LoginView类型的参数呢?</strong></p>
+<pre><code>public interface LoginView {
+    void showProgress();
+
+    void hideProgress();
+
+    void setUsernameError();
+
+    void setPasswordError();
+
+    void navigateToHome();
+}
+</code></pre><p>可以看到LoginView文件中定义了几个接口, 通过名称可以很容易知道每个接口是用来干什么的<br>返回LoginActivity也很容易发现是如何实现这几个接口的,如下:</p>
+<pre><code class="java">Override public void showProgress() {
+    progressBar.setVisibility(View.VISIBLE);
+}
+
+Override public void hideProgress() {
+    progressBar.setVisibility(View.GONE);
+}
+
+Override public void setUsernameError() {
+    username.setError(getString(R.string.username_error));
+}
+
+Override public void setPasswordError() {
+    password.setError(getString(R.string.password_error));
+}
+
+@Override public void navigateToHome() {
+    startActivity(new Intent(this, MainActivity.class));
+    finish();
+}
+</code></pre>
+<p>打开<strong>LoginPresenter.java</strong></p>
+<pre><code class="java">public interface LoginPresenter {
+    void validateCredentials(String username, String password);
+
+    void onDestroy();
+}
+</code></pre>
+<p>可以看到定义了两个接口,其中validateCredentials接口是用来验证用户名和密码是否通过验证的<br>在LoginActivity中也有实现</p>
+<pre><code>@Override public void onClick(View v) {
+    presenter.validateCredentials(username.getText().toString(), 
+        password.getText().toString());
+}
+</code></pre><p><strong>看到这里, 我们可以总结出LoginActivity没有做任何逻辑相关的事情,而是在做界面显示相关和界面跳转的事情, 就连验证帐号的逻辑都是交给LoginPresenterImpl类的</strong></p>
+<p>那么现在顺藤摸瓜,打开LoginPresenterImpl.java文件</p>
+<pre><code>public class LoginPresenterImpl implements LoginPresenter, 
+        LoginInteractor.OnLoginFinishedListener {
+
+    private LoginView loginView;
+    private LoginInteractor loginInteractor;
+
+    public LoginPresenterImpl(LoginView loginView) {
+        this.loginView = loginView;
+        this.loginInteractor = new LoginInteractorImpl();
+    }
+
+    //其他方法的实现
+    ...
+}
+</code></pre><p>我们可以看到该类实现了LoginPresenter和LoginInteractor.OnLoginFinishedListener的接口,  并且在构造方法的参数为LoginView, 那么问题来了, <strong>为什么要传递LoginView类型的参数呢?</strong></p>
 <p>我们刚才也看到了,在LoginView中定义了几个接口, 而在LoginActivity中有对这几个接口的实现, 所以传递这个参数, 是有利于LoginPresenterImpl类调用LoginActivity的实现方法, 用于界面上的显示, 这就达到了逻辑代码和显示代码的分离</p>
-<p>好了,现在来看看是怎么实现LoginPresenter中的validateCredentials接口的吧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override public void validateCredentials(String username, String password) &#123;</div><div class="line"></div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.showProgress();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    loginInteractor.login(username, password, this);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>看到这里,有同学该有疑问了,<strong>为什么在这个方法里我没看到实现帐号验证的具体逻辑呢?</strong></p>
+<p>好了,现在来看看是怎么实现LoginPresenter中的validateCredentials接口的吧</p>
+<pre><code>@Override public void validateCredentials(String username, String password) {
+
+    if (loginView != null) {
+        loginView.showProgress();
+    }
+
+    loginInteractor.login(username, password, this);
+}
+</code></pre><p>看到这里,有同学该有疑问了,<strong>为什么在这个方法里我没看到实现帐号验证的具体逻辑呢?</strong></p>
 <p>没错,这里不应该有帐号验证的具体逻辑代码,因为LoginPresenterImpl类充当的是任命者或者称中介者的身份, 中介者只负责联系<strong>界面类</strong>和<strong>具体实现逻辑代码的类</strong>,如果还不能理解,就想想房地产中介吧, 他们只负责联系买房者和卖房者, 其他的事都不管(抱歉, 我没有鄙视或看不起房地产中介人员的意思, 这里只是做个举例, 在此说声对不起).</p>
-<p>我们看到代码中, 把接收到的username和password参数传递给了一个login方法, 该方法在LoginInteractor文件中, 我们再打开<strong>LoginInteractor.java</strong>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public interface LoginInteractor &#123;</div><div class="line"></div><div class="line">    interface OnLoginFinishedListener &#123;</div><div class="line">        void onUsernameError();</div><div class="line"></div><div class="line">        void onPasswordError();</div><div class="line"></div><div class="line">        void onSuccess();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    void login(String username, String password, OnLoginFinishedListener listener);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可以定义了一个login接口和一个OnLoginFinishedListener接口类, 返回LoginPresenterImpl.java文件可以很容易看到OnLoginFinishedListener接口类中接口的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@Override public void onUsernameError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setUsernameError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onPasswordError() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.setPasswordError();</div><div class="line">        loginView.hideProgress();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override public void onSuccess() &#123;</div><div class="line">    if (loginView != null) &#123;</div><div class="line">        loginView.navigateToHome();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在这些接口的实现中同样只是调用LoginView中的接口,并没有具体的逻辑操作代码</p>
-<p>在该类的构造方法中我们会发现, 这里实例化了一个<strong>LoginInteractorImpl</strong>对象, 我们现在打开LoginInteractorImpl.java文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class LoginInteractorImpl implements LoginInteractor &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void login(final String username, final String password, final OnLoginFinishedListener listener) &#123;</div><div class="line">    </div><div class="line">        // Mock login. I&apos;m creating a handler to delay the answer a couple of seconds</div><div class="line">        new Handler().postDelayed(new Runnable() &#123;</div><div class="line">        </div><div class="line">            @Override public void run() &#123;</div><div class="line">            </div><div class="line">                boolean error = false;</div><div class="line">                if (TextUtils.isEmpty(username))&#123;</div><div class="line">                    listener.onUsernameError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (TextUtils.isEmpty(password))&#123;</div><div class="line">                    listener.onPasswordError();</div><div class="line">                    error = true;</div><div class="line">                &#125;</div><div class="line">                if (!error)&#123;</div><div class="line">                    listener.onSuccess();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;, 2000);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们可以看到该类实现了LoginInteractor中的login接口, 并且在login方法中进行了具体的逻辑处理, 如果验证通过, 调用onSuccess接口</p>
+<p>我们看到代码中, 把接收到的username和password参数传递给了一个login方法, 该方法在LoginInteractor文件中, 我们再打开<strong>LoginInteractor.java</strong>文件</p>
+<pre><code>public interface LoginInteractor {
+
+    interface OnLoginFinishedListener {
+        void onUsernameError();
+
+        void onPasswordError();
+
+        void onSuccess();
+    }
+
+    void login(String username, String password, OnLoginFinishedListener listener);
+
+}
+</code></pre><p>可以定义了一个login接口和一个OnLoginFinishedListener接口类, 返回LoginPresenterImpl.java文件可以很容易看到OnLoginFinishedListener接口类中接口的实现</p>
+<pre><code>@Override public void onUsernameError() {
+    if (loginView != null) {
+        loginView.setUsernameError();
+        loginView.hideProgress();
+    }
+}
+
+@Override public void onPasswordError() {
+    if (loginView != null) {
+        loginView.setPasswordError();
+        loginView.hideProgress();
+    }
+}
+
+@Override public void onSuccess() {
+    if (loginView != null) {
+        loginView.navigateToHome();
+    }
+}
+</code></pre><p>在这些接口的实现中同样只是调用LoginView中的接口,并没有具体的逻辑操作代码</p>
+<p>在该类的构造方法中我们会发现, 这里实例化了一个<strong>LoginInteractorImpl</strong>对象, 我们现在打开LoginInteractorImpl.java文件</p>
+<pre><code>public class LoginInteractorImpl implements LoginInteractor {
+
+    @Override
+    public void login(final String username, final String password, final OnLoginFinishedListener listener) {
+
+        // Mock login. I&#39;m creating a handler to delay the answer a couple of seconds
+        new Handler().postDelayed(new Runnable() {
+
+            @Override public void run() {
+
+                boolean error = false;
+                if (TextUtils.isEmpty(username)){
+                    listener.onUsernameError();
+                    error = true;
+                }
+                if (TextUtils.isEmpty(password)){
+                    listener.onPasswordError();
+                    error = true;
+                }
+                if (!error){
+                    listener.onSuccess();
+                }
+            }
+        }, 2000);
+    }
+}
+</code></pre><p>我们可以看到该类实现了LoginInteractor中的login接口, 并且在login方法中进行了具体的逻辑处理, 如果验证通过, 调用onSuccess接口</p>
 <p><strong>好了,整个登录流程讲完了,最后我们再来梳理一下整个流程:</strong></p>
 <blockquote>
 <ol>
