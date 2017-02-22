@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>(已解决)ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      (已解决)ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<p>###(已解决)ViewPager禁用预加载，使用Fragment的setUserVisibleHint导致的问题</p>
+<hr>
+<p>不久前，写了一篇博客，<a href="http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载网络数据/" target="_blank" rel="external">《ViewPager禁止预加载，滑动到那个页面再加载网络数据》</a>，根据这篇文章的做法，确实可以解决问题，但是当时我忽略了另一种情况，那就是在Activity中重复利用那个Fragment，<strong><code>结果Fragment没有加载数据，显示空白的</code></strong></p>
+<p>这也是我在实际开发中遇到的，因为有个Fragment在ViewPager中显示，在另一个地方需要跳转到一个Activity，Activity显示内容和逻辑和Fragment里的一样，所以为了代码重用，就直接用Activity嵌套Fragment了，结果Activity显示空白，调试发现根本没运行到<code>setUserVisibleHint()</code>，在ViewPager中嵌套Fragment没有遇到这个问题。</p>
+<p>于是我在Activity的<code>onResume()</code>中手动调用<code>setUserVisibleHint(true)</code>，结果报空指针，一查才知道，原来<code>setUserVisibleHint()</code>方法要<strong>优先于</strong>Fragment的<code>onCreateView()</code>，由于Fragment里的必要控件都还没有初始化，所以报空指针了</p>
+<p>要解决这个问题，需要用到Fragment的<code>onHiddenChanged()</code>方法，</p>
+<pre><code class="java">@Override
+public void onHiddenChanged(boolean hidden) {
+    super.onHiddenChanged(hidden);
+    if (hidden &amp;&amp; isFirst){
+        //在这里加载数据
+        isFirst = false;
+    }
+}
+</code></pre>
+<p>然后在Activity中手动调用<code>onHiddenChanged(true)</code>，这样就能实现和<code>ViewPager + Fragment</code>的方式一样的效果了，在用户看到这个Fragment的时候再加载数据</p>
+<p><strong>作者</strong>：<a href="htpp://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/%E9%97%AE%E9%A2%98viewpager%E7%A6%81%E7%94%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%BD%BF%E7%94%A8fragment%E7%9A%84setuservisiblehint%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="external">http://www.bit100.com/问题ViewPager禁用预加载使用Fragment的setUserVisibleHint导致的问题/</a></p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2016-09-23T03:14:27.000Z" itemprop="datePublished">2016-09-23</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="已解决-ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题" data-title="(已解决)ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题" data-url="http://zhongzilu.github.io/2016/09/23/已解决-ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	
+		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	</body>
+</html>
