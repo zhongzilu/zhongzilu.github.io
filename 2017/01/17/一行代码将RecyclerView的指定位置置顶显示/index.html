@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>archive_a: 2017 | Zhongzilu</title>
+    <title>一行代码将RecyclerView的指定位置置顶显示 | Zhongzilu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     
@@ -69,80 +69,66 @@
 <!--文章列表-->
 <div class="wrapper">
   
-    <ul class="posts-list mb+ js-posts">
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-            <i class="post-status iconfont icon-icon"></i>  
-          
-          <h2 class="no-background"  >
-            <span><a href="/2017/02/20/Hello-from-zhongzilu/">Hello from zhongzilu</a></span>
-            <time class="post-time" datetime="2017-02-20T09:09:38.000Z" itemprop="datePublished">2017-02-20</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2017/01/17/一行代码将RecyclerView的指定位置置顶显示/">一行代码将RecyclerView的指定位置置顶显示</a></span>
-            <time class="post-time" datetime="2017-01-17T04:34:31.000Z" itemprop="datePublished">2017-01-17</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2017/01/16/使用FFmpeg合成延时视频/">使用FFmpeg合成延时视频</a></span>
-            <time class="post-time" datetime="2017-01-16T04:23:56.000Z" itemprop="datePublished">2017-01-16</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2017/01/15/一道腾讯面试题的思考-到底谁会赢/">一道腾讯面试题的思考_到底谁会赢</a></span>
-            <time class="post-time" datetime="2017-01-15T04:22:16.000Z" itemprop="datePublished">2017-01-15</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2017/01/14/经典面试问题：Cookie被禁用了-Session还能用吗/">经典面试问题：Cookie被禁用了-Session还能用吗</a></span>
-            <time class="post-time" datetime="2017-01-14T04:18:49.000Z" itemprop="datePublished">2017-01-14</time>
-          </h2>
-        </li>
-      
-    </ul>
-    
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      一行代码将RecyclerView的指定位置置顶显示
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h3 id="一行代码将RecyclerView的指定位置置顶显示"><a href="#一行代码将RecyclerView的指定位置置顶显示" class="headerlink" title="一行代码将RecyclerView的指定位置置顶显示"></a>一行代码将RecyclerView的指定位置置顶显示</h3><p>标签 <code>Android</code> <code>RecyclerView</code> <code>scrollToPosition</code> <code>zhongzilu</code> <code>bit100</code></p>
+<p>如果你有需求是将RecyclerView的指定位置置顶，那么这里有个最简单的方法，一行代码搞定，代码如下</p>
+<pre><code>private void scrollToPosition(LayoutManager manager,int index){
+    manager.scrollToPositionWithOffset(index,
+        (int) manager.computeScrollVectorForPosition(index).y);
+}
+</code></pre><p>其中manager是给RecyclerView设置的布局管理器，index是指定的位置。<br>是不是很简单？</p>
+<p><code>查看演示视频请到原文地址观看</code></p>
+<p>点击下载源文件：<br><a href="http://www.bit100.com/wp-content/uploads/2017/01/ScrollToPositionTest.zip" target="_blank" rel="external">ScrollToPositionTest.zip</a></p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%86recyclerview%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%BD%AE%E9%A1%B6%E6%98%BE%E7%A4%BA/" target="_blank" rel="external">http://www.bit100.com/一行代码将RecyclerView的指定位置置顶显示/</a></p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2017-01-17T04:34:31.000Z" itemprop="datePublished">2017-01-17</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="一行代码将RecyclerView的指定位置置顶显示" data-title="一行代码将RecyclerView的指定位置置顶显示" data-url="http://zhongzilu.github.io/2017/01/17/一行代码将RecyclerView的指定位置置顶显示/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
 
   
 </div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
 
 
 

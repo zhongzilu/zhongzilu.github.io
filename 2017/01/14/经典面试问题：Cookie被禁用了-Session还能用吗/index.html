@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>经典面试问题：Cookie被禁用了-Session还能用吗 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      经典面试问题：Cookie被禁用了-Session还能用吗
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h3 id="面试经典问题：Cookie被禁用了，Session还能用吗？"><a href="#面试经典问题：Cookie被禁用了，Session还能用吗？" class="headerlink" title="面试经典问题：Cookie被禁用了，Session还能用吗？"></a>面试经典问题：Cookie被禁用了，Session还能用吗？</h3><hr>
+<p>面试的时候经常被问到Cookie禁用了，Session还能用吗？不同的公司给出的答案也有点不同，到底Cookie禁用了，Session还能用吗？</p>
+<hr>
+<h4 id="默认SESSION配置"><a href="#默认SESSION配置" class="headerlink" title="默认SESSION配置"></a>默认SESSION配置</h4><p>在<strong>默认的</strong>JSP、PHP配置中，SessionID是需要存储在Cookie中的，默认Cookie名为：</p>
+<ul>
+<li>PHPSESSIONID</li>
+<li>JSESSIONID</li>
+</ul>
+<p>以下以PHP为例：</p>
+<pre><code>1. 你第一次访问网站时，
+2. 服务端脚本中开启了Session`session_start();`,
+3. 服务器会生成一个不重复的SESSIONID 的文件`session_id();`，比如在`/var/lib/php/session`目录
+4. 并将返回(Response)如下的HTTP头 `Set-Cookie:PHPSESSIONID=xxxxxxx`
+5. 客户端接收到`Set-Cookie`的头，将`PHPSESSIONID`写入cookie
+6. 当你第二次访问页面时，所有Cookie会附带的请求头(Request)发送给服务器端
+7. 服务器识别`PHPSESSIONID`这个cookie，然后去session目录查找对应session文件，
+8. 找到这个session文件后，检查是否过期，如果没有过期，去读取Session文件中的配置；如果已经过期，清空其中的配置
+</code></pre><p>如果客户端禁用了Cookie，那<code>PHPSESSIONID</code>都无法写入客户端，Session还能用？</p>
+<p>答案显而易见：<strong>不能</strong></p>
+<blockquote>
+<p>并且服务端因为没有得到<code>PHPSESSIONID</code>的cookie，会不停的生成<code>session_id</code>文件</p>
+</blockquote>
+<h4 id="取巧传递session-id"><a href="#取巧传递session-id" class="headerlink" title="取巧传递session_id"></a>取巧传递session_id</h4><p>但是这难不倒服务端程序，聪明的程序员想到，如果一个Cookie都没接收到，基本上可以预判客户端禁用了Cookie，那将session_id附带在每个网址后面(包括POST)，比如：</p>
+<pre><code>GET http://www.xx.com/index.php?session_id=xxxxx
+POST http://www.xx.com/post.php?session_id=xxxxx
+</code></pre><p>然后在每个页面的开头使用<code>session_id($_GET[&#39;session_id&#39;])</code>，来强制指定当前<code>session_id</code></p>
+<p>这样，答案就变成了：<strong>能</strong></p>
+<blockquote>
+<p>聪明的你肯定想到，那将这个网站发送给别人，那么他将会以你的身份登录并做所有的事情（目前很多订阅公众号就将openid附带在网址后面，这是同样的漏洞）。</p>
+<p>其实不仅仅如此，cookie也可以被盗用，比如XSS注入，通过XSS漏洞获取大量的Cookie，也就是控制了大量的用户，腾讯有专门的XSS漏洞扫描机制，因为大量的QQ盗用，发广告就是因为XSS漏洞</p>
+<p>所以Laravel等框架中，内部实现了Session的所有逻辑，并将<code>PHPSESSIONID</code>设置为<code>httponly</code>并加密，这样，前端JS就无法读取和修改这些敏感信息，降低了被盗用的风险。</p>
+</blockquote>
+<h4 id="Cookie在现代"><a href="#Cookie在现代" class="headerlink" title="Cookie在现代"></a>Cookie在现代</h4><p>禁用Cookie是 IE6 那个年代的事情，现在的网站都非常的依赖Cookie，禁用Cookie会造成大量的麻烦。</p>
+<blockquote>
+<p>在Flash还流行的年代，Flash在提交数据会经常出现用户无法找到的情况，其实是因为Flash在IE下是独立的程序，无法得到IE下的Cookie。</p>
+<p>所以在Flash的<code>flash_var</code>中，一般都会指定当前的<code>session_id</code>，让Flash提交数据的时候，将这个<code>session_id</code>附带着提交过去</p>
+<p>Chrome中使用 Flash沙箱 已经解决了cookie的问题，但是为了兼容IE，比如<code>swfupload</code>等flash程序都要求开发者附带一个<code>session_id</code></p>
+</blockquote>
+<h4 id="面试者的用意"><a href="#面试者的用意" class="headerlink" title="面试者的用意"></a>面试者的用意</h4><p>面试者出此题也是为了考察你对HTTP协议和服务器会话的理解。</p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2017-01-14T04:18:49.000Z" itemprop="datePublished">2017-01-14</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="经典面试问题：Cookie被禁用了-Session还能用吗" data-title="经典面试问题：Cookie被禁用了-Session还能用吗" data-url="http://zhongzilu.github.io/2017/01/14/经典面试问题：Cookie被禁用了-Session还能用吗/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	
+		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	</body>
+</html>
