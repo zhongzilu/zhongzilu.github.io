@@ -15,6 +15,67 @@
     </entry>
     
     <entry>
+      <title><![CDATA[随手拍分享]]></title>
+      <url>http://zhongzilu.github.io/2017/02/16/%E9%9A%8F%E6%89%8B%E6%8B%8D%E5%88%86%E4%BA%AB/</url>
+      <content type="html"><![CDATA[<h3 id="随手拍分享"><a href="#随手拍分享" class="headerlink" title="随手拍分享"></a>随手拍分享</h3><hr>
+<p>昨天天气不错，就骑着自行车出去散步，然后来到了位于成都的环球中心附近，那里正在打造一个生态公园，名为【桂溪生态公园】。</p>
+<p>我沿着一条小河走，河里的水很清澈，可惜没有鱼，这是美中不足的地方。</p>
+<p>乘着天气好，阳光也很充足，时而吹点微风，有种春天到来的气息.河水随着微风荡漾起层层涟漪，涟漪反射着阳光，好一副和谐温暖的景象，我忍不住随手用手机拍了一张照片就揣上手机继续沿着河边走。</p>
+<p>回来后查看手机里的相片，发现用来做壁纸还挺好看，所以就想分享给大家，下面是效果图：</p>
+<p><img src="http://www.bit100.com/wp-content/uploads/2017/02/Screens-169x300.png" alt="Screens"></p>
+<p><a href="http://www.bit100.com/wp-content/uploads/2017/02/Wallpaper.zip" target="_blank" rel="external">点击这里下载原图:Wallpaper.zip</a></p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>：<a href="http://www.bit100.com/%e9%9a%8f%e6%89%8b%e6%8b%8d%e5%88%86%e4%ba%ab/" target="_blank" rel="external">http://www.bit100.com/随手拍分享/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS运算规则问题-下]]></title>
+      <url>http://zhongzilu.github.io/2017/02/16/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8B/</url>
+      <content type="html"><![CDATA[<h3 id="JS运算规则问题（下）"><a href="#JS运算规则问题（下）" class="headerlink" title="JS运算规则问题（下）"></a>JS运算规则问题（下）</h3><hr>
+<h4 id="问题：请回答下图中最后输出结果为什么是false和1？"><a href="#问题：请回答下图中最后输出结果为什么是false和1？" class="headerlink" title="问题：请回答下图中最后输出结果为什么是false和1？"></a>问题：请回答下图中最后输出结果为什么是false和1？</h4><p><img src="http://www.bit100.com/wp-content/uploads/2017/02/Question.png" alt="Question"></p>
+<p>想知道第一个输出结果为什么是false，请看这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/js%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98%E4%B8%8A/" target="_blank" rel="external">http://www.bit100.com/js运算规则问题上/</a></p>
+<h4 id="二、为什么-1-0输出结果为1？"><a href="#二、为什么-1-0输出结果为1？" class="headerlink" title="二、为什么[]?1:0输出结果为1？"></a>二、为什么[]?1:0输出结果为1？</h4><p>想知道为什么输出结果为1，那么需要先弄明白JavaScript三元运算符的实现标准。别怕，抓紧我的手，我带你装逼。</p>
+</blockquote>
+<p>三元运算符的运算规则是先判断问号<code>?</code>左边的表达式为<code>true</code>还是<code>false</code>，如果为<code>true</code>，则输出1，反之输出0。因此先把<code>[]</code>转换成<code>Boolean</code>类型，下面是标准。<br><img src="http://www.bit100.com/wp-content/uploads/2017/02/ToBoolean.png" alt="ToBoolean"></p>
+<p>很明显，由于<code>[]</code>是数组，类型为<code>Object</code>，因此直接返回<code>true</code>。</p>
+<p><strong>所以<code>[]?1:0</code>的输出结果当然就是<code>1</code>了。</strong></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JS运算规则问题-上]]></title>
+      <url>http://zhongzilu.github.io/2017/02/05/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8A/</url>
+      <content type="html"><![CDATA[<h3 id="JS运算规则问题（上）"><a href="#JS运算规则问题（上）" class="headerlink" title="JS运算规则问题（上）"></a>JS运算规则问题（上）</h3><hr>
+<h4 id="问题：请回答下图中最后输出结果为什么是false和1？"><a href="#问题：请回答下图中最后输出结果为什么是false和1？" class="headerlink" title="问题：请回答下图中最后输出结果为什么是false和1？"></a>问题：请回答下图中最后输出结果为什么是false和1？</h4><p><img src="http://www.bit100.com/wp-content/uploads/2017/02/Question.png" alt="Question"></p>
+<h4 id="一、为什么-true输出结果为false"><a href="#一、为什么-true输出结果为false" class="headerlink" title="一、为什么[] == true输出结果为false?"></a>一、为什么[] == true输出结果为false?</h4><p>要想知道为什么输出false，那得先知道<code>==</code>是怎么进行比较的。<br><img src="http://www.bit100.com/wp-content/uploads/2017/02/the-equals-operator.png" alt="the equals operator"><br>上图是JavaScript的<code>==</code>操作符的实现标准，意思是在比较的时候，会把左右两边的表达式使用<code>GetValue()</code>进行转换，然后再用两者得到的值进行比较，即图上的<code>第5项</code>。</p>
+<p>然后跟踪来到<strong>11.9.3</strong>章节，内容如下</p>
+<p><img src="http://www.bit100.com/wp-content/uploads/2017/02/The-Abstract-Equality.png" alt="The Abstract Equality"></p>
+<p>由于操作符右边的表达式为<code>Boolean</code>类型，所以满足上图中的<code>第7项</code>条件，需要先用<code>ToNumber()</code>方法来把布尔类型表达式转换为数字，我们都知道<code>true</code>转换为数字类型时，值为<code>1</code>。</p>
+<p>然后左边的表达式是数组，类型为<code>Object</code>，因此满足<code>第9项条件</code>，于是再用<code>ToPrimitive()</code>方法转换左边的表达式。</p>
+<p><strong>接下来看看<code>ToPrimitive()</code></strong><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/ToPrimitive.png" alt="ToPrimitive"><br>因为需要转换的表达式为<code>Object</code>类型，所以采用最后一条规则。转换的结果是通过<code>[[DefaultValue]]</code>获取的<code>Object</code>的默认值。</p>
+<p><strong>再来看看<code>[[DefaultValue]]</code></strong>的说明<br><img src="http://www.bit100.com/wp-content/uploads/2017/02/DefaultValue.png" alt="DefaultValue"><br>由于对象<code>Object</code>内部的<code>[[DefalutValue]]</code>的<code>hint</code>为<code>String</code>，所以用<code>toString</code>返回值，而数组<code>[]</code>使用<code>toString</code>方法，返回值为<code>&quot;&quot;</code><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/toString.png" alt="toString"></p>
+<p><strong>所以，一开始的<code>[] == true</code>的比较就相当于是<code>&quot;&quot; == 1</code>的比较，然后再回到一开始的 == 实现标准，即<a href="">The Abstact Equality Comparison Algoritem</a>章节的内容</strong></p>
+<p>这个时候满足条件<code>第5项</code><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/The-Abstract-Equality2.png" alt="The Abstract Equality"></p>
+<p>需要把字符串<code>&quot;&quot;</code>转换为数字，由于是空字符串，所以转换后的值为<code>0</code></p>
+<p>最终的结果就相当于是<strong><code>0 == 1</code></strong>，我们当然知道这两者不相等，所以返回值为<strong><code>false</code></strong></p>
+<p>不知道各位看官看明白了吗？好了，就讲到这里，第二个请看下面这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/js%e8%bf%90%e7%ae%97%e8%a7%84%e5%88%99%e9%97%ae%e9%a2%98%ef%bc%88%e4%b8%8b%ef%bc%89/" target="_blank" rel="external">http://www.bit100.com/js运算规则问题下/</a></p>
+</blockquote>
+<p>Thanks for watching!</p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/js%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98%E4%B8%8A/" target="_blank" rel="external">http://www.bit100.com/JS运算规则问题(上)/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[一行代码将RecyclerView的指定位置置顶显示]]></title>
       <url>http://zhongzilu.github.io/2017/01/17/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%86RecyclerView%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%BD%AE%E9%A1%B6%E6%98%BE%E7%A4%BA/</url>
       <content type="html"><![CDATA[<h3 id="一行代码将RecyclerView的指定位置置顶显示"><a href="#一行代码将RecyclerView的指定位置置顶显示" class="headerlink" title="一行代码将RecyclerView的指定位置置顶显示"></a>一行代码将RecyclerView的指定位置置顶显示</h3><p>标签 <code>Android</code> <code>RecyclerView</code> <code>scrollToPosition</code> <code>zhongzilu</code> <code>bit100</code></p>
