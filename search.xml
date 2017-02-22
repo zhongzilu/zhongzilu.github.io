@@ -15,6 +15,202 @@
     </entry>
     
     <entry>
+      <title><![CDATA[一行代码将RecyclerView的指定位置置顶显示]]></title>
+      <url>http://zhongzilu.github.io/2017/01/17/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%86RecyclerView%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%BD%AE%E9%A1%B6%E6%98%BE%E7%A4%BA/</url>
+      <content type="html"><![CDATA[<h3 id="一行代码将RecyclerView的指定位置置顶显示"><a href="#一行代码将RecyclerView的指定位置置顶显示" class="headerlink" title="一行代码将RecyclerView的指定位置置顶显示"></a>一行代码将RecyclerView的指定位置置顶显示</h3><p>标签 <code>Android</code> <code>RecyclerView</code> <code>scrollToPosition</code> <code>zhongzilu</code> <code>bit100</code></p>
+<p>如果你有需求是将RecyclerView的指定位置置顶，那么这里有个最简单的方法，一行代码搞定，代码如下</p>
+<pre><code>private void scrollToPosition(LayoutManager manager,int index){
+    manager.scrollToPositionWithOffset(index,
+        (int) manager.computeScrollVectorForPosition(index).y);
+}
+</code></pre><p>其中manager是给RecyclerView设置的布局管理器，index是指定的位置。<br>是不是很简单？</p>
+<p><code>查看演示视频请到原文地址观看</code></p>
+<p>点击下载源文件：<br><a href="http://www.bit100.com/wp-content/uploads/2017/01/ScrollToPositionTest.zip" target="_blank" rel="external">ScrollToPositionTest.zip</a></p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%86recyclerview%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%BD%AE%E9%A1%B6%E6%98%BE%E7%A4%BA/" target="_blank" rel="external">http://www.bit100.com/一行代码将RecyclerView的指定位置置顶显示/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用FFmpeg合成延时视频]]></title>
+      <url>http://zhongzilu.github.io/2017/01/16/%E4%BD%BF%E7%94%A8FFmpeg%E5%90%88%E6%88%90%E5%BB%B6%E6%97%B6%E8%A7%86%E9%A2%91/</url>
+      <content type="html"><![CDATA[<h3 id="使用FFmpeg合成延时视频"><a href="#使用FFmpeg合成延时视频" class="headerlink" title="使用FFmpeg合成延时视频"></a>使用FFmpeg合成延时视频</h3><hr>
+<p>玩过<a href="https://en.wikipedia.org/wiki/Time-lapse_photography" target="_blank" rel="external">延时摄影</a>的童鞋都知道，所谓的延时摄影就是把很多张连续拍摄的照片合成一个视频文件</p>
+<p><strong>要怎么把多张图片合成视频文件呢？</strong></p>
+<p>开源免费的<a href="https://www.ffmpeg.org/" target="_blank" rel="external">FFmpeg</a>是不二之选</p>
+<p>使用方法也很简单，只需要在你存放照片的目录下执行以下命令</p>
+<pre><code class="bash"># -r 帧率，在这里取每秒 24 帧
+# -s 视频分辨率，缩放比例与原照片分辨率比例一致
+# -i 照片名字的编码格式，我的照片格式是 DSC*****.jpg 五位数字
+# -start_number 照片的起始编号
+# 最后输入视频名称，在这里是 video.mp4
+$ ffmpeg -r 24 -s 1200x800 -i DSC%05d.jpg -start_number 2931 video.mp4
+</code></pre>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[一道腾讯面试题的思考_到底谁会赢]]></title>
+      <url>http://zhongzilu.github.io/2017/01/15/%E4%B8%80%E9%81%93%E8%85%BE%E8%AE%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83-%E5%88%B0%E5%BA%95%E8%B0%81%E4%BC%9A%E8%B5%A2/</url>
+      <content type="html"><![CDATA[<h3 id="一道腾讯面试题的思考-到底谁会赢"><a href="#一道腾讯面试题的思考-到底谁会赢" class="headerlink" title="一道腾讯面试题的思考_到底谁会赢"></a>一道腾讯面试题的思考_到底谁会赢</h3><hr>
+<p>最近看到一道腾讯面试题，觉得很有意思。题干如下：</p>
+<p>有甲乙两家伙用一个英语单词玩游戏（无聊的人还是很多的！！！）。两个人轮流进行，每个人每次从中删掉任意一个字母，如果剩余的字母序列是严格单调递增的（按字典序a &lt; b &lt; c &lt;….&lt;z，假设单词字母不区分大小写，也就是说，a与A算相等），则这个人胜利。假设两个人都足够聪明（即如果有赢的方案，都不会选输的方案 ），甲先开始，问他能赢么？</p>
+<p>输入： 一连串英文小写字母，长度任意（当然要在计算机能承受的范围内）,保证最开始的状态不是一个严格单增的序列。</p>
+<p>输出：1表示甲可以赢，0表示甲不能赢。</p>
+<p>例如: 输入 bad， 则甲可以删掉b或者a,剩余的是ad或者bd，他就赢了，输出1。</p>
+<p>又如: 输入 aaa， 则甲只能删掉1个a，乙删掉一个a,剩余1个a，乙获胜，输出0。</p>
+<p>下面给出我用Java实现的算法，如果大家有其他的实现方法，欢迎跟帖和探讨。语言不限。</p>
+<p>我的基本实现思路将给定的单词分成若干个单调递增的序列。然后按每个序列中包含单词个数多少进行递减排序，也就是说，排在前面的单调递增序列中包含的字母个数最少。然后由甲开始从排在前面的递增序列中选择一个字母。直到该递增序列中的字母全部被选中。然后继续从下一个递增序列选择字母。按着这样的方法做，直到剩下最后一个单调递增序列，随最后选择了倒数第二个单调递增序列中的最后一个字母，谁就赢了。</p>
+<p>例如，单词hela，可以分为三个单调递增序列：h、a、el。从甲开始选择。</p>
+<p>甲：h</p>
+<p>乙：a</p>
+<p>由于a是倒数第二个单调递增序列的最后一个字母，所以乙赢了。</p>
+<p>对于单词money可以分成三个单调递增序列：mo、n、ey。排序后：n、mo、ey。</p>
+<p>甲：n</p>
+<p>乙：m</p>
+<p>甲：o</p>
+<p>所以甲赢。</p>
+<p>具体的实现算法如下：</p>
+<pre><code>public class Test {
+    //  实现算法的方法，in为一个给定的单词
+    public static int who(String in){
+        // 基本思路就是找到该单词中所有递增的子序列，
+        // 然后从字符最少的子序列甲乙轮回删除字母，
+        // 直到还剩下最后一个子序列为止
+        // 谁删除了最后一个字母，谁就赢了！
+
+        //  in不能为null
+        if(in == null)
+            return 0;
+        //  单词至少需要有一个字母
+        if(in.length() == 0)
+            return 0;
+        in = in.toLowerCase();   //  都变成小写字母
+        //  所有递增数列集合
+        java.util.List&lt;StringBuilder&gt; ascendingList = 
+            new java.util.ArrayList&lt;StringBuilder&gt;();
+        char lastChar = in.charAt(0);
+
+        // 存储当前递增的字符列表
+        StringBuilder sb = new StringBuilder();
+        sb.append(lastChar);
+
+        for(int i = 1; i &lt; in.length(); i++){
+            // 当前字符属于当前的递增序列
+            if(in.charAt(i) &gt; lastChar){
+                sb.append(in.charAt(i));
+            }
+            // 当前字符属于下一个递增序列，所以需要存储上一个递增序列
+            else {
+                ascendingList.add(sb);
+                sb = new StringBuilder(); 
+                sb.append(in.charAt(i));
+            }
+            lastChar = in.charAt(i);
+        }
+        if(sb.length() &gt; 0){
+            ascendingList.add(sb);
+        }
+        // 下面就开始游戏了
+        // 从甲开始删字母，从字符最少的递增序列开始删除第一个字母，直到之后只剩下一个递增序列为止，谁删除的最后一个之母，谁就赢了
+
+        // 这里本应该判断如果单词本身就是递增序列，那么甲就win了，
+        // 不过既然题目说没有这种情况，所以就注释掉了
+        /*if(ascendingList.size() == 1){
+            return 1;
+        }*/
+
+        java.util.Collections.sort(ascendingList, 
+            new java.util.Comparator&lt;StringBuilder&gt;(){ 
+            @Override
+            public int compare(StringBuilder sb1, StringBuilder sb2){
+                if(sb1.length() &gt; sb2.length()){
+                    return 1;
+                }
+                else if(sb1.length() == sb2.length()){
+                    return 0;
+                }
+                else {
+                    return -1;
+                }    
+            }
+        });
+
+        int win = 0;   //  1代表甲赢，0代表乙赢
+
+        while(ascendingList.size() &gt; 1){
+            if(win == 0)
+                win = 1;    //  甲开始
+            else
+                win = 0;    //  乙开始
+            //  删除第一个递增序列的第一个字母，如果该递增序列
+            ascendingList.get(0).delete(0, 1);
+            if(ascendingList.get(0).length() == 0){
+                ascendingList.remove(0);
+            }
+        }
+        return win;
+    }
+    public static void main(String[] args){
+        System.out.println(who(&quot;money&quot;));
+    }
+}
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[经典面试问题：Cookie被禁用了-Session还能用吗]]></title>
+      <url>http://zhongzilu.github.io/2017/01/14/%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%EF%BC%9ACookie%E8%A2%AB%E7%A6%81%E7%94%A8%E4%BA%86-Session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97/</url>
+      <content type="html"><![CDATA[<h3 id="面试经典问题：Cookie被禁用了，Session还能用吗？"><a href="#面试经典问题：Cookie被禁用了，Session还能用吗？" class="headerlink" title="面试经典问题：Cookie被禁用了，Session还能用吗？"></a>面试经典问题：Cookie被禁用了，Session还能用吗？</h3><hr>
+<p>面试的时候经常被问到Cookie禁用了，Session还能用吗？不同的公司给出的答案也有点不同，到底Cookie禁用了，Session还能用吗？</p>
+<hr>
+<h4 id="默认SESSION配置"><a href="#默认SESSION配置" class="headerlink" title="默认SESSION配置"></a>默认SESSION配置</h4><p>在<strong>默认的</strong>JSP、PHP配置中，SessionID是需要存储在Cookie中的，默认Cookie名为：</p>
+<ul>
+<li>PHPSESSIONID</li>
+<li>JSESSIONID</li>
+</ul>
+<p>以下以PHP为例：</p>
+<pre><code>1. 你第一次访问网站时，
+2. 服务端脚本中开启了Session`session_start();`,
+3. 服务器会生成一个不重复的SESSIONID 的文件`session_id();`，比如在`/var/lib/php/session`目录
+4. 并将返回(Response)如下的HTTP头 `Set-Cookie:PHPSESSIONID=xxxxxxx`
+5. 客户端接收到`Set-Cookie`的头，将`PHPSESSIONID`写入cookie
+6. 当你第二次访问页面时，所有Cookie会附带的请求头(Request)发送给服务器端
+7. 服务器识别`PHPSESSIONID`这个cookie，然后去session目录查找对应session文件，
+8. 找到这个session文件后，检查是否过期，如果没有过期，去读取Session文件中的配置；如果已经过期，清空其中的配置
+</code></pre><p>如果客户端禁用了Cookie，那<code>PHPSESSIONID</code>都无法写入客户端，Session还能用？</p>
+<p>答案显而易见：<strong>不能</strong></p>
+<blockquote>
+<p>并且服务端因为没有得到<code>PHPSESSIONID</code>的cookie，会不停的生成<code>session_id</code>文件</p>
+</blockquote>
+<h4 id="取巧传递session-id"><a href="#取巧传递session-id" class="headerlink" title="取巧传递session_id"></a>取巧传递session_id</h4><p>但是这难不倒服务端程序，聪明的程序员想到，如果一个Cookie都没接收到，基本上可以预判客户端禁用了Cookie，那将session_id附带在每个网址后面(包括POST)，比如：</p>
+<pre><code>GET http://www.xx.com/index.php?session_id=xxxxx
+POST http://www.xx.com/post.php?session_id=xxxxx
+</code></pre><p>然后在每个页面的开头使用<code>session_id($_GET[&#39;session_id&#39;])</code>，来强制指定当前<code>session_id</code></p>
+<p>这样，答案就变成了：<strong>能</strong></p>
+<blockquote>
+<p>聪明的你肯定想到，那将这个网站发送给别人，那么他将会以你的身份登录并做所有的事情（目前很多订阅公众号就将openid附带在网址后面，这是同样的漏洞）。</p>
+<p>其实不仅仅如此，cookie也可以被盗用，比如XSS注入，通过XSS漏洞获取大量的Cookie，也就是控制了大量的用户，腾讯有专门的XSS漏洞扫描机制，因为大量的QQ盗用，发广告就是因为XSS漏洞</p>
+<p>所以Laravel等框架中，内部实现了Session的所有逻辑，并将<code>PHPSESSIONID</code>设置为<code>httponly</code>并加密，这样，前端JS就无法读取和修改这些敏感信息，降低了被盗用的风险。</p>
+</blockquote>
+<h4 id="Cookie在现代"><a href="#Cookie在现代" class="headerlink" title="Cookie在现代"></a>Cookie在现代</h4><p>禁用Cookie是 IE6 那个年代的事情，现在的网站都非常的依赖Cookie，禁用Cookie会造成大量的麻烦。</p>
+<blockquote>
+<p>在Flash还流行的年代，Flash在提交数据会经常出现用户无法找到的情况，其实是因为Flash在IE下是独立的程序，无法得到IE下的Cookie。</p>
+<p>所以在Flash的<code>flash_var</code>中，一般都会指定当前的<code>session_id</code>，让Flash提交数据的时候，将这个<code>session_id</code>附带着提交过去</p>
+<p>Chrome中使用 Flash沙箱 已经解决了cookie的问题，但是为了兼容IE，比如<code>swfupload</code>等flash程序都要求开发者附带一个<code>session_id</code></p>
+</blockquote>
+<h4 id="面试者的用意"><a href="#面试者的用意" class="headerlink" title="面试者的用意"></a>面试者的用意</h4><p>面试者出此题也是为了考察你对HTTP协议和服务器会话的理解。</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Android监听SearchView的展开和关闭事件]]></title>
       <url>http://zhongzilu.github.io/2016/12/15/Android%E7%9B%91%E5%90%ACSearchView%E7%9A%84%E5%B1%95%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h3 id="Android监听SearchView的展开和关闭事件"><a href="#Android监听SearchView的展开和关闭事件" class="headerlink" title="Android监听SearchView的展开和关闭事件"></a>Android监听SearchView的展开和关闭事件</h3><p>@(标签)[Android，SearchView，监听器，zhongzilu，bit100]</p>
