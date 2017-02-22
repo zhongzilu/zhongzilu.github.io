@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>archive_a: 2016 | Zhongzilu</title>
+    <title>开启PHP错误提示 | Zhongzilu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     
@@ -69,99 +69,71 @@
 <!--文章列表-->
 <div class="wrapper">
   
-    <ul class="posts-list mb+ js-posts">
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-            <i class="post-status iconfont icon-icon"></i>  
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/如何在Android-Studio中创建File-Templates/">如何在Android Studio中创建File Templates</a></span>
-            <time class="post-time" datetime="2016-05-10T13:09:17.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/如何在Android-Studio-IntelliJ-中创建Live-Templates/">如何在Android Studio(IntelliJ)中创建Live Templates</a></span>
-            <time class="post-time" datetime="2016-05-10T12:17:57.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/Wordpress自定义栏目的使用/">Wordpress自定义栏目的使用</a></span>
-            <time class="post-time" datetime="2016-05-10T12:08:28.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/MVC-MVP模式有何不同/">MVC&amp;MVP模式有何不同</a></span>
-            <time class="post-time" datetime="2016-05-10T11:54:32.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/Android开发之MVP初体验/">Android开发之MVP初体验</a></span>
-            <time class="post-time" datetime="2016-05-10T11:48:19.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/【微表情心理学】耳朵的秘密/">【微表情心理学】耳朵的秘密</a></span>
-            <time class="post-time" datetime="2016-05-10T10:41:39.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-    </ul>
-    
-      <div class="pagination mb+ js-pagination">
-        <div class="js-next pagination__load">
-            
-        </div>
-    </div>
-    
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      开启PHP错误提示
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="开启PHP错误提示"><a href="#开启PHP错误提示" class="headerlink" title="开启PHP错误提示"></a>开启PHP错误提示</h2><p>@(标签)[PHP，错误提示，zhongzilu，bit100]</p>
+<hr>
+<p>想要在代码中显示PHP的<code>错误提示</code>吗？这篇文章应该对你有帮助</p>
+<p>想要开启<code>错误报告</code>和<code>警告</code>功能，只需要在PHP标签中加上以下代码：</p>
+<pre><code class="php">error_reporting(E_ALL^E_NOTICE);
+ini_set(&#39;display_errors&#39;, &#39;On&#39;);
+</code></pre>
+<p>以上代码只是显示错误和警告，并没有建议提示，要显示所有的错误，只需要去掉<code>E_NOTICE</code></p>
+<pre><code class="php">error_reporting(E_ALL);
+ini_set(&#39;display_errors&#39;,&#39;On&#39;);
+</code></pre>
+<p>如果你仍然不能显示PHP的错误提示，请移步到下面这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/%e5%a6%82%e4%bd%95%e5%9c%a8windows%e6%88%96linuxubuntu%e4%b8%8b%e5%bc%80%e5%90%af%e5%92%8c%e5%85%b3%e9%97%adphp%e7%9a%84%e9%94%99%e8%af%af%e6%98%be%e7%a4%ba%e5%8a%9f%e8%83%bd/" target="_blank" rel="external">如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能</a></p>
+</blockquote>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2016-12-13T03:50:46.000Z" itemprop="datePublished">2016-12-13</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="开启PHP错误提示" data-title="开启PHP错误提示" data-url="http://zhongzilu.github.io/2016/12/13/开启PHP错误提示/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
 
   
 </div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
 
 
 

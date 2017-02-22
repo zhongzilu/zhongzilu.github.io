@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h3 id="如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能"><a href="#如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能" class="headerlink" title="如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能"></a>如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能</h3><p>@(标签)[Windows，Linux，Ubuntu，PHP，zhongzilu，bit100]</p>
+<hr>
+<p>写过PHP程序的人都知道，要想知道自己写的PHP代码有没有问题，只有运行的时候才知道，这对于编写代码阶段很是繁琐，而且很多时候在自己的测试环境下没问题，放到真实环境的时候就出问题了，特别是有了一定用户之后，突然某天出问题了，用户看到的就是一个错误显示页面，这样的用户体验很不好。</p>
+<p><strong>要想解决这样的问题，最好的方式就是打开PHP的错误和警告提示。</strong></p>
+<blockquote>
+<p><code>警告!!：</code><br><code>最好是在开发阶段和测试环境下启用，在正式环境下关闭或者将错误记录到日志</code></p>
+</blockquote>
+<h4 id="如何在Windows环境下开起PHP的错误显示？"><a href="#如何在Windows环境下开起PHP的错误显示？" class="headerlink" title="如何在Windows环境下开起PHP的错误显示？"></a>如何在Windows环境下开起PHP的错误显示？</h4><p>如果你是Windows平台，你只需要找到<code>php.ini</code>这个文件，通常这个文件就在你安装的Apache服务器的根目录下，如果你使用的是其他服务器，你可能需要搜索该文件</p>
+<p><strong>1.打开<code>php.ini</code></strong>，利用查找功能找到以下代码</p>
+<pre><code>display_errors = Off
+</code></pre><p><strong>2.将它替换成</strong></p>
+<pre><code>display_errors = On
+</code></pre><p>保存文件之后，重启你的Apache服务器或其他的服务器，这就完了。</p>
+<p>####如何在Linux(Ubuntu)环境下开起PHP的错误显示？<br>如果你是Ubuntu或Linux用户，同样是找到<code>php.ini</code>文件，通常会在<code>/etc/</code>目录下，然后就是查找和替换，方法和在Windows下一样</p>
+<p>最后通过命令重启服务器，比如Apache服务器：</p>
+<pre><code>sudo service apache2 restart
+</code></pre><p>如果是nginx服务器</p>
+<pre><code>sudo service nginx restart
+</code></pre><p>这就完了！如果你依然没能解决问题，请移步到这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/%e5%bc%80%e5%90%afphp%e9%94%99%e8%af%af%e6%8f%90%e7%a4%ba/" target="_blank" rel="external">开启PHP错误提示 — BIT100</a></p>
+</blockquote>
+<p>我是Zhongzilu，Thanks for watching!</p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2016-12-13T03:53:53.000Z" itemprop="datePublished">2016-12-13</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能" data-title="如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能" data-url="http://zhongzilu.github.io/2016/12/13/如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	
+		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	</body>
+</html>
