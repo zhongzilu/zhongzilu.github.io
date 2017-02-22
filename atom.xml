@@ -32,6 +32,70 @@
   </entry>
   
   <entry>
+    <title>CentOS升级php5.3到5.5</title>
+    <link href="http://zhongzilu.github.io/2016/12/09/CentOS%E5%8D%87%E7%BA%A7php5-3%E5%88%B05-5/"/>
+    <id>http://zhongzilu.github.io/2016/12/09/CentOS升级php5-3到5-5/</id>
+    <published>2016-12-09T03:48:47.000Z</published>
+    <updated>2017-02-22T03:49:12.075Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;CentOS升级php5-3到5-5&quot;&gt;&lt;a href=&quot;#CentOS升级php5-3到5-5&quot; class=&quot;headerlink&quot; title=&quot;CentOS升级php5.3到5.5&quot;&gt;&lt;/a&gt;CentOS升级php5.3到5.5&lt;/h2&gt;&lt;p&gt;@(标签)[
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何更改linux超级用户密码</title>
+    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9linux%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/"/>
+    <id>http://zhongzilu.github.io/2016/12/09/如何更改linux超级用户密码/</id>
+    <published>2016-12-09T03:45:22.000Z</published>
+    <updated>2017-02-22T03:45:53.509Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何更改Linux超级用户密码&quot;&gt;&lt;a href=&quot;#如何更改Linux超级用户密码&quot; class=&quot;headerlink&quot; title=&quot;如何更改Linux超级用户密码&quot;&gt;&lt;/a&gt;如何更改Linux超级用户密码&lt;/h2&gt;&lt;p&gt;标签 &lt;code&gt;Linux&lt;/co
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Linux-Ubuntu上安装PHP-MySQL-Apache-LAMP</title>
+    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux-Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85PHP-MySQL-Apache-LAMP/"/>
+    <id>http://zhongzilu.github.io/2016/12/09/如何在Linux-Ubuntu上安装PHP-MySQL-Apache-LAMP/</id>
+    <published>2016-12-09T03:41:55.000Z</published>
+    <updated>2017-02-22T03:42:26.365Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何在Linux-Ubuntu上安装PHP，MySQL和Apache（LAMP）&quot;&gt;&lt;a href=&quot;#如何在Linux-Ubuntu上安装PHP，MySQL和Apache（LAMP）&quot; class=&quot;headerlink&quot; title=&quot;如何在Linux/Ubu
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Linux-Ubuntu上运行.chm文件</title>
+    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux-Ubuntu%E4%B8%8A%E8%BF%90%E8%A1%8C-chm%E6%96%87%E4%BB%B6/"/>
+    <id>http://zhongzilu.github.io/2016/12/09/如何在Linux-Ubuntu上运行-chm文件/</id>
+    <published>2016-12-09T03:33:33.000Z</published>
+    <updated>2017-02-22T03:34:10.811Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何在Linux-Ubuntu上运行-chm文件&quot;&gt;&lt;a href=&quot;#如何在Linux-Ubuntu上运行-chm文件&quot; class=&quot;headerlink&quot; title=&quot;如何在Linux/Ubuntu上运行.chm文件&quot;&gt;&lt;/a&gt;如何在Linux/Ubunt
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>1024程序员节-向改变世界的程序员致敬</title>
     <link href="http://zhongzilu.github.io/2016/10/24/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82-%E5%90%91%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%B4%E6%95%AC/"/>
     <id>http://zhongzilu.github.io/2016/10/24/1024程序员节-向改变世界的程序员致敬/</id>
@@ -269,57 +333,6 @@
     
       &lt;h2 id=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;a href=&quot;#WordPress自定义栏目的使用&quot; class=&quot;headerlink&quot; title=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;/a&gt;WordPress自定义栏目的使用&lt;/h2&gt;&lt;blockquote&gt;
 
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MVC&amp;MVP模式有何不同</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/MVC-MVP%E6%A8%A1%E5%BC%8F%E6%9C%89%E4%BD%95%E4%B8%8D%E5%90%8C/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/MVC-MVP模式有何不同/</id>
-    <published>2016-05-10T11:54:32.000Z</published>
-    <updated>2017-02-20T12:20:27.751Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;MVC-amp-MVP模式有何不同&quot;&gt;&lt;a href=&quot;#MVC-amp-MVP模式有何不同&quot; class=&quot;headerlink&quot; title=&quot;MVC &amp;amp; MVP模式有何不同&quot;&gt;&lt;/a&gt;MVC &amp;amp; MVP模式有何不同&lt;/h1&gt;&lt;p&gt;标签 :  
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Android开发之MVP初体验</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/Android%E5%BC%80%E5%8F%91%E4%B9%8BMVP%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/Android开发之MVP初体验/</id>
-    <published>2016-05-10T11:48:19.000Z</published>
-    <updated>2017-02-20T12:20:53.950Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Android开发-MVP之初体验&quot;&gt;&lt;a href=&quot;#Android开发-MVP之初体验&quot; class=&quot;headerlink&quot; title=&quot;Android开发 MVP之初体验&quot;&gt;&lt;/a&gt;Android开发 MVP之初体验&lt;/h1&gt;&lt;p&gt;标签 ：Androi
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>【微表情心理学】耳朵的秘密</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/%E3%80%90%E5%BE%AE%E8%A1%A8%E6%83%85%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%91%E8%80%B3%E6%9C%B5%E7%9A%84%E7%A7%98%E5%AF%86/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/【微表情心理学】耳朵的秘密/</id>
-    <published>2016-05-10T10:41:39.000Z</published>
-    <updated>2017-02-20T12:21:19.465Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;如果你仔细观察我们的耳朵，你会发现耳朵就像一个倒置的胎儿。他的头部朝下，臀部朝上。耳朵可以被看做事他人体的缩小版&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;耳朵大小某种程度上体现一个人的生命力和思想深度&quot;&gt;&lt;a href=&quot;#耳朵大小某种
     
     </summary>
     
