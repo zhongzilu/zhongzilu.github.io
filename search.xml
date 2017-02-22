@@ -15,6 +15,31 @@
     </entry>
     
     <entry>
+      <title><![CDATA[(已解决)ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题]]></title>
+      <url>http://zhongzilu.github.io/2016/09/23/%E5%B7%B2%E8%A7%A3%E5%86%B3-ViewPager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD-%E4%BD%BF%E7%94%A8Framgment%E7%9A%84setUserVisibleHint%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>###(已解决)ViewPager禁用预加载，使用Fragment的setUserVisibleHint导致的问题</p>
+<hr>
+<p>不久前，写了一篇博客，<a href="http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载网络数据/" target="_blank" rel="external">《ViewPager禁止预加载，滑动到那个页面再加载网络数据》</a>，根据这篇文章的做法，确实可以解决问题，但是当时我忽略了另一种情况，那就是在Activity中重复利用那个Fragment，<strong><code>结果Fragment没有加载数据，显示空白的</code></strong></p>
+<p>这也是我在实际开发中遇到的，因为有个Fragment在ViewPager中显示，在另一个地方需要跳转到一个Activity，Activity显示内容和逻辑和Fragment里的一样，所以为了代码重用，就直接用Activity嵌套Fragment了，结果Activity显示空白，调试发现根本没运行到<code>setUserVisibleHint()</code>，在ViewPager中嵌套Fragment没有遇到这个问题。</p>
+<p>于是我在Activity的<code>onResume()</code>中手动调用<code>setUserVisibleHint(true)</code>，结果报空指针，一查才知道，原来<code>setUserVisibleHint()</code>方法要<strong>优先于</strong>Fragment的<code>onCreateView()</code>，由于Fragment里的必要控件都还没有初始化，所以报空指针了</p>
+<p>要解决这个问题，需要用到Fragment的<code>onHiddenChanged()</code>方法，</p>
+<pre><code class="java">@Override
+public void onHiddenChanged(boolean hidden) {
+    super.onHiddenChanged(hidden);
+    if (hidden &amp;&amp; isFirst){
+        //在这里加载数据
+        isFirst = false;
+    }
+}
+</code></pre>
+<p>然后在Activity中手动调用<code>onHiddenChanged(true)</code>，这样就能实现和<code>ViewPager + Fragment</code>的方式一样的效果了，在用户看到这个Fragment的时候再加载数据</p>
+<p><strong>作者</strong>：<a href="htpp://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/%E9%97%AE%E9%A2%98viewpager%E7%A6%81%E7%94%A8%E9%A2%84%E5%8A%A0%E8%BD%BD%E4%BD%BF%E7%94%A8fragment%E7%9A%84setuservisiblehint%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/" target="_blank" rel="external">http://www.bit100.com/问题ViewPager禁用预加载使用Fragment的setUserVisibleHint导致的问题/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[ViewPager禁止预加载-滑动到那个页面再加载网络数据]]></title>
       <url>http://zhongzilu.github.io/2016/09/19/ViewPager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD-%E6%BB%91%E5%8A%A8%E5%88%B0%E9%82%A3%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%86%8D%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE/</url>
       <content type="html"><![CDATA[<h2 id="ViewPager禁止预加载，滑动到那个页面在加载网络数据"><a href="#ViewPager禁止预加载，滑动到那个页面在加载网络数据" class="headerlink" title="ViewPager禁止预加载，滑动到那个页面在加载网络数据"></a>ViewPager禁止预加载，滑动到那个页面在加载网络数据</h2><p>@(标签)[Android, ViewPager, 预加载, setUserVisibleHint, 2016-09-18, zhongzilu, 钟子路]</p>
