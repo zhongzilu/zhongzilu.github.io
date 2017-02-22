@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <title>ViewPager禁止预加载-滑动到那个页面再加载网络数据 | Zhongzilu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+      <link rel="icon" href="/favicon.png">
+    
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/js/google-code-prettify/tomorrow-night-eighties.min.css">
+
+  </head>
+
+  <body>
+
+<header>
+	<a id="logo" href="/" title="Zhongzilu">
+	<img src="/favicon.png" alt="Zhongzilu"></a>
+	
+	
+		<!--搜索栏-->
+		<i class="js-toggle-search iconfont icon-search"></i>
+
+
+<form class="js-search search-form search-form--modal" method="get" action="http://gushi.li" role="search">
+	<div class="search-form__inner">
+		<div>
+			<i class="iconfont icon-search"></i>
+			<input class="text-input" placeholder="Enter Key..." type="search">
+		</div>
+	</div>
+</form>
+	
+
+	
+		<!--侧边导航栏-->
+		<a id="nav-toggle" href="#"><span></span></a>
+
+<nav>
+	<div class="menu-top-container">
+		<ul id="menu-top" class="menu">
+			
+				
+				<li class="current-menu-item">
+					<a href="http://weibo.com/yumemor/" target="_blank">Weibo</a>
+				</li>
+			
+		</ul>
+	</div>
+</nav>
+	
+
+</header>
+<div class="m-header ">
+	<section id="hero1" class="hero">
+		<div class="inner">
+		</div>
+	</section>
+	
+		<figure class="top-image" data-enable=true></figure>
+	
+</div>
+
+<!--文章列表-->
+<div class="wrapper">
+  
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      ViewPager禁止预加载-滑动到那个页面再加载网络数据
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h2 id="ViewPager禁止预加载，滑动到那个页面在加载网络数据"><a href="#ViewPager禁止预加载，滑动到那个页面在加载网络数据" class="headerlink" title="ViewPager禁止预加载，滑动到那个页面在加载网络数据"></a>ViewPager禁止预加载，滑动到那个页面在加载网络数据</h2><p>@(标签)[Android, ViewPager, 预加载, setUserVisibleHint, 2016-09-18, zhongzilu, 钟子路]</p>
+<hr>
+<p>用过<code>Android ViewPager</code>的同学都知道，<code>ViewPager</code>预加载是3页，可以取消预加载，但是滑动页面会卡，不推荐。但如果不做限制，这样感觉又比较浪费资源，因为用户很可能只看了第一个，后面两个根本想不想看，结果还是加载了。更糟的是，如果你的Fragment在初始化时需要从网络加载大量的数据，这对资源消耗和用户体验都是不好的。</p>
+<p><strong>那么有没有什么办法可以让用户在看到哪个页面的时候再去加载页面数据呢？</strong></p>
+<p>答案当时有的，在使用的ViewPager的时候，通常我是采用的<code>ViewPager + Fragment</code>的方式，这个时候我们可以使用Fragment中的<code>setUserVisibleHint()</code>方法，直接在Fragment中覆写该方法：</p>
+<pre><code class="java">@Override
+public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if (isVisibleToUser){
+        //在这里加载数据
+    }
+}
+</code></pre>
+<p>这样就能在Fragment显示出来的时候再去加载数据了，但是这样有个问题，每次加载Fragment的时候都会去重新加载一次，为了避免这个问题，我们用一个<code>boolean</code>类型的全局变量<code>isFirst</code>来表示只在第一次呈现的时候才加载数据，修改过后的代码如下：</p>
+<pre><code class="java">private boolean isFirst = true;
+
+@Override
+public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if (isVisibleToUser &amp;&amp; isFirst){
+        //在这里加载数据
+        isFirst = false;
+    }
+}
+</code></pre>
+<p>这样就能满足使用ViewPager时禁用预加载的要求了！是不是很简单？</p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/viewpager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD%EF%BC%8C%E6%BB%91%E5%8A%A8%E5%88%B0%E9%82%A3%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%86%8D%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE/" target="_blank" rel="external">http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载网络数据/</a></p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2016-09-19T03:10:25.000Z" itemprop="datePublished">2016-09-19</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="ViewPager禁止预加载-滑动到那个页面再加载网络数据" data-title="ViewPager禁止预加载-滑动到那个页面再加载网络数据" data-url="http://zhongzilu.github.io/2016/09/19/ViewPager禁止预加载-滑动到那个页面再加载网络数据/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
+
+  
+</div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
+
+
+
+
+
+<div class="fat-footer">
+	<div class="wrapper">
+		<div class="layout layout--center">
+			<div class="layout__item palm-mb">
+				<div class="media">
+					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<div class="media__body">
+						<h4>Zhongzilu</h4>
+						<p class='site-description'>I&#39;m an Android developer</p>
+					</div>
+				</div>
+				<div class="author-contact">
+					<ul>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+				        				<i class="iconfont icon-weibo"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="https://github.com/zhongzilu" target="_blank">
+				        			
+				        				<i class="iconfont icon-github"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+							
+							<li>
+				        		<a href="null" target="_blank">
+				        			
+										<i class="iconfont icon-zhihu"></i>
+				        			
+				        		</a>
+				        	</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer" role="contentinfo">
+	<div class="wrapper wrapper--wide split split--responsive">
+		
+			<span>本站总访问量 <span id="busuanzi_value_site_pv"></span> 次, 访客数 <span id="busuanzi_value_site_uv"></span> 人次</span>
+		
+		<span>Theme by <a href="http://github.com/yumemor">Yumemor</a>. Powered by <a href="http://hexo.io">Hexo</a></span>
+	</div>
+</footer>
+
+	<!-－这里导入了 lib.js 里面涵盖了 jQuery 等框架 所以注释掉-->
+	<!--<script src="http://lib.sinaapp.com/js/jquery/2.0/jquery.min.js"></script>-->
+	<script src="/js/lib.js"></script>
+	<script src="/js/google-code-prettify/prettify.js"></script>
+	<script src="/js/module.js"></script>
+	<script src="/js/script.js"></script>
+	<script type='text/javascript'>
+		//代码高亮
+		$(document).ready(function(){
+	 		$('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+   			prettyPrint();
+		});
+	</script>
+	
+		<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	
+	</body>
+</html>
