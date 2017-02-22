@@ -15,6 +15,41 @@
     </entry>
     
     <entry>
+      <title><![CDATA[ViewPager禁止预加载-滑动到那个页面再加载网络数据]]></title>
+      <url>http://zhongzilu.github.io/2016/09/19/ViewPager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD-%E6%BB%91%E5%8A%A8%E5%88%B0%E9%82%A3%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%86%8D%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<h2 id="ViewPager禁止预加载，滑动到那个页面在加载网络数据"><a href="#ViewPager禁止预加载，滑动到那个页面在加载网络数据" class="headerlink" title="ViewPager禁止预加载，滑动到那个页面在加载网络数据"></a>ViewPager禁止预加载，滑动到那个页面在加载网络数据</h2><p>@(标签)[Android, ViewPager, 预加载, setUserVisibleHint, 2016-09-18, zhongzilu, 钟子路]</p>
+<hr>
+<p>用过<code>Android ViewPager</code>的同学都知道，<code>ViewPager</code>预加载是3页，可以取消预加载，但是滑动页面会卡，不推荐。但如果不做限制，这样感觉又比较浪费资源，因为用户很可能只看了第一个，后面两个根本想不想看，结果还是加载了。更糟的是，如果你的Fragment在初始化时需要从网络加载大量的数据，这对资源消耗和用户体验都是不好的。</p>
+<p><strong>那么有没有什么办法可以让用户在看到哪个页面的时候再去加载页面数据呢？</strong></p>
+<p>答案当时有的，在使用的ViewPager的时候，通常我是采用的<code>ViewPager + Fragment</code>的方式，这个时候我们可以使用Fragment中的<code>setUserVisibleHint()</code>方法，直接在Fragment中覆写该方法：</p>
+<pre><code class="java">@Override
+public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if (isVisibleToUser){
+        //在这里加载数据
+    }
+}
+</code></pre>
+<p>这样就能在Fragment显示出来的时候再去加载数据了，但是这样有个问题，每次加载Fragment的时候都会去重新加载一次，为了避免这个问题，我们用一个<code>boolean</code>类型的全局变量<code>isFirst</code>来表示只在第一次呈现的时候才加载数据，修改过后的代码如下：</p>
+<pre><code class="java">private boolean isFirst = true;
+
+@Override
+public void setUserVisibleHint(boolean isVisibleToUser) {
+    super.setUserVisibleHint(isVisibleToUser);
+    if (isVisibleToUser &amp;&amp; isFirst){
+        //在这里加载数据
+        isFirst = false;
+    }
+}
+</code></pre>
+<p>这样就能满足使用ViewPager时禁用预加载的要求了！是不是很简单？</p>
+<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/viewpager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD%EF%BC%8C%E6%BB%91%E5%8A%A8%E5%88%B0%E9%82%A3%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%86%8D%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE/" target="_blank" rel="external">http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载网络数据/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[如何看待阿里抢月饼事件]]></title>
       <url>http://zhongzilu.github.io/2016/09/13/%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E9%98%BF%E9%87%8C%E6%8A%A2%E6%9C%88%E9%A5%BC%E4%BA%8B%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h2 id="如何看待阿里抢月饼事件？"><a href="#如何看待阿里抢月饼事件？" class="headerlink" title="如何看待阿里抢月饼事件？"></a>如何看待阿里抢月饼事件？</h2><p>@(标签)[阿里巴巴, 月饼, 中秋节, 2016-09-12, zhongzilu, 钟子路]</p>
