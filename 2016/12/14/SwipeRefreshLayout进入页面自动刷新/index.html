@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>archive_a: 2016 | Zhongzilu</title>
+    <title>SwipeRefreshLayout进入页面自动刷新 | Zhongzilu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     
@@ -69,99 +69,87 @@
 <!--文章列表-->
 <div class="wrapper">
   
-    <ul class="posts-list mb+ js-posts">
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-            <i class="post-status iconfont icon-icon"></i>  
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/如何在Android-Studio中创建File-Templates/">如何在Android Studio中创建File Templates</a></span>
-            <time class="post-time" datetime="2016-05-10T13:09:17.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/如何在Android-Studio-IntelliJ-中创建Live-Templates/">如何在Android Studio(IntelliJ)中创建Live Templates</a></span>
-            <time class="post-time" datetime="2016-05-10T12:17:57.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/Wordpress自定义栏目的使用/">Wordpress自定义栏目的使用</a></span>
-            <time class="post-time" datetime="2016-05-10T12:08:28.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/MVC-MVP模式有何不同/">MVC&amp;MVP模式有何不同</a></span>
-            <time class="post-time" datetime="2016-05-10T11:54:32.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/Android开发之MVP初体验/">Android开发之MVP初体验</a></span>
-            <time class="post-time" datetime="2016-05-10T11:48:19.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-                <!--<div class="type">
-          <div class="mask">
-            <i class="iconfont"></i>
-          </div>
-          </div>-->
-        <li class="post">
-          
-          <h2 class="no-background"  >
-            <span><a href="/2016/05/10/【微表情心理学】耳朵的秘密/">【微表情心理学】耳朵的秘密</a></span>
-            <time class="post-time" datetime="2016-05-10T10:41:39.000Z" itemprop="datePublished">2016-05-10</time>
-          </h2>
-        </li>
-      
-    </ul>
-    
-      <div class="pagination mb+ js-pagination">
-        <div class="js-next pagination__load">
-            
-        </div>
-    </div>
-    
+    <!--文章-->
+<article>
+	
+  
+    <h1 class="post-title" itemprop="name">
+      SwipeRefreshLayout进入页面自动刷新
+    </h1>
+  
+
+	<div class='post-body mb'>
+		<h3 id="SwipeRefreshLayout进入页面自动刷新"><a href="#SwipeRefreshLayout进入页面自动刷新" class="headerlink" title="SwipeRefreshLayout进入页面自动刷新"></a>SwipeRefreshLayout进入页面自动刷新</h3><p>@(标签)[SwipeRefreshLayout，下拉刷新，Android，zhongzilu，bit100]</p>
+<hr>
+<p>通常在使用<code>SwipeRefreshLayout</code>控件的时候，是要通过下拉动作才能显示刷新动画和触发监听器<code>SwipeRefreshLayout.OnRefreshListener</code>的<code>onRefresh</code>方法。</p>
+<p>要想一进Activity或Fragment就显示下拉刷新动画，<br>直接调用<code>mRefresh.setRefreshing(true)</code>是不会有刷新动画的。</p>
+<p>可以使用以下方法</p>
+<pre><code>mRefresh.post(new Runable() {
+    @Override
+    public void run(){
+        mRefresh.setRefreshing(true);
+    }
+});
+</code></pre><p>要关闭刷新</p>
+<pre><code>mRefresh.setRefreshing(false);
+</code></pre><p>不过，上面的方法是不会调用刷新监听器的<code>onRefresh()</code>方法的</p>
+<p>要想一进入Activity或Fragment就显示刷新动画，并且调用刷新监听器的话，需要手动调用</p>
+<pre><code>OnRefreshListener listener = new OnRefreshListener(){
+    public void onRefresh(){
+         //TODO
+    }
+};
+SwipeRefreshLayout mRefresh = (SwipeRefreshLayout) findviewbyId(R.id.refresh);
+mRefresh.setOnRefreshListener(listener);
+</code></pre><p>在onCreate中:</p>
+<pre><code>mRefresh.post(new Runable(){
+    @Override
+    public void run() {
+        mRefresh.setRefreshing(true);
+    }
+});
+listener.onRefresh()
+</code></pre><p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/swiperefreshlayout%e8%bf%9b%e5%85%a5%e9%a1%b5%e9%9d%a2%e8%87%aa%e5%8a%a8%e5%88%b7%e6%96%b0/" target="_blank" rel="external">http://www.bit100.com/SwipeRefreshLayout进入页面自动刷新/</a></p>
+
+	</div>
+	<div class="meta split">
+		
+		<span>本文总阅读量 <span id="busuanzi_value_page_pv"></span> 次</span>
+		
+		<time class="post-date" datetime="2016-12-14T03:56:51.000Z" itemprop="datePublished">2016-12-14</time>
+	</div>
+</article>
+
+<!--评论-->
+
+	
+<div class="ds-thread" data-thread-key="SwipeRefreshLayout进入页面自动刷新" data-title="SwipeRefreshLayout进入页面自动刷新" data-url="http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout进入页面自动刷新/"></div>
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+
 
   
 </div>
+
+
+  <svg id="bigTriangleColor" width="100%" height="40" viewBox="0 0 100 102" preserveAspectRatio="none">
+    <path d="M0 0 L50 100 L100 0 Z"></path>
+  </svg>
+
+  
+
+
+  <div class="wrapper"></div>
 
 
 

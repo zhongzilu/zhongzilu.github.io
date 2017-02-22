@@ -15,6 +15,142 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Android监听SearchView的展开和关闭事件]]></title>
+      <url>http://zhongzilu.github.io/2016/12/15/Android%E7%9B%91%E5%90%ACSearchView%E7%9A%84%E5%B1%95%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/</url>
+      <content type="html"><![CDATA[<h3 id="Android监听SearchView的展开和关闭事件"><a href="#Android监听SearchView的展开和关闭事件" class="headerlink" title="Android监听SearchView的展开和关闭事件"></a>Android监听SearchView的展开和关闭事件</h3><p>@(标签)[Android，SearchView，监听器，zhongzilu，bit100]</p>
+<hr>
+<p>最近在做搜索功能，虽然Github上有很多搜索控件的“轮子”，但我想要简单一点，于是使用了Android的<code>SearchView</code>。</p>
+<p>一般在搜索完毕之后，关闭搜索框就应该恢复搜索前的数据，于是想监听<code>SearchView</code>的关闭事件，在关闭的时候进行恢复之前的显示内容。</p>
+<p>首先发现有个<code>setOnCloseListener</code>，认为就是它了，结果搞了半天没有反应，然后就去查找原因</p>
+<p>1 源码里面，实现<code>setOnCloseListener</code>里的<code>close()</code>法，有一个是清空输入框，也许会和SearchView的<code>setOnQueryTextListener</code>接口<code>onQueryTextSubmit(String query)</code>冲突</p>
+<p>2 <code>setOnCloseListener</code>只能在3.2下才能有效，而原生的SeachView 是 <code>(SearchView) menuItem.getActionView()</code>;</p>
+<p>那就从<code>menuItem</code>入手，发现了一个设置监听的方法<code>setOnActionExpandListener()</code></p>
+<p>设置监听如下：</p>
+<pre><code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+    menuItem.setOnActionExpandListener(
+        new MenuItem.OnActionExpandListener() {
+     @Override
+     public boolean onMenuItemActionExpand(MenuItem item) {
+         //TODO 展开事件
+         return true;
+     }
+
+     @Override
+     public boolean onMenuItemActionCollapse(MenuItem item) {
+         //TODO 关闭事件
+         return true;
+     }
+ });
+} else {
+   mSearchView.setOnCloseListener(
+       new SearchView.OnCloseListener() {
+           @Override
+           public boolean onClose() {
+              //TODO 关闭事件
+               return false;
+           }
+       });
+}
+</code></pre><p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/android%e7%9b%91%e5%90%acsearchview%e7%9a%84%e5%b1%95%e5%bc%80%e5%92%8c%e5%85%b3%e9%97%ad%e4%ba%8b%e4%bb%b6/" target="_blank" rel="external">http://www.bit100.com/Android监听SearchView的展开和关闭事件/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SwipeRefreshLayout进入页面自动刷新]]></title>
+      <url>http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0/</url>
+      <content type="html"><![CDATA[<h3 id="SwipeRefreshLayout进入页面自动刷新"><a href="#SwipeRefreshLayout进入页面自动刷新" class="headerlink" title="SwipeRefreshLayout进入页面自动刷新"></a>SwipeRefreshLayout进入页面自动刷新</h3><p>@(标签)[SwipeRefreshLayout，下拉刷新，Android，zhongzilu，bit100]</p>
+<hr>
+<p>通常在使用<code>SwipeRefreshLayout</code>控件的时候，是要通过下拉动作才能显示刷新动画和触发监听器<code>SwipeRefreshLayout.OnRefreshListener</code>的<code>onRefresh</code>方法。</p>
+<p>要想一进Activity或Fragment就显示下拉刷新动画，<br>直接调用<code>mRefresh.setRefreshing(true)</code>是不会有刷新动画的。</p>
+<p>可以使用以下方法</p>
+<pre><code>mRefresh.post(new Runable() {
+    @Override
+    public void run(){
+        mRefresh.setRefreshing(true);
+    }
+});
+</code></pre><p>要关闭刷新</p>
+<pre><code>mRefresh.setRefreshing(false);
+</code></pre><p>不过，上面的方法是不会调用刷新监听器的<code>onRefresh()</code>方法的</p>
+<p>要想一进入Activity或Fragment就显示刷新动画，并且调用刷新监听器的话，需要手动调用</p>
+<pre><code>OnRefreshListener listener = new OnRefreshListener(){
+    public void onRefresh(){
+         //TODO
+    }
+};
+SwipeRefreshLayout mRefresh = (SwipeRefreshLayout) findviewbyId(R.id.refresh);
+mRefresh.setOnRefreshListener(listener);
+</code></pre><p>在onCreate中:</p>
+<pre><code>mRefresh.post(new Runable(){
+    @Override
+    public void run() {
+        mRefresh.setRefreshing(true);
+    }
+});
+listener.onRefresh()
+</code></pre><p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/swiperefreshlayout%e8%bf%9b%e5%85%a5%e9%a1%b5%e9%9d%a2%e8%87%aa%e5%8a%a8%e5%88%b7%e6%96%b0/" target="_blank" rel="external">http://www.bit100.com/SwipeRefreshLayout进入页面自动刷新/</a></p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能]]></title>
+      <url>http://zhongzilu.github.io/2016/12/13/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E6%88%96Linux-Ubuntu%E4%B8%8B%E5%BC%80%E5%90%AF%E5%92%8C%E5%85%B3%E9%97%ADPHP%E7%9A%84%E9%94%99%E8%AF%AF%E6%98%BE%E7%A4%BA%E5%8A%9F%E8%83%BD/</url>
+      <content type="html"><![CDATA[<h3 id="如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能"><a href="#如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能" class="headerlink" title="如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能"></a>如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能</h3><p>@(标签)[Windows，Linux，Ubuntu，PHP，zhongzilu，bit100]</p>
+<hr>
+<p>写过PHP程序的人都知道，要想知道自己写的PHP代码有没有问题，只有运行的时候才知道，这对于编写代码阶段很是繁琐，而且很多时候在自己的测试环境下没问题，放到真实环境的时候就出问题了，特别是有了一定用户之后，突然某天出问题了，用户看到的就是一个错误显示页面，这样的用户体验很不好。</p>
+<p><strong>要想解决这样的问题，最好的方式就是打开PHP的错误和警告提示。</strong></p>
+<blockquote>
+<p><code>警告!!：</code><br><code>最好是在开发阶段和测试环境下启用，在正式环境下关闭或者将错误记录到日志</code></p>
+</blockquote>
+<h4 id="如何在Windows环境下开起PHP的错误显示？"><a href="#如何在Windows环境下开起PHP的错误显示？" class="headerlink" title="如何在Windows环境下开起PHP的错误显示？"></a>如何在Windows环境下开起PHP的错误显示？</h4><p>如果你是Windows平台，你只需要找到<code>php.ini</code>这个文件，通常这个文件就在你安装的Apache服务器的根目录下，如果你使用的是其他服务器，你可能需要搜索该文件</p>
+<p><strong>1.打开<code>php.ini</code></strong>，利用查找功能找到以下代码</p>
+<pre><code>display_errors = Off
+</code></pre><p><strong>2.将它替换成</strong></p>
+<pre><code>display_errors = On
+</code></pre><p>保存文件之后，重启你的Apache服务器或其他的服务器，这就完了。</p>
+<p>####如何在Linux(Ubuntu)环境下开起PHP的错误显示？<br>如果你是Ubuntu或Linux用户，同样是找到<code>php.ini</code>文件，通常会在<code>/etc/</code>目录下，然后就是查找和替换，方法和在Windows下一样</p>
+<p>最后通过命令重启服务器，比如Apache服务器：</p>
+<pre><code>sudo service apache2 restart
+</code></pre><p>如果是nginx服务器</p>
+<pre><code>sudo service nginx restart
+</code></pre><p>这就完了！如果你依然没能解决问题，请移步到这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/%e5%bc%80%e5%90%afphp%e9%94%99%e8%af%af%e6%8f%90%e7%a4%ba/" target="_blank" rel="external">开启PHP错误提示 — BIT100</a></p>
+</blockquote>
+<p>我是Zhongzilu，Thanks for watching!</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[开启PHP错误提示]]></title>
+      <url>http://zhongzilu.github.io/2016/12/13/%E5%BC%80%E5%90%AFPHP%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/</url>
+      <content type="html"><![CDATA[<h2 id="开启PHP错误提示"><a href="#开启PHP错误提示" class="headerlink" title="开启PHP错误提示"></a>开启PHP错误提示</h2><p>@(标签)[PHP，错误提示，zhongzilu，bit100]</p>
+<hr>
+<p>想要在代码中显示PHP的<code>错误提示</code>吗？这篇文章应该对你有帮助</p>
+<p>想要开启<code>错误报告</code>和<code>警告</code>功能，只需要在PHP标签中加上以下代码：</p>
+<pre><code class="php">error_reporting(E_ALL^E_NOTICE);
+ini_set(&#39;display_errors&#39;, &#39;On&#39;);
+</code></pre>
+<p>以上代码只是显示错误和警告，并没有建议提示，要显示所有的错误，只需要去掉<code>E_NOTICE</code></p>
+<pre><code class="php">error_reporting(E_ALL);
+ini_set(&#39;display_errors&#39;,&#39;On&#39;);
+</code></pre>
+<p>如果你仍然不能显示PHP的错误提示，请移步到下面这篇文章</p>
+<blockquote>
+<p><a href="http://www.bit100.com/%e5%a6%82%e4%bd%95%e5%9c%a8windows%e6%88%96linuxubuntu%e4%b8%8b%e5%bc%80%e5%90%af%e5%92%8c%e5%85%b3%e9%97%adphp%e7%9a%84%e9%94%99%e8%af%af%e6%98%be%e7%a4%ba%e5%8a%9f%e8%83%bd/" target="_blank" rel="external">如何在Windows或Linux(Ubuntu)下开启和关闭PHP的错误显示功能</a></p>
+</blockquote>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[CentOS升级php5.3到5.5]]></title>
       <url>http://zhongzilu.github.io/2016/12/09/CentOS%E5%8D%87%E7%BA%A7php5-3%E5%88%B05-5/</url>
       <content type="html"><![CDATA[<h2 id="CentOS升级php5-3到5-5"><a href="#CentOS升级php5-3到5-5" class="headerlink" title="CentOS升级php5.3到5.5"></a>CentOS升级php5.3到5.5</h2><p>@(标签)[Linux，CentOS，PHP，5.3，5.5，zhongzilu，bit100]</p>

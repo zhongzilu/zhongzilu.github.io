@@ -32,6 +32,72 @@
   </entry>
   
   <entry>
+    <title>Android监听SearchView的展开和关闭事件</title>
+    <link href="http://zhongzilu.github.io/2016/12/15/Android%E7%9B%91%E5%90%ACSearchView%E7%9A%84%E5%B1%95%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/"/>
+    <id>http://zhongzilu.github.io/2016/12/15/Android监听SearchView的展开和关闭事件/</id>
+    <published>2016-12-15T04:00:38.000Z</published>
+    <updated>2017-02-22T04:01:07.424Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Android监听SearchView的展开和关闭事件&quot;&gt;&lt;a href=&quot;#Android监听SearchView的展开和关闭事件&quot; class=&quot;headerlink&quot; title=&quot;Android监听SearchView的展开和关闭事件&quot;&gt;&lt;/a&gt;Andro
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SwipeRefreshLayout进入页面自动刷新</title>
+    <link href="http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0/"/>
+    <id>http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout进入页面自动刷新/</id>
+    <published>2016-12-14T03:56:51.000Z</published>
+    <updated>2017-02-22T03:57:19.662Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SwipeRefreshLayout进入页面自动刷新&quot;&gt;&lt;a href=&quot;#SwipeRefreshLayout进入页面自动刷新&quot; class=&quot;headerlink&quot; title=&quot;SwipeRefreshLayout进入页面自动刷新&quot;&gt;&lt;/a&gt;SwipeRef
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能</title>
+    <link href="http://zhongzilu.github.io/2016/12/13/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E6%88%96Linux-Ubuntu%E4%B8%8B%E5%BC%80%E5%90%AF%E5%92%8C%E5%85%B3%E9%97%ADPHP%E7%9A%84%E9%94%99%E8%AF%AF%E6%98%BE%E7%A4%BA%E5%8A%9F%E8%83%BD/"/>
+    <id>http://zhongzilu.github.io/2016/12/13/如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能/</id>
+    <published>2016-12-13T03:53:53.000Z</published>
+    <updated>2017-02-22T03:54:34.249Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能&quot;&gt;&lt;a href=&quot;#如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows或L
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>开启PHP错误提示</title>
+    <link href="http://zhongzilu.github.io/2016/12/13/%E5%BC%80%E5%90%AFPHP%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
+    <id>http://zhongzilu.github.io/2016/12/13/开启PHP错误提示/</id>
+    <published>2016-12-13T03:50:46.000Z</published>
+    <updated>2017-02-22T03:51:12.417Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;开启PHP错误提示&quot;&gt;&lt;a href=&quot;#开启PHP错误提示&quot; class=&quot;headerlink&quot; title=&quot;开启PHP错误提示&quot;&gt;&lt;/a&gt;开启PHP错误提示&lt;/h2&gt;&lt;p&gt;@(标签)[PHP，错误提示，zhongzilu，bit100]&lt;/p&gt;
+&lt;hr&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>CentOS升级php5.3到5.5</title>
     <link href="http://zhongzilu.github.io/2016/12/09/CentOS%E5%8D%87%E7%BA%A7php5-3%E5%88%B05-5/"/>
     <id>http://zhongzilu.github.io/2016/12/09/CentOS升级php5-3到5-5/</id>
@@ -267,72 +333,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;【安卓热修复】当你准备开发一个热修复框架的时候，你需要了解的一切&quot;&gt;&lt;a href=&quot;#【安卓热修复】当你准备开发一个热修复框架的时候，你需要了解的一切&quot; class=&quot;headerlink&quot; title=&quot;【安卓热修复】当你准备开发一个热修复框架的时候，你需要了
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>SEO如何提高百度权重</title>
-    <link href="http://zhongzilu.github.io/2016/05/20/SEO%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E7%99%BE%E5%BA%A6%E6%9D%83%E9%87%8D/"/>
-    <id>http://zhongzilu.github.io/2016/05/20/SEO如何提高百度权重/</id>
-    <published>2016-05-20T13:13:31.000Z</published>
-    <updated>2017-02-20T13:16:26.531Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;SEO如何提高百度权重&quot;&gt;&lt;a href=&quot;#SEO如何提高百度权重&quot; class=&quot;headerlink&quot; title=&quot;SEO如何提高百度权重&quot;&gt;&lt;/a&gt;SEO如何提高百度权重&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;大家好，我是钟子路，最近在负责公司的网站S
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何在Android Studio中创建File Templates</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/%E5%A6%82%E4%BD%95%E5%9C%A8Android-Studio%E4%B8%AD%E5%88%9B%E5%BB%BAFile-Templates/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/如何在Android-Studio中创建File-Templates/</id>
-    <published>2016-05-10T13:09:17.000Z</published>
-    <updated>2017-02-20T13:16:35.687Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;如何在Android-Studio中创建File-Templates&quot;&gt;&lt;a href=&quot;#如何在Android-Studio中创建File-Templates&quot; class=&quot;headerlink&quot; title=&quot;如何在Android Studio中创建File
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何在Android Studio(IntelliJ)中创建Live Templates</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/%E5%A6%82%E4%BD%95%E5%9C%A8Android-Studio-IntelliJ-%E4%B8%AD%E5%88%9B%E5%BB%BALive-Templates/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/如何在Android-Studio-IntelliJ-中创建Live-Templates/</id>
-    <published>2016-05-10T12:17:57.000Z</published>
-    <updated>2017-02-20T12:54:49.135Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;如何在Android-Studio-IntelliJ中创建Live-Templates&quot;&gt;&lt;a href=&quot;#如何在Android-Studio-IntelliJ中创建Live-Templates&quot; class=&quot;headerlink&quot; title=&quot;如何在And
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Wordpress自定义栏目的使用</title>
-    <link href="http://zhongzilu.github.io/2016/05/10/Wordpress%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%8F%E7%9B%AE%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>http://zhongzilu.github.io/2016/05/10/Wordpress自定义栏目的使用/</id>
-    <published>2016-05-10T12:08:28.000Z</published>
-    <updated>2017-02-20T12:20:02.474Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;a href=&quot;#WordPress自定义栏目的使用&quot; class=&quot;headerlink&quot; title=&quot;WordPress自定义栏目的使用&quot;&gt;&lt;/a&gt;WordPress自定义栏目的使用&lt;/h2&gt;&lt;blockquote&gt;
-
     
     </summary>
     
