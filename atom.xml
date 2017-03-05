@@ -36,15 +36,16 @@
     <link href="http://zhongzilu.github.io/2017/03/06/JSON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96%E7%9A%84%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3/"/>
     <id>http://zhongzilu.github.io/2017/03/06/JSON数据结构优化的突发奇想/</id>
     <published>2017-03-05T16:00:40.000Z</published>
-    <updated>2017-03-05T16:01:49.888Z</updated>
+    <updated>2017-03-05T16:23:31.215Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;JSON数据结构优化的突发奇想&quot;&gt;&lt;a href=&quot;#JSON数据结构优化的突发奇想&quot; class=&quot;headerlink&quot; title=&quot;JSON数据结构优化的突发奇想&quot;&gt;&lt;/a&gt;JSON数据结构优化的突发奇想&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;@(标签)[数据结构，JS
+      随着人们对信息的需求越来越多，传递的数据也越来越大，在网络传输数据时对数据进行优化就显得越来越重要了，那么，如何优化JSON数据结构呢？
     
     </summary>
     
+    
+      <category term="数据结构，JSON，数据优化，性能优化，钟子路，zhongzilu，bit100" scheme="http://zhongzilu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8CJSON%EF%BC%8C%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%8C%E9%92%9F%E5%AD%90%E8%B7%AF%EF%BC%8Czhongzilu%EF%BC%8Cbit100/"/>
     
   </entry>
   
