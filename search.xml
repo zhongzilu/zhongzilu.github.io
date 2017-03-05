@@ -4,6 +4,52 @@
   
     
     <entry>
+      <title><![CDATA[JSON数据结构优化的突发奇想]]></title>
+      <url>http://zhongzilu.github.io/2017/03/06/JSON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96%E7%9A%84%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3/</url>
+      <content type="html"><![CDATA[<h3 id="JSON数据结构优化的突发奇想"><a href="#JSON数据结构优化的突发奇想" class="headerlink" title="JSON数据结构优化的突发奇想"></a>JSON数据结构优化的突发奇想</h3><hr>
+<p>@(标签)[数据结构，JSON，数据优化，性能优化，钟子路，zhongzilu，bit100]</p>
+<p>JSON对于做网络软件开发的人来说再熟悉不过了，大多数开发者都是把数据封装成JSON格式，然后把数据从服务端传递到客户端。</p>
+<p>但随着人们对信息的需求越来越多，要传递的数据也越来越大，网络和设备的开销也越来越大，对于用户来说，移动设备上请求大量的网络数据会造成昂贵的流量费用，同时，解析大量的JSON数据也难免会造成移动设备出现卡顿现象，因此，优化JSON数据就是很有必要的事情。</p>
+<h4 id="那么，如何优化JSON数据呢？"><a href="#那么，如何优化JSON数据呢？" class="headerlink" title="那么，如何优化JSON数据呢？"></a>那么，如何优化JSON数据呢？</h4><p>假设这里有个实体类对象</p>
+<pre><code>public class Person {
+       private String name;
+       private int age;
+       ······
+       public String getName();
+       public void setName(String name);
+       ·······
+}
+</code></pre><p>以往我们在传递对象集合数据的时候，通常是这样的</p>
+<pre><code>{
+&quot;Persons&quot;:[
+{&quot;name&quot;:&quot;张三&quot;,&quot;age&quot;:16},
+{&quot;name&quot;:&quot;李四&quot;,&quot;age&quot;:18},
+{&quot;name&quot;:&quot;王二&quot;,&quot;age&quot;:17},
+···········
+]
+}
+</code></pre><p>因为这种方式符合面向对象的设计，同时也很方便封装，由于是通过对象的构造方法实现的，我们暂且称之为<code>对象构造数组</code>。</p>
+<p>其实仔细观察分析，这一串JSON数据当中，有很多数据是重复的，比如<code>name</code>，<code>age</code>，不同的只是他们的值</p>
+<p><strong>所以，我们其实可以这样来设计JSON格式，如下</strong></p>
+<pre><code>{
+&quot;Persons&quot;:{
+&quot;name&quot;:[&quot;张三&quot;,&quot;李四&quot;,&quot;王二&quot;,.....],
+&quot;age&quot;:[16,18,17,......]
+}
+}
+</code></pre><p>相同属性的不同值用一个数组来保存，这样结构更加清晰，且能有效减少JSON的数据大小。</p>
+<p>优化过后的JSON数据不仅能节省网络传输时间和网络流量费用，还能根据不同数据类型，采用不同的压缩算法，使压缩算法进行压缩时更加高效，例如GZip算法，同时，还能减少移动设备因解析数据造成的卡顿现象。</p>
+<p>以上是我在Google上看性能优化相关知识时了解到的新想法，觉得不错就把想法写成了博客。</p>
+<p>Thanks for watching!</p>
+<blockquote>
+<p>作者：钟子路</p>
+</blockquote>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hello from zhongzilu]]></title>
       <url>http://zhongzilu.github.io/2017/02/20/Hello-from-zhongzilu/</url>
       <content type="html"><![CDATA[<h2 id="Hello-from-Zhongzilu"><a href="#Hello-from-Zhongzilu" class="headerlink" title="Hello from Zhongzilu"></a>Hello from Zhongzilu</h2><p>Welcome to BIT100.I’m zilu Zhong,an Android developer.Here is my blog website.I will post some blog articel which include technology,psychology and other notes in some time.In order to facilitating more people,I will sharing something which is be useful to everyone,because i believe that the knowledge more sharing more valuable.Sorry!My English is poor.So,Don’t be care.</p>
