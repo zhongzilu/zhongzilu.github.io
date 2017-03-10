@@ -32,6 +32,24 @@
   </entry>
   
   <entry>
+    <title>面试有感</title>
+    <link href="http://zhongzilu.github.io/2017/03/10/%E9%9D%A2%E8%AF%95%E6%9C%89%E6%84%9F/"/>
+    <id>http://zhongzilu.github.io/2017/03/10/面试有感/</id>
+    <published>2017-03-10T06:43:12.000Z</published>
+    <updated>2017-03-10T06:46:09.046Z</updated>
+    
+    <summary type="html">
+    
+      今天去天府三街天软信息技术有限公司面试，虽然面试结果不如意，不过也有所收获
+    
+    </summary>
+    
+    
+      <category term="面试，2017-03-10，钟子路，zhongzilu，bit100" scheme="http://zhongzilu.github.io/tags/%E9%9D%A2%E8%AF%95%EF%BC%8C2017-03-10%EF%BC%8C%E9%92%9F%E5%AD%90%E8%B7%AF%EF%BC%8Czhongzilu%EF%BC%8Cbit100/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JSON数据结构优化的突发奇想</title>
     <link href="http://zhongzilu.github.io/2017/03/06/JSON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96%E7%9A%84%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3/"/>
     <id>http://zhongzilu.github.io/2017/03/06/JSON数据结构优化的突发奇想/</id>
@@ -324,22 +342,6 @@
       &lt;p&gt;###(已解决)ViewPager禁用预加载，使用Fragment的setUserVisibleHint导致的问题&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;不久前，写了一篇博客，&lt;a href=&quot;http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ViewPager禁止预加载-滑动到那个页面再加载网络数据</title>
-    <link href="http://zhongzilu.github.io/2016/09/19/ViewPager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD-%E6%BB%91%E5%8A%A8%E5%88%B0%E9%82%A3%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%86%8D%E5%8A%A0%E8%BD%BD%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE/"/>
-    <id>http://zhongzilu.github.io/2016/09/19/ViewPager禁止预加载-滑动到那个页面再加载网络数据/</id>
-    <published>2016-09-19T03:10:25.000Z</published>
-    <updated>2017-02-22T03:11:06.493Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;ViewPager禁止预加载，滑动到那个页面在加载网络数据&quot;&gt;&lt;a href=&quot;#ViewPager禁止预加载，滑动到那个页面在加载网络数据&quot; class=&quot;headerlink&quot; title=&quot;ViewPager禁止预加载，滑动到那个页面在加载网络数据&quot;&gt;&lt;/a
     
     </summary>
     
