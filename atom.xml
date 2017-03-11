@@ -32,6 +32,22 @@
   </entry>
   
   <entry>
+    <title>醉翁之意不在电影</title>
+    <link href="http://zhongzilu.github.io/2017/03/11/%E9%86%89%E7%BF%81%E4%B9%8B%E6%84%8F%E4%B8%8D%E5%9C%A8%E7%94%B5%E5%BD%B1/"/>
+    <id>http://zhongzilu.github.io/2017/03/11/醉翁之意不在电影/</id>
+    <published>2017-03-11T07:07:09.000Z</published>
+    <updated>2017-03-11T07:07:41.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;醉翁之意不在电影&quot;&gt;&lt;a href=&quot;#醉翁之意不在电影&quot; class=&quot;headerlink&quot; title=&quot;醉翁之意不在电影&quot;&gt;&lt;/a&gt;醉翁之意不在电影&lt;/h3&gt;&lt;p&gt;有这么多人，为了看电影，而不得不与陌生的彼此，紧紧把身体靠在一起，默默的坐在黑暗中。每次心中
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>面试有感</title>
     <link href="http://zhongzilu.github.io/2017/03/10/%E9%9D%A2%E8%AF%95%E6%9C%89%E6%84%9F/"/>
     <id>http://zhongzilu.github.io/2017/03/10/面试有感/</id>
@@ -324,24 +340,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;1024程序员节，向改变世界的程序员致敬&quot;&gt;&lt;a href=&quot;#1024程序员节，向改变世界的程序员致敬&quot; class=&quot;headerlink&quot; title=&quot;1024程序员节，向改变世界的程序员致敬&quot;&gt;&lt;/a&gt;1024程序员节，向改变世界的程序员致敬&lt;/h2&gt;&lt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>(已解决)ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题</title>
-    <link href="http://zhongzilu.github.io/2016/09/23/%E5%B7%B2%E8%A7%A3%E5%86%B3-ViewPager%E7%A6%81%E6%AD%A2%E9%A2%84%E5%8A%A0%E8%BD%BD-%E4%BD%BF%E7%94%A8Framgment%E7%9A%84setUserVisibleHint%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://zhongzilu.github.io/2016/09/23/已解决-ViewPager禁止预加载-使用Framgment的setUserVisibleHint导致的问题/</id>
-    <published>2016-09-23T03:14:27.000Z</published>
-    <updated>2017-02-22T03:14:58.062Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;###(已解决)ViewPager禁用预加载，使用Fragment的setUserVisibleHint导致的问题&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;不久前，写了一篇博客，&lt;a href=&quot;http://www.bit100.com/viewpager禁止预加载，滑动到那个页面再加载
     
     </summary>
     
