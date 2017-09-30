@@ -32,15 +32,15 @@
   </entry>
   
   <entry>
-    <title>醉翁之意不在电影</title>
-    <link href="http://zhongzilu.github.io/2017/03/11/%E9%86%89%E7%BF%81%E4%B9%8B%E6%84%8F%E4%B8%8D%E5%9C%A8%E7%94%B5%E5%BD%B1/"/>
-    <id>http://zhongzilu.github.io/2017/03/11/醉翁之意不在电影/</id>
-    <published>2017-03-11T07:07:09.000Z</published>
-    <updated>2017-03-11T07:07:41.772Z</updated>
+    <title>【随笔记】好久不见</title>
+    <link href="http://zhongzilu.github.io/2017/09/25/%E3%80%90%E9%9A%8F%E7%AC%94%E8%AE%B0%E3%80%91%E5%A5%BD%E4%B9%85%E4%B8%8D%E8%A7%81/"/>
+    <id>http://zhongzilu.github.io/2017/09/25/【随笔记】好久不见/</id>
+    <published>2017-09-25T12:49:45.000Z</published>
+    <updated>2017-09-30T08:20:35.494Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;醉翁之意不在电影&quot;&gt;&lt;a href=&quot;#醉翁之意不在电影&quot; class=&quot;headerlink&quot; title=&quot;醉翁之意不在电影&quot;&gt;&lt;/a&gt;醉翁之意不在电影&lt;/h3&gt;&lt;p&gt;有这么多人，为了看电影，而不得不与陌生的彼此，紧紧把身体靠在一起，默默的坐在黑暗中。每次心中
+      &lt;h3 id=&quot;【随笔记】好久不见&quot;&gt;&lt;a href=&quot;#【随笔记】好久不见&quot; class=&quot;headerlink&quot; title=&quot;【随笔记】好久不见&quot;&gt;&lt;/a&gt;【随笔记】好久不见&lt;/h3&gt;&lt;p&gt;今天走在回家的路上，前方有个姑娘，我无意间看了一眼，嗯，好像在哪儿见过。我放慢了脚步
     
     </summary>
     
@@ -48,52 +48,15 @@
   </entry>
   
   <entry>
-    <title>面试有感</title>
-    <link href="http://zhongzilu.github.io/2017/03/10/%E9%9D%A2%E8%AF%95%E6%9C%89%E6%84%9F/"/>
-    <id>http://zhongzilu.github.io/2017/03/10/面试有感/</id>
-    <published>2017-03-10T06:43:12.000Z</published>
-    <updated>2017-03-10T06:46:09.046Z</updated>
+    <title>Lady Zaynah</title>
+    <link href="http://zhongzilu.github.io/2017/06/17/%E7%BE%8E%E5%A6%99%E7%9A%84%E4%B8%80%E6%99%9A/"/>
+    <id>http://zhongzilu.github.io/2017/06/17/美妙的一晚/</id>
+    <published>2017-06-16T16:28:47.000Z</published>
+    <updated>2017-06-16T17:16:25.292Z</updated>
     
     <summary type="html">
     
-      今天去天府三街天软信息技术有限公司面试，虽然面试结果不如意，不过也有所收获
-    
-    </summary>
-    
-    
-      <category term="面试，2017-03-10，钟子路，zhongzilu，bit100" scheme="http://zhongzilu.github.io/tags/%E9%9D%A2%E8%AF%95%EF%BC%8C2017-03-10%EF%BC%8C%E9%92%9F%E5%AD%90%E8%B7%AF%EF%BC%8Czhongzilu%EF%BC%8Cbit100/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JSON数据结构优化的突发奇想</title>
-    <link href="http://zhongzilu.github.io/2017/03/06/JSON%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96%E7%9A%84%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3/"/>
-    <id>http://zhongzilu.github.io/2017/03/06/JSON数据结构优化的突发奇想/</id>
-    <published>2017-03-05T16:00:40.000Z</published>
-    <updated>2017-03-06T08:50:34.605Z</updated>
-    
-    <summary type="html">
-    
-      随着人们对信息的需求越来越多，传递的数据也越来越大，在网络传输数据时对数据进行优化就显得越来越重要了，那么，如何优化JSON数据结构呢？
-    
-    </summary>
-    
-    
-      <category term="数据结构，JSON，数据优化，性能优化，钟子路，zhongzilu，bit100" scheme="http://zhongzilu.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%8CJSON%EF%BC%8C%E6%95%B0%E6%8D%AE%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%8C%E9%92%9F%E5%AD%90%E8%B7%AF%EF%BC%8Czhongzilu%EF%BC%8Cbit100/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>随手拍分享</title>
-    <link href="http://zhongzilu.github.io/2017/02/16/%E9%9A%8F%E6%89%8B%E6%8B%8D%E5%88%86%E4%BA%AB/"/>
-    <id>http://zhongzilu.github.io/2017/02/16/随手拍分享/</id>
-    <published>2017-02-16T04:50:47.000Z</published>
-    <updated>2017-02-22T04:51:11.098Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;随手拍分享&quot;&gt;&lt;a href=&quot;#随手拍分享&quot; class=&quot;headerlink&quot; title=&quot;随手拍分享&quot;&gt;&lt;/a&gt;随手拍分享&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;昨天天气不错，就骑着自行车出去散步，然后来到了位于成都的环球中心附近，那里正在打造一个生态公园，名为【桂溪
+      &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=
     
     </summary>
     
@@ -101,16 +64,15 @@
   </entry>
   
   <entry>
-    <title>JS运算规则问题-下</title>
-    <link href="http://zhongzilu.github.io/2017/02/16/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8B/"/>
-    <id>http://zhongzilu.github.io/2017/02/16/JS运算规则问题-下/</id>
-    <published>2017-02-16T04:46:32.000Z</published>
-    <updated>2017-02-22T04:46:53.006Z</updated>
+    <title>旅途中的情书</title>
+    <link href="http://zhongzilu.github.io/2017/05/19/%E6%97%85%E9%80%94%E4%B8%AD%E7%9A%84%E6%83%85%E4%B9%A6/"/>
+    <id>http://zhongzilu.github.io/2017/05/19/旅途中的情书/</id>
+    <published>2017-05-19T15:57:30.000Z</published>
+    <updated>2017-05-19T16:01:15.876Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;JS运算规则问题（下）&quot;&gt;&lt;a href=&quot;#JS运算规则问题（下）&quot; class=&quot;headerlink&quot; title=&quot;JS运算规则问题（下）&quot;&gt;&lt;/a&gt;JS运算规则问题（下）&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;问题：请回答下图中最后输出结果为什么是false
+      &lt;h3 id=&quot;旅途中的情书&quot;&gt;&lt;a href=&quot;#旅途中的情书&quot; class=&quot;headerlink&quot; title=&quot;旅途中的情书&quot;&gt;&lt;/a&gt;旅途中的情书&lt;/h3&gt;&lt;p&gt;今晚在刷朋友圈时，一个朋友发了一张照片，她说这是她在去西藏时，在一家旅馆里看到的，写得很深情，字也写得很好，
     
     </summary>
     
@@ -118,16 +80,16 @@
   </entry>
   
   <entry>
-    <title>JS运算规则问题-上</title>
-    <link href="http://zhongzilu.github.io/2017/02/05/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8A/"/>
-    <id>http://zhongzilu.github.io/2017/02/05/JS运算规则问题-上/</id>
-    <published>2017-02-05T04:43:10.000Z</published>
-    <updated>2017-02-22T04:43:57.672Z</updated>
+    <title>麻将的由来</title>
+    <link href="http://zhongzilu.github.io/2017/05/19/%E9%BA%BB%E5%B0%86%E7%9A%84%E7%94%B1%E6%9D%A5/"/>
+    <id>http://zhongzilu.github.io/2017/05/19/麻将的由来/</id>
+    <published>2017-05-19T15:12:26.000Z</published>
+    <updated>2017-05-19T15:13:08.076Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;JS运算规则问题（上）&quot;&gt;&lt;a href=&quot;#JS运算规则问题（上）&quot; class=&quot;headerlink&quot; title=&quot;JS运算规则问题（上）&quot;&gt;&lt;/a&gt;JS运算规则问题（上）&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;问题：请回答下图中最后输出结果为什么是false
+      &lt;h3 id=&quot;麻将的由来&quot;&gt;&lt;a href=&quot;#麻将的由来&quot; class=&quot;headerlink&quot; title=&quot;麻将的由来&quot;&gt;&lt;/a&gt;麻将的由来&lt;/h3&gt;&lt;p&gt;麻将牌又称麻雀牌，是江苏太仓的护粮牌。&lt;/p&gt;
+&lt;p&gt;在江苏太仓县曾有个皇家的大粮仓。粮食多，偷吃的麻雀就更多了。管
     
     </summary>
     
@@ -135,15 +97,15 @@
   </entry>
   
   <entry>
-    <title>一行代码将RecyclerView的指定位置置顶显示</title>
-    <link href="http://zhongzilu.github.io/2017/01/17/%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%B0%86RecyclerView%E7%9A%84%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E7%BD%AE%E9%A1%B6%E6%98%BE%E7%A4%BA/"/>
-    <id>http://zhongzilu.github.io/2017/01/17/一行代码将RecyclerView的指定位置置顶显示/</id>
-    <published>2017-01-17T04:34:31.000Z</published>
-    <updated>2017-02-22T04:34:59.164Z</updated>
+    <title>爱上一只蝴蝶</title>
+    <link href="http://zhongzilu.github.io/2017/05/16/%E7%88%B1%E4%B8%8A%E4%B8%80%E5%8F%AA%E8%9D%B4%E8%9D%B6/"/>
+    <id>http://zhongzilu.github.io/2017/05/16/爱上一只蝴蝶/</id>
+    <published>2017-05-16T14:54:35.000Z</published>
+    <updated>2017-05-16T14:59:12.517Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;一行代码将RecyclerView的指定位置置顶显示&quot;&gt;&lt;a href=&quot;#一行代码将RecyclerView的指定位置置顶显示&quot; class=&quot;headerlink&quot; title=&quot;一行代码将RecyclerView的指定位置置顶显示&quot;&gt;&lt;/a&gt;一行代码将Rec
+      &lt;h3 id=&quot;爱上一只蝴蝶&quot;&gt;&lt;a href=&quot;#爱上一只蝴蝶&quot; class=&quot;headerlink&quot; title=&quot;爱上一只蝴蝶&quot;&gt;&lt;/a&gt;爱上一只蝴蝶&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/zhongzilu/
     
     </summary>
     
@@ -151,16 +113,15 @@
   </entry>
   
   <entry>
-    <title>使用FFmpeg合成延时视频</title>
-    <link href="http://zhongzilu.github.io/2017/01/16/%E4%BD%BF%E7%94%A8FFmpeg%E5%90%88%E6%88%90%E5%BB%B6%E6%97%B6%E8%A7%86%E9%A2%91/"/>
-    <id>http://zhongzilu.github.io/2017/01/16/使用FFmpeg合成延时视频/</id>
-    <published>2017-01-16T04:23:56.000Z</published>
-    <updated>2017-02-22T04:24:14.041Z</updated>
+    <title>噩梦</title>
+    <link href="http://zhongzilu.github.io/2017/04/29/%E5%99%A9%E6%A2%A6/"/>
+    <id>http://zhongzilu.github.io/2017/04/29/噩梦/</id>
+    <published>2017-04-28T22:34:01.000Z</published>
+    <updated>2017-04-30T13:10:22.651Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;使用FFmpeg合成延时视频&quot;&gt;&lt;a href=&quot;#使用FFmpeg合成延时视频&quot; class=&quot;headerlink&quot; title=&quot;使用FFmpeg合成延时视频&quot;&gt;&lt;/a&gt;使用FFmpeg合成延时视频&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;玩过&lt;a href=&quot;https:
+      &lt;h3 id=&quot;噩梦&quot;&gt;&lt;a href=&quot;#噩梦&quot; class=&quot;headerlink&quot; title=&quot;噩梦&quot;&gt;&lt;/a&gt;噩梦&lt;/h3&gt;&lt;p&gt;今天是2017年4月29日星期六早晨6点34分，我起床后的第一件事就是写下我晚上做的噩梦。首先我要说明的是，我是一个无神论者，不信教，也不相
     
     </summary>
     
@@ -168,16 +129,16 @@
   </entry>
   
   <entry>
-    <title>一道腾讯面试题的思考_到底谁会赢</title>
-    <link href="http://zhongzilu.github.io/2017/01/15/%E4%B8%80%E9%81%93%E8%85%BE%E8%AE%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9A%84%E6%80%9D%E8%80%83-%E5%88%B0%E5%BA%95%E8%B0%81%E4%BC%9A%E8%B5%A2/"/>
-    <id>http://zhongzilu.github.io/2017/01/15/一道腾讯面试题的思考-到底谁会赢/</id>
-    <published>2017-01-15T04:22:16.000Z</published>
-    <updated>2017-02-22T04:22:47.734Z</updated>
+    <title>游戏</title>
+    <link href="http://zhongzilu.github.io/2017/04/27/%E6%B8%B8%E6%88%8F/"/>
+    <id>http://zhongzilu.github.io/2017/04/27/游戏/</id>
+    <published>2017-04-26T17:10:25.000Z</published>
+    <updated>2017-04-27T03:32:39.194Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;一道腾讯面试题的思考-到底谁会赢&quot;&gt;&lt;a href=&quot;#一道腾讯面试题的思考-到底谁会赢&quot; class=&quot;headerlink&quot; title=&quot;一道腾讯面试题的思考_到底谁会赢&quot;&gt;&lt;/a&gt;一道腾讯面试题的思考_到底谁会赢&lt;/h3&gt;&lt;hr&gt;
-&lt;p&gt;最近看到一道腾讯面
+      &lt;h3 id=&quot;游戏&quot;&gt;&lt;a href=&quot;#游戏&quot; class=&quot;headerlink&quot; title=&quot;游戏&quot;&gt;&lt;/a&gt;游戏&lt;/h3&gt;&lt;p&gt;今晚我正在敲着代码，突然手机响了，一看原来是燕子发来微信消息，她给我发来了一张照片，一张脚踝的照片，脚上有两朵玫瑰的图案。&lt;/p&gt;
+&lt;p&gt;&lt;
     
     </summary>
     
@@ -185,15 +146,15 @@
   </entry>
   
   <entry>
-    <title>经典面试问题：Cookie被禁用了-Session还能用吗</title>
-    <link href="http://zhongzilu.github.io/2017/01/14/%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%EF%BC%9ACookie%E8%A2%AB%E7%A6%81%E7%94%A8%E4%BA%86-Session%E8%BF%98%E8%83%BD%E7%94%A8%E5%90%97/"/>
-    <id>http://zhongzilu.github.io/2017/01/14/经典面试问题：Cookie被禁用了-Session还能用吗/</id>
-    <published>2017-01-14T04:18:49.000Z</published>
-    <updated>2017-02-22T04:19:22.467Z</updated>
+    <title>一生所爱</title>
+    <link href="http://zhongzilu.github.io/2017/04/24/%E4%B8%80%E7%94%9F%E6%89%80%E7%88%B1/"/>
+    <id>http://zhongzilu.github.io/2017/04/24/一生所爱/</id>
+    <published>2017-04-24T15:12:54.000Z</published>
+    <updated>2017-04-24T15:22:24.674Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;面试经典问题：Cookie被禁用了，Session还能用吗？&quot;&gt;&lt;a href=&quot;#面试经典问题：Cookie被禁用了，Session还能用吗？&quot; class=&quot;headerlink&quot; title=&quot;面试经典问题：Cookie被禁用了，Session还能用吗？&quot;&gt;
+      &lt;h3 id=&quot;一生所爱&quot;&gt;&lt;a href=&quot;#一生所爱&quot; class=&quot;headerlink&quot; title=&quot;一生所爱&quot;&gt;&lt;/a&gt;一生所爱&lt;/h3&gt;&lt;p&gt;今晚忙着敲代码的我，向往常一样打开网易云音乐听歌，我喜欢边听歌边敲着代码，我觉得世间没有比这两者更配的了，就像至尊宝和紫霞。
     
     </summary>
     
@@ -201,15 +162,15 @@
   </entry>
   
   <entry>
-    <title>Android监听SearchView的展开和关闭事件</title>
-    <link href="http://zhongzilu.github.io/2016/12/15/Android%E7%9B%91%E5%90%ACSearchView%E7%9A%84%E5%B1%95%E5%BC%80%E5%92%8C%E5%85%B3%E9%97%AD%E4%BA%8B%E4%BB%B6/"/>
-    <id>http://zhongzilu.github.io/2016/12/15/Android监听SearchView的展开和关闭事件/</id>
-    <published>2016-12-15T04:00:38.000Z</published>
-    <updated>2017-02-22T04:01:07.424Z</updated>
+    <title>【读后感】- 迷失的旅行者</title>
+    <link href="http://zhongzilu.github.io/2017/04/19/%E3%80%90%E8%AF%BB%E5%90%8E%E6%84%9F%E3%80%91-%E8%BF%B7%E5%A4%B1%E7%9A%84%E6%97%85%E8%A1%8C%E8%80%85/"/>
+    <id>http://zhongzilu.github.io/2017/04/19/【读后感】-迷失的旅行者/</id>
+    <published>2017-04-19T13:54:05.000Z</published>
+    <updated>2017-04-19T14:00:18.211Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Android监听SearchView的展开和关闭事件&quot;&gt;&lt;a href=&quot;#Android监听SearchView的展开和关闭事件&quot; class=&quot;headerlink&quot; title=&quot;Android监听SearchView的展开和关闭事件&quot;&gt;&lt;/a&gt;Andro
+      &lt;h3 id=&quot;迷失的旅行者-读后感&quot;&gt;&lt;a href=&quot;#迷失的旅行者-读后感&quot; class=&quot;headerlink&quot; title=&quot;迷失的旅行者 - 读后感&quot;&gt;&lt;/a&gt;迷失的旅行者 - 读后感&lt;/h3&gt;&lt;p&gt;今晚刚看完《天才在左，疯子在右》这本书中的&lt;code&gt;迷失的旅行者&lt;
     
     </summary>
     
@@ -217,48 +178,16 @@
   </entry>
   
   <entry>
-    <title>SwipeRefreshLayout进入页面自动刷新</title>
-    <link href="http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout%E8%BF%9B%E5%85%A5%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0/"/>
-    <id>http://zhongzilu.github.io/2016/12/14/SwipeRefreshLayout进入页面自动刷新/</id>
-    <published>2016-12-14T03:56:51.000Z</published>
-    <updated>2017-02-22T03:57:19.662Z</updated>
+    <title>【随笔记】- 第2记</title>
+    <link href="http://zhongzilu.github.io/2017/04/18/%E3%80%90%E9%9A%8F%E7%AC%94%E8%AE%B0%E3%80%91-%E7%AC%AC2%E8%AE%B0/"/>
+    <id>http://zhongzilu.github.io/2017/04/18/【随笔记】-第2记/</id>
+    <published>2017-04-18T15:55:03.000Z</published>
+    <updated>2017-04-18T16:08:33.178Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;SwipeRefreshLayout进入页面自动刷新&quot;&gt;&lt;a href=&quot;#SwipeRefreshLayout进入页面自动刷新&quot; class=&quot;headerlink&quot; title=&quot;SwipeRefreshLayout进入页面自动刷新&quot;&gt;&lt;/a&gt;SwipeRef
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能</title>
-    <link href="http://zhongzilu.github.io/2016/12/13/%E5%A6%82%E4%BD%95%E5%9C%A8Windows%E6%88%96Linux-Ubuntu%E4%B8%8B%E5%BC%80%E5%90%AF%E5%92%8C%E5%85%B3%E9%97%ADPHP%E7%9A%84%E9%94%99%E8%AF%AF%E6%98%BE%E7%A4%BA%E5%8A%9F%E8%83%BD/"/>
-    <id>http://zhongzilu.github.io/2016/12/13/如何在Windows或Linux-Ubuntu下开启和关闭PHP的错误显示功能/</id>
-    <published>2016-12-13T03:53:53.000Z</published>
-    <updated>2017-02-22T03:54:34.249Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能&quot;&gt;&lt;a href=&quot;#如何在Windows或Linux-Ubuntu-下开启和关闭PHP的错误显示功能&quot; class=&quot;headerlink&quot; title=&quot;如何在Windows或L
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>开启PHP错误提示</title>
-    <link href="http://zhongzilu.github.io/2016/12/13/%E5%BC%80%E5%90%AFPHP%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
-    <id>http://zhongzilu.github.io/2016/12/13/开启PHP错误提示/</id>
-    <published>2016-12-13T03:50:46.000Z</published>
-    <updated>2017-02-22T03:51:12.417Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;开启PHP错误提示&quot;&gt;&lt;a href=&quot;#开启PHP错误提示&quot; class=&quot;headerlink&quot; title=&quot;开启PHP错误提示&quot;&gt;&lt;/a&gt;开启PHP错误提示&lt;/h2&gt;&lt;p&gt;@(标签)[PHP，错误提示，zhongzilu，bit100]&lt;/p&gt;
-&lt;hr&gt;
+      &lt;h3 id=&quot;【随笔记】-第2记&quot;&gt;&lt;a href=&quot;#【随笔记】-第2记&quot; class=&quot;headerlink&quot; title=&quot;【随笔记】- 第2记&quot;&gt;&lt;/a&gt;【随笔记】- 第2记&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;缘起，我们相遇于人海；缘灭，我们消失于眼前。&lt;/p&gt;
 
     
     </summary>
@@ -267,15 +196,15 @@
   </entry>
   
   <entry>
-    <title>CentOS升级php5.3到5.5</title>
-    <link href="http://zhongzilu.github.io/2016/12/09/CentOS%E5%8D%87%E7%BA%A7php5-3%E5%88%B05-5/"/>
-    <id>http://zhongzilu.github.io/2016/12/09/CentOS升级php5-3到5-5/</id>
-    <published>2016-12-09T03:48:47.000Z</published>
-    <updated>2017-02-22T03:49:12.075Z</updated>
+    <title>还没年轻过我们就老了</title>
+    <link href="http://zhongzilu.github.io/2017/04/16/%E8%BF%98%E6%B2%A1%E5%B9%B4%E8%BD%BB%E8%BF%87%E6%88%91%E4%BB%AC%E5%B0%B1%E8%80%81%E4%BA%86/"/>
+    <id>http://zhongzilu.github.io/2017/04/16/还没年轻过我们就老了/</id>
+    <published>2017-04-16T15:45:54.000Z</published>
+    <updated>2017-04-18T16:05:36.364Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;CentOS升级php5-3到5-5&quot;&gt;&lt;a href=&quot;#CentOS升级php5-3到5-5&quot; class=&quot;headerlink&quot; title=&quot;CentOS升级php5.3到5.5&quot;&gt;&lt;/a&gt;CentOS升级php5.3到5.5&lt;/h2&gt;&lt;p&gt;@(标签)[
+      &lt;h3 id=&quot;还没年轻过我们就老了&quot;&gt;&lt;a href=&quot;#还没年轻过我们就老了&quot; class=&quot;headerlink&quot; title=&quot;还没年轻过我们就老了&quot;&gt;&lt;/a&gt;还没年轻过我们就老了&lt;/h3&gt;&lt;p&gt;今天是2017年4月16日星期天，我像往常一样去看望爸爸妈妈，回到家后就和爸
     
     </summary>
     
@@ -283,15 +212,15 @@
   </entry>
   
   <entry>
-    <title>如何更改linux超级用户密码</title>
-    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%94%B9linux%E8%B6%85%E7%BA%A7%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/"/>
-    <id>http://zhongzilu.github.io/2016/12/09/如何更改linux超级用户密码/</id>
-    <published>2016-12-09T03:45:22.000Z</published>
-    <updated>2017-02-22T03:45:53.509Z</updated>
+    <title>【随笔记】- 陪你度过漫长岁月</title>
+    <link href="http://zhongzilu.github.io/2017/04/15/%E3%80%90%E9%9A%8F%E7%AC%94%E8%AE%B0%E3%80%91-%E9%99%AA%E4%BD%A0%E5%BA%A6%E8%BF%87%E6%BC%AB%E9%95%BF%E5%B2%81%E6%9C%88/"/>
+    <id>http://zhongzilu.github.io/2017/04/15/【随笔记】-陪你度过漫长岁月/</id>
+    <published>2017-04-15T11:57:07.000Z</published>
+    <updated>2017-04-15T12:10:52.541Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;如何更改Linux超级用户密码&quot;&gt;&lt;a href=&quot;#如何更改Linux超级用户密码&quot; class=&quot;headerlink&quot; title=&quot;如何更改Linux超级用户密码&quot;&gt;&lt;/a&gt;如何更改Linux超级用户密码&lt;/h2&gt;&lt;p&gt;标签 &lt;code&gt;Linux&lt;/co
+      &lt;h3 id=&quot;【随笔记】-陪你度过漫长的岁月&quot;&gt;&lt;a href=&quot;#【随笔记】-陪你度过漫长的岁月&quot; class=&quot;headerlink&quot; title=&quot;【随笔记】- 陪你度过漫长的岁月&quot;&gt;&lt;/a&gt;【随笔记】- 陪你度过漫长的岁月&lt;/h3&gt;&lt;iframe frameborder
     
     </summary>
     
@@ -299,15 +228,16 @@
   </entry>
   
   <entry>
-    <title>如何在Linux-Ubuntu上安装PHP-MySQL-Apache-LAMP</title>
-    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux-Ubuntu%E4%B8%8A%E5%AE%89%E8%A3%85PHP-MySQL-Apache-LAMP/"/>
-    <id>http://zhongzilu.github.io/2016/12/09/如何在Linux-Ubuntu上安装PHP-MySQL-Apache-LAMP/</id>
-    <published>2016-12-09T03:41:55.000Z</published>
-    <updated>2017-02-22T03:42:26.365Z</updated>
+    <title>【随笔记】- 第1记</title>
+    <link href="http://zhongzilu.github.io/2017/04/15/%E3%80%90%E9%9A%8F%E7%AC%94%E8%AE%B0%E3%80%91-%E7%AC%AC1%E8%AE%B0/"/>
+    <id>http://zhongzilu.github.io/2017/04/15/【随笔记】-第1记/</id>
+    <published>2017-04-15T04:38:47.000Z</published>
+    <updated>2017-04-14T15:05:56.347Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;如何在Linux-Ubuntu上安装PHP，MySQL和Apache（LAMP）&quot;&gt;&lt;a href=&quot;#如何在Linux-Ubuntu上安装PHP，MySQL和Apache（LAMP）&quot; class=&quot;headerlink&quot; title=&quot;如何在Linux/Ubu
+      &lt;h3 id=&quot;【随笔记】-第1记&quot;&gt;&lt;a href=&quot;#【随笔记】-第1记&quot; class=&quot;headerlink&quot; title=&quot;【随笔记】 - 第1记&quot;&gt;&lt;/a&gt;【随笔记】 - 第1记&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;别为了不属于你的观众，演绎你不擅长的人生，反正谢幕
     
     </summary>
     
@@ -315,15 +245,15 @@
   </entry>
   
   <entry>
-    <title>如何在Linux-Ubuntu上运行.chm文件</title>
-    <link href="http://zhongzilu.github.io/2016/12/09/%E5%A6%82%E4%BD%95%E5%9C%A8Linux-Ubuntu%E4%B8%8A%E8%BF%90%E8%A1%8C-chm%E6%96%87%E4%BB%B6/"/>
-    <id>http://zhongzilu.github.io/2016/12/09/如何在Linux-Ubuntu上运行-chm文件/</id>
-    <published>2016-12-09T03:33:33.000Z</published>
-    <updated>2017-02-22T03:34:10.811Z</updated>
+    <title>失落(续)</title>
+    <link href="http://zhongzilu.github.io/2017/04/15/%E5%A4%B1%E8%90%BD-%E7%BB%AD/"/>
+    <id>http://zhongzilu.github.io/2017/04/15/失落-续/</id>
+    <published>2017-04-15T01:55:49.000Z</published>
+    <updated>2017-04-15T03:42:54.124Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;如何在Linux-Ubuntu上运行-chm文件&quot;&gt;&lt;a href=&quot;#如何在Linux-Ubuntu上运行-chm文件&quot; class=&quot;headerlink&quot; title=&quot;如何在Linux/Ubuntu上运行.chm文件&quot;&gt;&lt;/a&gt;如何在Linux/Ubunt
+      &lt;h3 id=&quot;失落（续）&quot;&gt;&lt;a href=&quot;#失落（续）&quot; class=&quot;headerlink&quot; title=&quot;失落（续）&quot;&gt;&lt;/a&gt;失落（续）&lt;/h3&gt;&lt;p&gt;今天是2017年4月15日星期六，昨晚失眠了，直到凌晨三四点钟都没睡着，也许是我太患得患失，亦或者是太过敏感，脑海里
     
     </summary>
     
@@ -331,15 +261,79 @@
   </entry>
   
   <entry>
-    <title>1024程序员节-向改变世界的程序员致敬</title>
-    <link href="http://zhongzilu.github.io/2016/10/24/1024%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82-%E5%90%91%E6%94%B9%E5%8F%98%E4%B8%96%E7%95%8C%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98%E8%87%B4%E6%95%AC/"/>
-    <id>http://zhongzilu.github.io/2016/10/24/1024程序员节-向改变世界的程序员致敬/</id>
-    <published>2016-10-24T03:28:01.000Z</published>
-    <updated>2017-02-22T03:28:53.154Z</updated>
+    <title>失落</title>
+    <link href="http://zhongzilu.github.io/2017/04/15/%E5%A4%B1%E8%90%BD/"/>
+    <id>http://zhongzilu.github.io/2017/04/15/失落/</id>
+    <published>2017-04-14T17:37:47.000Z</published>
+    <updated>2017-04-15T01:56:18.154Z</updated>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;1024程序员节，向改变世界的程序员致敬&quot;&gt;&lt;a href=&quot;#1024程序员节，向改变世界的程序员致敬&quot; class=&quot;headerlink&quot; title=&quot;1024程序员节，向改变世界的程序员致敬&quot;&gt;&lt;/a&gt;1024程序员节，向改变世界的程序员致敬&lt;/h2&gt;&lt;
+      &lt;h3 id=&quot;失落&quot;&gt;&lt;a href=&quot;#失落&quot; class=&quot;headerlink&quot; title=&quot;失落&quot;&gt;&lt;/a&gt;失落&lt;/h3&gt;&lt;p&gt;今天是2017年4月14日星期五，我的心情如同今天白天的太阳一样热烈，也如同今晚的天空一样晦涩朦胧，太大的心情反差差点让我难以自救。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>再次相遇</title>
+    <link href="http://zhongzilu.github.io/2017/04/14/%E5%86%8D%E6%AC%A1%E7%9B%B8%E9%81%87/"/>
+    <id>http://zhongzilu.github.io/2017/04/14/再次相遇/</id>
+    <published>2017-04-13T16:55:17.000Z</published>
+    <updated>2017-04-14T17:29:56.066Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;再次相遇&quot;&gt;&lt;a href=&quot;#再次相遇&quot; class=&quot;headerlink&quot; title=&quot;再次相遇&quot;&gt;&lt;/a&gt;再次相遇&lt;/h3&gt;&lt;p&gt;今天是2017年4月13日星期四晚上23:20分，今晚我准时去赴了约，我穿着一件纯白色的衬衫，外加上一件酒红色的T恤外套，衬
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>相约</title>
+    <link href="http://zhongzilu.github.io/2017/04/13/%E7%9B%B8%E7%BA%A6/"/>
+    <id>http://zhongzilu.github.io/2017/04/13/相约/</id>
+    <published>2017-04-12T16:09:00.000Z</published>
+    <updated>2017-04-14T15:03:22.271Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相约&quot;&gt;&lt;a href=&quot;#相约&quot; class=&quot;headerlink&quot; title=&quot;相约&quot;&gt;&lt;/a&gt;相约&lt;/h3&gt;&lt;p&gt;今天是2017年4月12日星期三，晚上我紧张万分地打开微信，找到昨天那个女生的微信号开始聊天（一下简称燕子），互相询问了各自的兴趣爱好，也根
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>相遇</title>
+    <link href="http://zhongzilu.github.io/2017/04/10/%E7%9B%B8%E9%81%87/"/>
+    <id>http://zhongzilu.github.io/2017/04/10/相遇/</id>
+    <published>2017-04-10T15:37:25.000Z</published>
+    <updated>2017-04-14T14:35:21.523Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相遇&quot;&gt;&lt;a href=&quot;#相遇&quot; class=&quot;headerlink&quot; title=&quot;相遇&quot;&gt;&lt;/a&gt;相遇&lt;/h3&gt;&lt;p&gt;今天是2017年4月10日星期一。根据驾校教练的安排，我和我一个老朋友（以下简称小兰）在早上十点，在约定地点上了教练的车并前往驾校学习科二的
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【观后感】- 攻壳机动队</title>
+    <link href="http://zhongzilu.github.io/2017/04/08/%E3%80%90%E8%A7%82%E5%90%8E%E6%84%9F%E3%80%91-%E6%94%BB%E5%A3%B3%E6%9C%BA%E5%8A%A8%E9%98%9F/"/>
+    <id>http://zhongzilu.github.io/2017/04/08/【观后感】-攻壳机动队/</id>
+    <published>2017-04-08T14:18:27.000Z</published>
+    <updated>2017-04-14T01:27:41.962Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;【观后感】-攻壳机动队&quot;&gt;&lt;a href=&quot;#【观后感】-攻壳机动队&quot; class=&quot;headerlink&quot; title=&quot;【观后感】- 攻壳机动队&quot;&gt;&lt;/a&gt;【观后感】- 攻壳机动队&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubuser
     
     </summary>
     
