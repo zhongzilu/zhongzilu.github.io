@@ -85,24 +85,24 @@
 
 	<div class='post-body mb'>
 		<h3 id="JS运算规则问题（上）"><a href="#JS运算规则问题（上）" class="headerlink" title="JS运算规则问题（上）"></a>JS运算规则问题（上）</h3><hr>
-<h4 id="问题：请回答下图中最后输出结果为什么是false和1？"><a href="#问题：请回答下图中最后输出结果为什么是false和1？" class="headerlink" title="问题：请回答下图中最后输出结果为什么是false和1？"></a>问题：请回答下图中最后输出结果为什么是false和1？</h4><p><img src="http://www.bit100.com/wp-content/uploads/2017/02/Question.png" alt="Question"></p>
-<h4 id="一、为什么-true输出结果为false"><a href="#一、为什么-true输出结果为false" class="headerlink" title="一、为什么[] == true输出结果为false?"></a>一、为什么[] == true输出结果为false?</h4><p>要想知道为什么输出false，那得先知道<code>==</code>是怎么进行比较的。<br><img src="http://www.bit100.com/wp-content/uploads/2017/02/the-equals-operator.png" alt="the equals operator"><br>上图是JavaScript的<code>==</code>操作符的实现标准，意思是在比较的时候，会把左右两边的表达式使用<code>GetValue()</code>进行转换，然后再用两者得到的值进行比较，即图上的<code>第5项</code>。</p>
+<h4 id="问题：请回答下图中最后输出结果为什么是false和1？"><a href="#问题：请回答下图中最后输出结果为什么是false和1？" class="headerlink" title="问题：请回答下图中最后输出结果为什么是false和1？"></a>问题：请回答下图中最后输出结果为什么是false和1？</h4><p><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/Question.png" alt="Question"></p>
+<h4 id="一、为什么-true输出结果为false"><a href="#一、为什么-true输出结果为false" class="headerlink" title="一、为什么[] == true输出结果为false?"></a>一、为什么[] == true输出结果为false?</h4><p>要想知道为什么输出false，那得先知道<code>==</code>是怎么进行比较的。<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/the-equals-operator.png" alt="the equals operator"><br>上图是JavaScript的<code>==</code>操作符的实现标准，意思是在比较的时候，会把左右两边的表达式使用<code>GetValue()</code>进行转换，然后再用两者得到的值进行比较，即图上的<code>第5项</code>。</p>
 <p>然后跟踪来到<strong>11.9.3</strong>章节，内容如下</p>
-<p><img src="http://www.bit100.com/wp-content/uploads/2017/02/The-Abstract-Equality.png" alt="The Abstract Equality"></p>
+<p><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/The-Abstract-Equality.png" alt="The Abstract Equality"></p>
 <p>由于操作符右边的表达式为<code>Boolean</code>类型，所以满足上图中的<code>第7项</code>条件，需要先用<code>ToNumber()</code>方法来把布尔类型表达式转换为数字，我们都知道<code>true</code>转换为数字类型时，值为<code>1</code>。</p>
 <p>然后左边的表达式是数组，类型为<code>Object</code>，因此满足<code>第9项条件</code>，于是再用<code>ToPrimitive()</code>方法转换左边的表达式。</p>
-<p><strong>接下来看看<code>ToPrimitive()</code></strong><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/ToPrimitive.png" alt="ToPrimitive"><br>因为需要转换的表达式为<code>Object</code>类型，所以采用最后一条规则。转换的结果是通过<code>[[DefaultValue]]</code>获取的<code>Object</code>的默认值。</p>
-<p><strong>再来看看<code>[[DefaultValue]]</code></strong>的说明<br><img src="http://www.bit100.com/wp-content/uploads/2017/02/DefaultValue.png" alt="DefaultValue"><br>由于对象<code>Object</code>内部的<code>[[DefalutValue]]</code>的<code>hint</code>为<code>String</code>，所以用<code>toString</code>返回值，而数组<code>[]</code>使用<code>toString</code>方法，返回值为<code>&quot;&quot;</code><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/toString.png" alt="toString"></p>
+<p><strong>接下来看看<code>ToPrimitive()</code></strong><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/ToPrimitive.png" alt="ToPrimitive"><br>因为需要转换的表达式为<code>Object</code>类型，所以采用最后一条规则。转换的结果是通过<code>[[DefaultValue]]</code>获取的<code>Object</code>的默认值。</p>
+<p><strong>再来看看<code>[[DefaultValue]]</code></strong>的说明<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/DefaultValue.png" alt="DefaultValue"><br>由于对象<code>Object</code>内部的<code>[[DefalutValue]]</code>的<code>hint</code>为<code>String</code>，所以用<code>toString</code>返回值，而数组<code>[]</code>使用<code>toString</code>方法，返回值为<code>&quot;&quot;</code><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/toString.png" alt="toString"></p>
 <p><strong>所以，一开始的<code>[] == true</code>的比较就相当于是<code>&quot;&quot; == 1</code>的比较，然后再回到一开始的 == 实现标准，即<a href="">The Abstact Equality Comparison Algoritem</a>章节的内容</strong></p>
-<p>这个时候满足条件<code>第5项</code><br><img src="http://www.bit100.com/wp-content/uploads/2017/02/The-Abstract-Equality2.png" alt="The Abstract Equality"></p>
+<p>这个时候满足条件<code>第5项</code><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/The-Abstract-Equality2.png" alt="The Abstract Equality"></p>
 <p>需要把字符串<code>&quot;&quot;</code>转换为数字，由于是空字符串，所以转换后的值为<code>0</code></p>
 <p>最终的结果就相当于是<strong><code>0 == 1</code></strong>，我们当然知道这两者不相等，所以返回值为<strong><code>false</code></strong></p>
 <p>不知道各位看官看明白了吗？好了，就讲到这里，第二个请看下面这篇文章</p>
 <blockquote>
-<p><a href="http://www.bit100.com/js%e8%bf%90%e7%ae%97%e8%a7%84%e5%88%99%e9%97%ae%e9%a2%98%ef%bc%88%e4%b8%8b%ef%bc%89/" target="_blank" rel="external">http://www.bit100.com/js运算规则问题下/</a></p>
+<p><a href="https://zhongzilu.github.io/2017/02/16/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8B/">https://zhongzilu.github.io/2017/02/05/js运算规则问题下/</a></p>
 </blockquote>
 <p>Thanks for watching!</p>
-<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="http://www.bit100.com/js%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98%E4%B8%8A/" target="_blank" rel="external">http://www.bit100.com/JS运算规则问题(上)/</a></p>
+<p><strong>作者</strong>：<a href="https://zhongzilu.github.io">钟子路(zhongzilu)</a><br><strong>原文地址</strong>: <a href="https://zhongzilu.github.io/2017/02/05/JS%E8%BF%90%E7%AE%97%E8%A7%84%E5%88%99%E9%97%AE%E9%A2%98-%E4%B8%8A/">https://zhongzilu.github.io/JS运算规则问题(上)/</a></p>
 
 	</div>
 	<div class="meta split">
@@ -153,7 +153,7 @@ var duoshuoQuery = {short_name:"yumemor"};
 		<div class="layout layout--center">
 			<div class="layout__item palm-mb">
 				<div class="media">
-					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<img class="headimg" src='http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
 					<div class="media__body">
 						<h4>Zhongzilu</h4>
 						<p class='site-description'>I&#39;m an Android developer</p>

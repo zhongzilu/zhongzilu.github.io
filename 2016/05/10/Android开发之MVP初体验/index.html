@@ -90,19 +90,19 @@
 <blockquote>
 <p>Model(模型) – View(视图) – Control(控制器)</p>
 </blockquote>
-<p>逻辑图如下:<br><img src="http://www.bit100.com/.zhongzilu/image/MVC.png" alt="MVC"></p>
+<p>逻辑图如下:<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/MVC.png" alt="MVC"></p>
 <p>而这种开发模式有个缺点,就是在项目越来越大时,文件会越来越多,查找起来很不方便,而且Activity或者Fragment里面的代码会越来越臃肿,看起来很凌乱,要修改更是让人头疼,于是就提出了一种MVP的开发模式,MVP开发模式即:</p>
 <blockquote>
 <p>Model(模型) – View(视图) – Presente(任命者/中介)</p>
 </blockquote>
-<p>逻辑图如下:<br><img src="http://www.bit100.com/.zhongzilu/image/mvp.png" alt="MVP"></p>
+<p>逻辑图如下:<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/mvp.png" alt="MVP"></p>
 <p>网上有很多讲解MVP的文章和教程,我这里就不详细介绍了,但还有很多人看过教程之后依然不知如何实现MVP,今天主要通过实际代码的方式来体验MVP开发</p>
 <p>本次使用的代码为Github上的一个开源项目,名为<a href="https://github.com/antoniolg/androidmvp" target="_blank" rel="external">androidmvp</a></p>
 <blockquote>
 <p>传送门 <a href="https://github.com/antoniolg/androidmvp" target="_blank" rel="external">https://github.com/antoniolg/androidmvp</a></p>
 </blockquote>
-<h2 id="先看看界面"><a href="#先看看界面" class="headerlink" title="先看看界面"></a>先看看界面</h2><p>界面很简单,就是一个登录界面和一个ListView填充的主界面,登录之后跳转到主界面,主界面上显示一个列表<br><img src="http://www.bit100.com/.zhongzilu/image/loginScreenShot.png" alt="登录界面"><img src="http://www.bit100.com/.zhongzilu/image/mainScreenShot.png" alt="主界面"></p>
-<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>用Android Studio打开项目之后可以看到如下的项目结构<br><img src="http://www.bit100.com/.zhongzilu/image/structure.png" alt="项目结构"></p>
+<h2 id="先看看界面"><a href="#先看看界面" class="headerlink" title="先看看界面"></a>先看看界面</h2><p>界面很简单,就是一个登录界面和一个ListView填充的主界面,登录之后跳转到主界面,主界面上显示一个列表<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/loginScreenShot.png" alt="登录界面"><img src="http://ozpzmw1tj.bkt.clouddn.com/image/mainScreenShot.png" alt="主界面"></p>
+<h2 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h2><p>用Android Studio打开项目之后可以看到如下的项目结构<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/structure.png" alt="项目结构"></p>
 <p>通过截图可以看出,该项目是根据<strong>界面来分类的</strong>,Login文件夹下放的是所有与登录界面有关的文件,main文件夹下放的是所有与主界面有关的文件</p>
 <p>其中, Login文件夹下共有6个文件, 3个类文件, 3个接口文件</p>
 <p>类文件:</p>
@@ -289,10 +289,10 @@ Override public void setPasswordError() {
 <li>最后在navigateToHome接口中实现Activity的跳转,跳转到MainActivity</li>
 </ol>
 </blockquote>
-<p><strong>流程图如下:</strong><br><img src="http://www.bit100.com/.zhongzilu/image/flow_chart.png" alt="Alt text"></p>
+<p><strong>流程图如下:</strong><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/flow_chart.png" alt="Alt text"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在MVP开发模式中, Activity只负责界面的显示和跳转相关的操作, 具体的逻辑处理通过调用接口来传递给Presenter(中介者) 既不做界面显示的操作,也不做具体的逻辑处理操作, 具体的逻辑处理通过调用接口,让Interactor即交互类来完成</p>
 <p>交互类的逻辑处理结果,通过调用Presenter中实现的接口, 再由Presenter要实现的接口中调用Activity中实现的接口来进行UI的显示或界面跳转</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>好了,<code>安卓开发 MVP之初体验</code>讲完了,写了那么多,希望大家能够看懂了,如果还有什么问题,可以问我<a href="http://ask.android-studio.org/?/people/zhongzilu" target="_blank" rel="external">Follow Me</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>好了,<code>安卓开发 MVP之初体验</code>讲完了,写了那么多,希望大家能够看懂了,如果还有什么问题,可以问我<a href="https://github.com/zhongzilu/zhongzilu.github.io/issues" target="_blank" rel="external">Follow Me</a></p>
 
 	</div>
 	<div class="meta split">
@@ -343,7 +343,7 @@ var duoshuoQuery = {short_name:"yumemor"};
 		<div class="layout layout--center">
 			<div class="layout__item palm-mb">
 				<div class="media">
-					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<img class="headimg" src='http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
 					<div class="media__body">
 						<h4>Zhongzilu</h4>
 						<p class='site-description'>I&#39;m an Android developer</p>

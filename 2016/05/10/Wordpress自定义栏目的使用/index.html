@@ -90,11 +90,11 @@
 </blockquote>
 <p>我思考着要完成这个任务我需要怎么做，由于网站上的内容都是动态从数据库中取的，所以如果我要实现点击购买按钮就跳转到对应网店的功能，就不可能在代码中把跳转的店铺地址写死了，必须要从数据库中去读取，并且还要和商品关联起来才行。</p>
 <p>这其中肯定涉及到把链接地址写入数据库，WordPress提供了一个管理后台，通过管理后台可以把数据写入数据库。</p>
-<p>打开后台，找到文章编辑页面，在右上方有个<code>显示选项</code>，展开后可以显示和隐藏模块。勾选<code>自定义栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460715829974.png" alt="显示选项"></p>
-<p>在页面下方可以看到这个模块，在这里可以新增自定义的数据字段，并给它赋值。<br><img src="http://www.bit100.com/.zhongzilu/image/1460715932310.png" alt="自定义栏目"></p>
-<p>拿我的任务来举例，我点击购买按钮之后跳转到对应的商品淘宝店，所以商品淘宝店的地址就需要写入数据库，所以现在新增一个自定义字段，点击<code>输入新栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460716205273.png" alt="添加自定义栏目"></p>
-<p>输入自定义名称和值，输入完成后点击<code>添加自定义栏目</code><br><img src="http://www.bit100.com/.zhongzilu/image/1460716383075.png" alt="添加自定义栏目"></p>
-<p>添加完之后就是如下图所示<br><img src="http://www.bit100.com/.zhongzilu/image/1460773373270.png" alt="添加自定义栏目成功"></p>
+<p>打开后台，找到文章编辑页面，在右上方有个<code>显示选项</code>，展开后可以显示和隐藏模块。勾选<code>自定义栏目</code><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/1460715829974.png" alt="显示选项"></p>
+<p>在页面下方可以看到这个模块，在这里可以新增自定义的数据字段，并给它赋值。<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/1460715932310.png" alt="自定义栏目"></p>
+<p>拿我的任务来举例，我点击购买按钮之后跳转到对应的商品淘宝店，所以商品淘宝店的地址就需要写入数据库，所以现在新增一个自定义字段，点击<code>输入新栏目</code><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/1460716205273.png" alt="添加自定义栏目"></p>
+<p>输入自定义名称和值，输入完成后点击<code>添加自定义栏目</code><br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/1460716383075.png" alt="添加自定义栏目"></p>
+<p>添加完之后就是如下图所示<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/1460773373270.png" alt="添加自定义栏目成功"></p>
 <p><strong>自定义栏目添加成功了，那么问题来了，我们如何取到自定义栏目的值并显示在页面上呢？</strong></p>
 <p>在WordPress中有个<code>get_post_meta()</code>的函数，官方的解释是：</p>
 <blockquote>
@@ -190,7 +190,7 @@ var duoshuoQuery = {short_name:"yumemor"};
 		<div class="layout layout--center">
 			<div class="layout__item palm-mb">
 				<div class="media">
-					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<img class="headimg" src='http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
 					<div class="media__body">
 						<h4>Zhongzilu</h4>
 						<p class='site-description'>I&#39;m an Android developer</p>

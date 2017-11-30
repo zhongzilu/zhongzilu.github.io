@@ -85,7 +85,7 @@
 
 	<div class='post-body mb'>
 		<h2 id="Android-Canvas-绘制图形-—-拾音器"><a href="#Android-Canvas-绘制图形-—-拾音器" class="headerlink" title="Android Canvas 绘制图形 — 拾音器"></a>Android Canvas 绘制图形 — 拾音器</h2><blockquote>
-<p>最近在网上看到一个拾音器的设计图，看起来挺美观的，于是我就想把它实现出来，不多废话，先看图，左边是设计图，右边是实现图<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_design.png" alt="设计图"><img src="http://www.bit100.com/.zhongzilu/image/TunerView_preview.png" alt="实现效果图"></p>
+<p>最近在网上看到一个拾音器的设计图，看起来挺美观的，于是我就想把它实现出来，不多废话，先看图，左边是设计图，右边是实现图<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_design.png" alt="设计图"><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_preview.png" alt="实现效果图"></p>
 </blockquote>
 <p>除了指针不同，其他的大体上一样</p>
 <h3 id="Android-Canvas介绍"><a href="#Android-Canvas介绍" class="headerlink" title="Android Canvas介绍"></a>Android Canvas介绍</h3><p>Canvas作为绘制图形的直接对象，提供了以下几个非常有用的方法</p>
@@ -197,7 +197,7 @@ protected void onDraw(Canvas canvas) {
     //画圆形底盘
     ...
 }
-</code></pre><p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_1.png" alt="完成刻度盘"></p>
+</code></pre><p>运行效果：<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_1.png" alt="完成刻度盘"></p>
 <p><strong>第二步(Step 2)：画园形底盘</strong></p>
 <p>画实心圆形底盘，通过调用<code>paint.setColor()</code>来设置颜色，调用<code>paint.drawCircle()</code>方法来画出圆形</p>
 <pre><code>//画大圆盘
@@ -222,7 +222,7 @@ canvas.drawCircle(xc, yc, xc - 320, smallCircle);
 <li>radius：圆形的半径，float类型</li>
 <li>paint：画笔对象，Paint类型</li>
 </ul>
-<p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_2.png" alt="画三个圆形底盘"></p>
+<p>运行效果：<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_2.png" alt="画三个圆形底盘"></p>
 <p><strong>第三步(Step 3)：画指针</strong><br>画指针其实和画线是一个道理，所以我们直接调用<code>drawLine()</code>方法就可以了</p>
 <pre><code>//画指针
 Paint paintCursor = new Paint();
@@ -238,7 +238,7 @@ canvas.drawLine(xc, yc, xc - radius + 80, yc + 10, paintCursor);
 <li>stopY：线条的结束点y坐标，类型float</li>
 <li>paint：画笔对象，Paint类型</li>
 </ul>
-<p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_3.png" alt="指针绘制"></p>
+<p>运行效果：<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_3.png" alt="指针绘制"></p>
 <p><strong>这里注意一下，由于我们的指针使用的颜色和最小的那个圆形的颜色是一样的，所以运行效果里看不出问题，如果换一个颜色，就会发现，指针在最小的圆形上面，而设计图上的指针是在最小的圆形下面，那么这要怎么解决呢？不要方，只需要把绘制最小那个圆的<code>canvas.drawCircle()</code>方法放到绘制指针的<code>drawLine()</code>方法之后就可以了</strong></p>
 <p><strong>第四步(Step 4)：画正下方的文字</strong></p>
 <p>画正下方的文字，只需要调用<code>canvas.drawText()</code>方法就可以了</p>
@@ -253,10 +253,10 @@ canvas.drawText(pitch,
         //再加上80，是为了让文字和最大的那个圆产生间隙
         yc + 180 + 80,
         pitchPaint);
-</code></pre><p>运行效果：<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4.png" alt="绘制正下方的文字"></p>
+</code></pre><p>运行效果：<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_4.png" alt="绘制正下方的文字"></p>
 <p>可以看到文字的方向不对，<strong>为什么文字的方向不对呢？</strong>这是因为我们在绘制刻度盘的时候，我们对画布坐标系进行了旋转，画完刻度盘之后，坐标系被旋转了180°，但由于在绘制刻度盘之前，我们对整个画布坐标系进行逆时针旋转了90°，所以实际上只旋转了90°，因此，我们看到绘制的文字不是在正下方，而是在左边，被旋转了90°，<strong>那么这要怎么解决呢？</strong>最简单的方法当然是在绘制文字之前，把画布坐标系旋转回来。所以需要添加一行代码：</p>
 <pre><code>canvas.rotate(-90, xc, yc);
-</code></pre><p>运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_4_1.png" alt="最终效果"></p>
+</code></pre><p>运行效果<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_4_1.png" alt="最终效果"></p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>由于上面的案例代码里用到了很多写死的数字代码(Hard Code)，这不利于代码的灵活性，而且，既然有指针，就应该让指针根据一个提供的输入值，来让指针指向对应的数值位置，所以，我对代码进行了改良，代码如下：</p>
 <pre><code>/**
  * Created by zhongzilu on 2016/5/25 0025.
@@ -441,10 +441,10 @@ public class DialView extends View {
         canvas.restore();
     }
 }
-</code></pre><p>经过修改过后，只需要修改全局变量<code>mValue</code>的值，就可以使指针指向界面上对应的值了，比如<code>mValue = 30</code>，运行效果<br><img src="http://www.bit100.com/.zhongzilu/image/TunerView_step_5.png" alt="指针旋转测试"></p>
+</code></pre><p>经过修改过后，只需要修改全局变量<code>mValue</code>的值，就可以使指针指向界面上对应的值了，比如<code>mValue = 30</code>，运行效果<br><img src="http://ozpzmw1tj.bkt.clouddn.com/image/TunerView_step_5.png" alt="指针旋转测试"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总的来说，没什么难度，关键点在于绘图时的坐标计算，以及对旋转画布的理解，旋转画布是旋转的画布坐标系。在本案例中，我没有对指针的旋转做动画处理，是因为本文重在讲解Canvas画图，各位也可以自行加上指针旋转动画代码。好了，以上就是今天的内容，各位可以发挥自己的想象力，绘制出更多更有趣的图形。我是钟子路，Thanks for watching!</p>
 <blockquote>
-<p><strong>作者</strong>：<a href="http://www.bit100.com" target="_blank" rel="external">zhongzilu</a><br><strong>源码</strong>：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a> </p>
+<p><strong>作者</strong>：<a href="https://zhongzilu.github.io">zhongzilu</a><br><strong>源码</strong>：<a href="https://github.com/zhongzilu/TunerView" target="_blank" rel="external">https://github.com/zhongzilu/TunerView</a> </p>
 </blockquote>
 
 	</div>
@@ -496,7 +496,7 @@ var duoshuoQuery = {short_name:"yumemor"};
 		<div class="layout layout--center">
 			<div class="layout__item palm-mb">
 				<div class="media">
-					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<img class="headimg" src='http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
 					<div class="media__body">
 						<h4>Zhongzilu</h4>
 						<p class='site-description'>I&#39;m an Android developer</p>
