@@ -85,9 +85,9 @@
 
 	<div class='post-body mb'>
 		<h2 id="（已解决）程序调用魅族系统裁剪之后直接闪退"><a href="#（已解决）程序调用魅族系统裁剪之后直接闪退" class="headerlink" title="（已解决）程序调用魅族系统裁剪之后直接闪退"></a>（已解决）程序调用魅族系统裁剪之后直接闪退</h2><hr>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>几天前发布了一篇博客，是关于<strong><a href="http://www.bit100.com/%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9F%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/" target="_blank" rel="external">程序调用魅族系统裁剪之后直接闪退</a></strong>的问题，在网上找了很久之后也没有找到解决方法，于是决定去请教魅族官方的开发者，我先是在魅族社区里发帖提问，然后有幸在朋友的帮助下得到了魅族运营的联系方式，请求他帮忙联系一下魅族开发者，果然，在一周之后我得到了魅族开发者的回复，我在这里为魅族开发者<strong>点赞</strong>，感谢他们对待问题的态度，同时也为魅族客服<strong>点赞</strong>，感谢他们对用户提出的问题进行认真的回复。</p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>几天前发布了一篇博客，是关于<strong><a href="https://zhongzilu.github.io/2016/08/30/%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9Fj%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/">程序调用魅族系统裁剪之后直接闪退</a></strong>的问题，在网上找了很久之后也没有找到解决方法，于是决定去请教魅族官方的开发者，我先是在魅族社区里发帖提问，然后有幸在朋友的帮助下得到了魅族运营的联系方式，请求他帮忙联系一下魅族开发者，果然，在一周之后我得到了魅族开发者的回复，我在这里为魅族开发者<strong>点赞</strong>，感谢他们对待问题的态度，同时也为魅族客服<strong>点赞</strong>，感谢他们对用户提出的问题进行认真的回复。</p>
 <p>好了，废话不多说，今天主要讲讲对于这个问题的解决方案。</p>
-<h3 id="魅族官方社区的回复截图"><a href="#魅族官方社区的回复截图" class="headerlink" title="魅族官方社区的回复截图"></a>魅族官方社区的回复截图</h3><p><img src="http://www.bit100.com/.zhongzilu/image/meizu_Bug_solution_Screenshot.png" alt="Bug solution screenshot"><br>根据回复，我们可以得知，魅族在系统层就处理了 我们经常遇到的 因裁剪图片过大可能会导致内存溢出的问题，这一点还是挺人性化的，再次为魅族系统开发者点赞。</p>
+<h3 id="魅族官方社区的回复截图"><a href="#魅族官方社区的回复截图" class="headerlink" title="魅族官方社区的回复截图"></a>魅族官方社区的回复截图</h3><p><img src="http://ozpzmw1tj.bkt.clouddn.com/image/meizu_Bug_solution_Screenshot.png" alt="Bug solution screenshot"><br>根据回复，我们可以得知，魅族在系统层就处理了 我们经常遇到的 因裁剪图片过大可能会导致内存溢出的问题，这一点还是挺人性化的，再次为魅族系统开发者点赞。</p>
 <p>回复中共提供了三种解决方案，通过对比，我们把这三种方案进行结合。</p>
 <p>解决方案代码如下：</p>
 <pre><code class="java">/**
@@ -161,7 +161,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
      super.onActivityResult(requestCode, resultCode, data);
  }
 </code></pre>
-<p><strong>作者</strong>：zhongzilu<br><strong>原文地址</strong>: <a href="http://www.bit100.com/%EF%BC%88%E5%B7%B2%E8%A7%A3%E5%86%B3%EF%BC%89%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9F%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/" target="_blank" rel="external">http://www.bit100.com/（已解决）程序调用魅族系统裁剪之后直接闪退/</a></p>
+<p><strong>作者</strong>：zhongzilu<br><strong>原文地址</strong>: <a href="https://zhongzilu.github.io/2016/09/02/%E5%B7%B2%E8%A7%A3%E5%86%B3-%E7%A8%8B%E5%BA%8F%E8%B0%83%E7%94%A8%E9%AD%85%E6%97%8F%E7%B3%BB%E7%BB%9F%E8%A3%81%E5%89%AA%E4%B9%8B%E5%90%8E%E7%9B%B4%E6%8E%A5%E9%97%AA%E9%80%80/">http://zhongzilu.github.io/（已解决）程序调用魅族系统裁剪之后直接闪退/</a></p>
 
 	</div>
 	<div class="meta split">
@@ -212,7 +212,7 @@ var duoshuoQuery = {short_name:"yumemor"};
 		<div class="layout layout--center">
 			<div class="layout__item palm-mb">
 				<div class="media">
-					<img class="headimg" src='http://www.bit100.com/wp-content/uploads/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
+					<img class="headimg" src='http://ozpzmw1tj.bkt.clouddn.com/image/2017/02/33_avatar_max.jpg' alt='zhongzilu'>
 					<div class="media__body">
 						<h4>Zhongzilu</h4>
 						<p class='site-description'>I&#39;m an Android developer</p>
